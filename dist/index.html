@@ -15,8 +15,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Security Access Gate (Password: RAJ2026) -->
+  <div id="auth-gate-modal" class="auth-gate-overlay">
+    <div class="auth-gate-card">
+      <div class="auth-gate-badge">
+        <i class="fa-solid fa-shield-halved"></i> কনফিডেনশিয়াল প্রেজেন্টেশন
+      </div>
+      <h2 class="auth-gate-title">RAJ Courier</h2>
+      <p class="auth-gate-subtitle">ইন্টারেক্টিভ লজিস্টিকস প্রেজেন্টেশন অ্যাক্সেস করতে পাসওয়ার্ড দিন</p>
+      
+      <form id="auth-form" class="auth-form">
+        <div class="auth-input-group">
+          <i class="fa-solid fa-key auth-input-icon"></i>
+          <input type="password" id="auth-pass-input" class="auth-input" placeholder="পাসওয়ার্ড লিখুন..." autocomplete="off" autofocus required>
+          <button type="button" id="toggle-pass-visibility" class="auth-toggle-pass" aria-label="Show password" title="পাসওয়ার্ড দেখুন">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+        <div id="auth-error-msg" class="auth-error-msg" style="display: none;">
+          <i class="fa-solid fa-circle-exclamation"></i> ভুল পাসওয়ার্ড! অনুগ্রহ করে সঠিক পাসওয়ার্ড দিন।
+        </div>
+        <button type="submit" id="auth-submit-btn" class="auth-submit-btn">
+          <span>প্রবেশ করুন</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+      
+      <div class="auth-gate-footer">
+        <i class="fa-solid fa-bolt"></i> Solution Architecture by <strong>Dofva Automation</strong>
+      </div>
+    </div>
+  </div>
 
-  <main class="presentation-container">
+  <main id="main-content" class="presentation-container">
     
     <!-- Header Section -->
     <header class="presentation-header">
@@ -29,7 +60,7 @@
         </div>
       </div>
 
-      <!-- Header Actions: Navigation Tabs & Theme Switcher -->
+      <!-- Header Actions: Navigation Tabs, Theme Switcher & Screen Lock -->
       <div class="presentation-header-actions">
         <nav class="nav-tab-group" role="tablist">
           <button class="nav-tab-btn active" data-target="journey" role="tab">
@@ -42,6 +73,9 @@
         
         <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle dark/light theme" title="থিম পরিবর্তন করুন">
           <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="lock-app-btn" class="theme-toggle-btn" type="button" aria-label="Lock Presentation" title="স্ক্রিন লক করুন">
+          <i class="fa-solid fa-lock"></i>
         </button>
       </div>
     </header>

@@ -904,3 +904,81 @@ themeToggleBtn.addEventListener('click', () => {
 // ইনিশিয়ালাইজ
 buildStepButtons();
 renderCurrentStep();
+
+// =========================================================
+// সিকিউরিটি গেট / পাসওয়ার্ড প্রটেকশন (পাসওয়ার্ড: RAJ2026)
+// =========================================================
+const AUTH_PASSWORD = 'RAJ2026';
+const authModal = document.getElementById('auth-gate-modal');
+const authForm = document.getElementById('auth-form');
+const authInput = document.getElementById('auth-pass-input');
+const authError = document.getElementById('auth-error-msg');
+const togglePassBtn = document.getElementById('toggle-pass-visibility');
+const lockAppBtn = document.getElementById('lock-app-btn');
+const authCard = authModal ? authModal.querySelector('.auth-gate-card') : null;
+
+function unlockPresentation() {
+  if (authModal) {
+    authModal.classList.add('unlocked');
+    sessionStorage.setItem('raj_courier_auth_state', 'unlocked');
+  }
+}
+
+function lockPresentation() {
+  if (authModal) {
+    authModal.classList.remove('unlocked');
+    sessionStorage.removeItem('raj_courier_auth_state');
+    if (authInput) {
+      authInput.value = '';
+      setTimeout(() => authInput.focus(), 200);
+    }
+    if (authError) authError.style.display = 'none';
+  }
+}
+
+// সেশন চেক
+if (sessionStorage.getItem('raj_courier_auth_state') === 'unlocked') {
+  unlockPresentation();
+} else {
+  if (authInput) setTimeout(() => authInput.focus(), 300);
+}
+
+// ফর্ম সাবমিট
+if (authForm) {
+  authForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const entered = (authInput.value || '').trim();
+    if (entered.toUpperCase() === AUTH_PASSWORD) {
+      if (authError) authError.style.display = 'none';
+      unlockPresentation();
+    } else {
+      if (authError) authError.style.display = 'flex';
+      if (authCard) {
+        authCard.classList.remove('shake');
+        void authCard.offsetWidth; // trigger reflow
+        authCard.classList.add('shake');
+      }
+      authInput.select();
+    }
+  });
+}
+
+// পাসওয়ার্ড শো/হাইড
+if (togglePassBtn && authInput) {
+  togglePassBtn.addEventListener('click', () => {
+    const isPass = authInput.type === 'password';
+    authInput.type = isPass ? 'text' : 'password';
+    const icon = togglePassBtn.querySelector('i');
+    if (icon) {
+      icon.className = isPass ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+    }
+  });
+}
+
+// স্ক্রিন লক বাটন
+if (lockAppBtn) {
+  lockAppBtn.addEventListener('click', () => {
+    lockPresentation();
+  });
+}
+
