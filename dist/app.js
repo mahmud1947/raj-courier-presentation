@@ -1182,1100 +1182,1110 @@ function showSimToast(message, icon = 'fa-circle-check', duration = 3000) {
   }, duration);
 }
 
-// ৯টি ধাপের পূর্ণাঙ্গ ডেটা মডেল
+// ৯টি ধাপের পূর্ণাঙ্গ ডেটা মডেল (আলাদা আলাদা মার্চেন্ট ও রাইডার অ্যাপ)
 const simStepsData = [
   // ==========================================
-  // ধাপ ১: মার্চেন্ট বুকিং
+  // ধাপ ১: মার্চেন্ট বুকিং (মার্চেন্ট অ্যাপ)
   // ==========================================
   {
     step: 1,
     title: 'মার্চেন্ট পার্সেল বুকিং',
-    mobileRole: 'মার্চেন্ট অ্যাপ',
-    mobileUser: 'মাহমুদ ভাই',
-    mobileAppTitle: 'RAJ Merchant',
+    primaryApp: 'merchant',
+    riderName: 'করিম (পিকআপ রাইডার)',
     browserUrl: 'https://merchant.rajcourier.com/parcels/new',
     custody: 'মাহমুদ শপ (মার্চেন্ট)',
     location: 'জিন্দাবাজার, সিলেট',
     cashStatus: 'আদায় হয়নি (৳০)',
     cashNote: 'টাকা ক্রেতার পকেটে আছে',
-    merchantPayout: '৳১,৮৮০ (প্রস্তুত)',
+    merchantPayout: '৳১,৮৯০ (প্রস্তুত)',
     statusChip: { text: 'বুকিং সম্পন্ন', class: 'pending' },
     statusTime: '১৯ অক্টো ২০২৬ · ০৯:৪১ AM',
     smsText: 'আপনার পার্সেল RAJ-DH-89214 বুকিং করা হয়েছে। পিকআপের পর লাইভ আপডেট দেখতে পারবেন।',
     trackStatus: 'বুকিং সম্পন্ন',
-    trackEta: 'আগামীকাল বিকেল ৫টা',
+    trackEta: 'আগামীকাল দুপুর ০১:০০',
     trackProgress: 12,
-    historyDone: ['অর্ডার বুকিং প্রস্তুত'],
-    
-    mobileHtml: `
-      <div class="m-card">
-        <span class="m-badge primary"><i class="fa-solid fa-plus-circle"></i> নিউ পার্সেল এন্ট্রি</span>
-        <div style="font-size: 15px; font-weight: 800; margin-bottom: 8px;">পার্সেল ও প্রাপকের বিবরণ</div>
-        
-        <div style="display:flex; flex-direction:column; gap:8px; font-size:12px;">
-          <div>
-            <span style="color:var(--text-muted); font-size:10px; font-weight:700;">প্রাপকের নাম ও ফোন:</span>
-            <div style="font-weight:700;">তানভীর আহমেদ · 01711-234567</div>
-          </div>
-          <div>
-            <span style="color:var(--text-muted); font-size:10px; font-weight:700;">ডেলিভারি ঠিকানা:</span>
-            <div style="font-weight:600; line-height:1.3;">রোড ৪, ব্লক সি, মিরপুর ১০, ঢাকা</div>
-          </div>
-          <div style="display:flex; justify-content:space-between; background:var(--bg-card-subtle); padding:6px 10px; border-radius:6px;">
-            <div><span style="color:var(--text-muted); font-size:10px;">ওজন:</span> <strong>১.২ কেজি</strong></div>
-            <div><span style="color:var(--text-muted); font-size:10px;">আইটেম:</span> <strong>পোশাক</strong></div>
-            <div><span style="color:var(--text-muted); font-size:10px;">ক্যাশ (COD):</span> <strong style="color:var(--brand-primary);">৳২,০০০</strong></div>
-          </div>
-          <div style="background:var(--bg-card-subtle); padding:8px 10px; border-radius:6px; margin-top:8px;">
-            <span style="color:var(--text-muted); font-size:10px; font-weight:700; display:block; margin-bottom:4px;">বারকোড স্টিকার পলিসি:</span>
-            <div style="font-size:11px; display:flex; flex-direction:column; gap:4px;">
-              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:var(--brand-primary);">
-                <input type="radio" name="sim-label-mode" value="branch" checked>
-                <span>🏷️ ব্রাঞ্চ/হাব থেকে লাগাবে (মার্চেন্টের প্রিন্টার নেই)</span>
-              </label>
-              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; color:var(--text-muted);">
-                <input type="radio" name="sim-label-mode" value="self">
-                <span>🖨️ মার্চেন্ট নিজে লাগাবেন (প্রিন্টার থাকলে)</span>
-              </label>
-            </div>
-            <div style="font-size:10px; color:var(--text-muted); margin-top:4px; line-height:1.3;">
-              *প্রিন্টার না থাকলে প্যাকেটের গায়ে মার্কার দিয়ে <strong>RAJ-89214</strong> লিখে রাখলেই হবে; ব্রাঞ্চ হাব ফ্রিতে স্টিকার লাগিয়ে দেবে।
-            </div>
-          </div>
-        </div>
+    historyDone: [
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)'
+    ],
 
-        <button type="button" class="m-btn m-btn-primary" id="m-action-btn-1" style="margin-top: 12px;">
-          <i class="fa-solid fa-cloud-arrow-up"></i> পার্সেল বুকিং সাবমিট করুন
-        </button>
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
+      <div class="m-card">
+        <span class="m-badge primary"><i class="fa-solid fa-shop"></i> মার্চেন্ট স্টোর: মাহমুদ ফ্যাশন</span>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px;">সিলেট জিন্দাবাজার শপ নং ৪</div>
+        <div class="m-field-group">
+          <span class="m-label">ট্র্যাকিং আইডি:</span>
+          <span class="m-val highlight">RAJ-DH-89214</span>
+        </div>
+        <div class="m-field-group">
+          <span class="m-label">প্রাপক:</span>
+          <span class="m-val">তানভীর আহমেদ (মিরপুর-১০, ঢাকা)</span>
+        </div>
+        <div class="m-field-group">
+          <span class="m-label">পণ্য ও মূল্য (COD):</span>
+          <span class="m-val">২x কটন পাঞ্জাবি · <strong style="color:var(--brand-accent);">৳২,০০০</strong></span>
+        </div>
       </div>
 
-      <div class="m-card" style="border-left: 3px solid var(--brand-accent);">
-        <div style="font-size: 11px; font-weight: 700; color: var(--brand-accent);">
-          <i class="fa-solid fa-bolt"></i> রিয়েল-টাইম সিস্টেম অ্যাকশন:
+      <div class="m-card">
+        <div style="font-size:12px; font-weight:800; color:var(--brand-primary); margin-bottom:6px;">
+          <i class="fa-solid fa-tags"></i> বারকোড স্টিকার পলিসি নির্বাচন
         </div>
-        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px; line-height:1.4;">
-          সাবমিট করার সাথে সাথে Fastify API বারকোড আইডি <strong>RAJ-DH-89214</strong> তৈরি করবে এবং নিকটস্থ সিলেট পিকআপ রাইডারের কাছে টাস্ক নোটিফিকেশন পাঠাবে।
-        </p>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
+          আপনার কাছে থার্মাল প্রিন্টার না থাকলে হাবে পার্সেল যাওয়ার পর বিনামূল্যে স্টিকার লাগিয়ে দেওয়া হবে।
+        </div>
+        
+        <div class="sim-label-selector">
+          <label class="sim-label-radio-card active">
+            <div class="sim-radio-left">
+              <input type="radio" name="sim-label-mode-m" value="branch" checked>
+              <div class="sim-radio-text">
+                <strong>🏢 হাব/ব্রাঞ্চে স্টিকার লাগানো হবে</strong>
+                <span>ফ্রি সার্ভিস (৮০% মার্চেন্ট এটি ব্যবহার করেন)</span>
+              </div>
+            </div>
+            <span class="badge-chip success">জনপ্রিয়</span>
+          </label>
+
+          <label class="sim-label-radio-card" style="margin-top:6px;">
+            <div class="sim-radio-left">
+              <input type="radio" name="sim-label-mode-m" value="merchant">
+              <div class="sim-radio-text">
+                <strong>🖨️ মার্চেন্ট নিজে প্রিন্ট করবেন</strong>
+                <span>৪x৬ থার্মাল লেবেল সরাসরি শপ থেকে প্রিন্ট</span>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <button id="m-action-btn-1" class="m-btn m-btn-primary">
+        <i class="fa-solid fa-motorcycle"></i> রাইডার পিকআপ কল করুন
+      </button>
+    `,
+
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card">
+        <span class="m-badge success"><i class="fa-solid fa-signal"></i> রাইডার অনলাইন - সিলেট জোন</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+          <strong style="font-size:13px;">করিম আহমেদ</strong>
+          <span style="font-size:11px; color:var(--text-muted);"><i class="fa-solid fa-location-arrow"></i> জিন্দাবাজার পয়েন্ট</span>
+        </div>
+      </div>
+
+      <div class="m-card" style="border:1.5px dashed var(--brand-primary); background:rgba(37,99,235,0.03);">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <i class="fa-solid fa-bell fa-bounce" style="color:var(--brand-primary);"></i>
+          <strong style="font-size:12px; color:var(--brand-primary);">নতুন পিকআপ রিকোয়েস্ট আসছে...</strong>
+        </div>
+        <div style="font-size:11px; line-height:1.5; color:var(--text-main);">
+          মার্চেন্ট মাহমুদ ভাই পিকআপ কল করলে এই স্ক্রিনে ইনস্ট্যান্ট নোটিফিকেশন ও ম্যাপ রুট প্রদর্শিত হবে।
+        </div>
+      </div>
+
+      <div style="text-align:center; padding:15px; color:var(--text-muted); font-size:11px;">
+        <i class="fa-solid fa-hourglass-half fa-spin"></i> মার্চেন্ট কনফার্মেশনের অপেক্ষায়...
       </div>
     `,
 
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">মার্চেন্ট ওয়েব পোর্টাল · অর্ডার ম্যানেজমেন্ট</div>
-          <div style="font-size: 12px; color: var(--text-muted);">মাহমুদ ফ্যাশন শপ (মার্চেন্ট আইডি: M-77491)</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-file-circle-plus"></i> মার্চেন্ট ওয়েব পোর্টাল - নতুন পার্সেল বুকিং</div>
+          <table class="d-table">
+            <tr><td>অর্ডার আইডি</td><td><strong>RAJ-DH-89214</strong></td></tr>
+            <tr><td>মার্চেন্ট</td><td>মাহমুদ ফ্যাশন (জিন্দাবাজার, সিলেট)</td></tr>
+            <tr><td>কাস্টমার</td><td>তানভীর আহমেদ (01711-234567)</td></tr>
+            <tr><td>ঠিকানা</td><td>বাসা ২৪, রোড ৩, মিরপুর-১০, ঢাকা</td></tr>
+            <tr><td>ক্যাশ অন ডেলিভারি (COD)</td><td><strong style="color:var(--brand-accent);">৳২,০০০</strong></td></tr>
+            <tr><td>স্টিকার পলিসি</td><td><span class="status-badge warning">🏢 ব্রাঞ্চ প্রিন্ট (ডিফল্ট)</span></td></tr>
+          </table>
         </div>
-        <button class="sim-ctrl-btn" style="background:var(--brand-primary-light); color:var(--brand-primary); border-color:var(--brand-primary);">
-          <i class="fa-solid fa-file-csv"></i> বাল্ক এক্সেল/CSV আপলোড
-        </button>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">আজকের নতুন বুকিং</div>
-          <div class="d-stat-num">১২টি</div>
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-route"></i> রুট ও টাইমলাইন হিসাব</div>
+          <div style="font-size:12px; line-height:1.8; color:var(--text-main);">
+            <div>📍 <strong>পিকআপ হাব:</strong> সিলেট সেন্ট্রাল হাব</div>
+            <div>🚚 <strong>লাইন-হোল:</strong> সিলেট ➔ ঢাকা সেন্ট্রাল সর্টিং (তেজগাঁও)</div>
+            <div>🎯 <strong>ডেলিভারি হাব:</strong> মিরপুর-১০ লাস্ট-মাইল হাব</div>
+            <div>⏱️ <strong>সম্ভাব্য ডেলিভারি:</strong> ২৪ ঘন্টার মধ্যে (নেক্সট ডে)</div>
+          </div>
         </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">পিকআপ পেন্ডিং</div>
-          <div class="d-stat-num" style="color:var(--brand-accent);">৩টি</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">ওয়ালেট বর্তমান ব্যালেন্স</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">৳১৮,৪০০</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          সাম্প্রতিক বুকিং তালিকা (লাইভ সিঙ্ক)
-        </div>
-        <table class="d-table">
-          <thead>
-            <tr>
-              <th>পার্সেল আইডি</th>
-              <th>গ্রাহক</th>
-              <th>গন্তব্য</th>
-              <th>COD টাকা</th>
-              <th>স্ট্যাটাস</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 600;">
-              <td><span style="font-family:monospace; color:var(--brand-primary);">RAJ-DH-89214</span></td>
-              <td>তানভীর আহমেদ (01711-...)</td>
-              <td>মিরপুর ১০, ঢাকা</td>
-              <td>৳২,০০০</td>
-              <td><span class="sim-status-chip pending">পিকআপ পেন্ডিং</span></td>
-            </tr>
-            <tr>
-              <td><span style="font-family:monospace;">RAJ-SY-88912</span></td>
-              <td>সুমাইয়া বেগম</td>
-              <td>আম্বরখানা, সিলেট</td>
-              <td>৳১,৫০০</td>
-              <td><span class="sim-status-chip delivered">ডেলিভারড</span></td>
-            </tr>
-            <tr>
-              <td><span style="font-family:monospace;">RAJ-CT-88901</span></td>
-              <td>আরিফুল হক</td>
-              <td>জিইসি, চট্টগ্রাম</td>
-              <td>৳৩,২০০</td>
-              <td><span class="sim-status-chip transit">ট্রানজিট</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     `
   },
 
   // ==========================================
-  // ধাপ ২: পিকআপ রাইডার স্ক্যান
+  // ধাপ ২: রাইডার পিকআপ ও লেজার স্ক্যান (রাইডার অ্যাপ)
   // ==========================================
   {
     step: 2,
-    title: 'পিকআপ রাইডার স্ক্যান',
-    mobileRole: 'রাইডার অ্যাপ (পিকআপ)',
-    mobileUser: 'করিম (সিলেট রাইডার)',
-    mobileAppTitle: 'RAJ Rider Pro',
-    browserUrl: 'https://hub.rajcourier.com/sylhet/rider-dispatch',
+    title: 'রাইডার পিকআপ ও লেজার স্ক্যান',
+    primaryApp: 'rider',
+    riderName: 'করিম (পিকআপ রাইডার)',
+    browserUrl: 'https://hub.rajcourier.com/sylhet/rider-monitor',
     custody: 'করিম (পিকআপ রাইডার)',
-    location: 'রাইডারের ব্যাগ (জিন্দাবাজার)',
+    location: 'জিন্দাবাজার, সিলেট',
     cashStatus: 'আদায় হয়নি (৳০)',
-    cashNote: 'পিকআপ ধাপে কোনো টাকা আদান-প্রদান হয় না',
-    merchantPayout: '৳১,৮৮০ (নিশ্চিত)',
-    statusChip: { text: 'রাইডার পিকআপ সম্পন্ন', class: 'transit' },
+    cashNote: 'রাইডারের ব্যাগে পার্সেল তোলা হয়েছে',
+    merchantPayout: '৳১,৮৯০ (অপেক্ষমাণ)',
+    statusChip: { text: 'পিকআপ সম্পন্ন', class: 'in-transit' },
     statusTime: '১৯ অক্টো ২০২৬ · ১০:১৫ AM',
-    smsText: 'আপনার পার্সেল RAJ-DH-89214 সিলেট পিকআপ রাইডার রিসিভ করেছেন এবং হাবে নিচ্ছেন।',
-    trackStatus: 'রাইডার পিকআপ সম্পন্ন',
-    trackEta: 'আগামীকাল বিকেল ৫টা',
-    trackProgress: 25,
-    historyDone: ['অর্ডার বুকিং প্রস্তুত', 'মার্চেন্ট শপ থেকে পিকআপ সম্পন্ন'],
+    smsText: 'রাজ কুরিয়ার রাইডার আপনার পার্সেল শপ থেকে সংগ্রহ করেছেন (ID: RAJ-DH-89214)।',
+    trackStatus: 'রাইডার পিকআপ করেছেন',
+    trackEta: 'আগামীকাল দুপুর ০১:০০',
+    trackProgress: 24,
+    historyDone: [
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন'
+    ],
 
-    mobileHtml: `
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
       <div class="m-card">
-        <span class="m-badge success"><i class="fa-solid fa-motorcycle"></i> পিকআপ টাস্ক #PU-891</span>
-        <div style="font-size: 14px; font-weight: 800; margin-bottom: 6px;">মাহমুদ ফ্যাশন শপ (সিলেট)</div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">পার্সেল কাউন্ট: ১টি · গন্তব্য: ঢাকা মিরপুর</div>
-
-        <!-- Animated Barcode Laser Scanner Simulation -->
-        <div class="m-scanner-viewport" id="sim-laser-viewport">
-          <div class="scanner-crosshair">
-            <div class="scanner-laser"></div>
-            <i class="fa-solid fa-barcode" style="font-size: 40px; opacity: 0.9;"></i>
-            <span class="scanner-barcode-dummy">RAJ-DH-89214</span>
+        <span class="m-badge success"><i class="fa-solid fa-circle-check"></i> পিকআপ হ্যান্ডওভার সম্পন্ন</span>
+        <div style="margin-top:6px;">
+          <div class="m-field-group">
+            <span class="m-label">রাইডার:</span>
+            <span class="m-val">করিম আহমেদ (01712-345678)</span>
+          </div>
+          <div class="m-field-group">
+            <span class="m-label">যানবাহন:</span>
+            <span class="m-val">বাইক (সিলেট মেট্রো-হ-১২৩৪)</span>
+          </div>
+          <div class="m-field-group">
+            <span class="m-label">হ্যান্ডওভার সময়:</span>
+            <span class="m-val">সকাল ১০:১৫ AM</span>
           </div>
         </div>
-
-        <button type="button" class="m-btn m-btn-success" id="m-action-btn-2" style="margin-top: 10px;">
-          <i class="fa-solid fa-camera"></i> ক্যামেরা বারকোড স্ক্যান করুন
-        </button>
       </div>
 
-      <div class="m-card">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-size:12px; font-weight:700;">পিকআপ ওটিপি/ডিজিটাল সাইন:</span>
-          <span class="sim-status-chip delivered">ভেরিফাইড</span>
+      <div class="m-card" style="background:rgba(5,150,105,0.04); border-color:var(--brand-success);">
+        <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:var(--brand-success); font-weight:700;">
+          <i class="fa-solid fa-shield-halved"></i> ডিজিটাল হেফাজত নিশ্চিত (Chain of Custody)
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:5px; line-height:1.4;">
+          রাইডার করিম তার ফোনে বারকোড স্ক্যান সম্পন্ন করেছেন। পার্সেলটির আইনি দায়িত্ব এখন রাজ কুরিয়ারের।
         </div>
       </div>
     `,
 
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card" style="padding:8px 12px; margin-bottom:8px;">
+        <span class="m-badge warning"><i class="fa-solid fa-camera"></i> লাইভ বারকোড ক্যামেরা স্ক্যানার</span>
+      </div>
+
+      <!-- Animated Camera Scanner Viewfinder -->
+      <div class="m-scanner-viewport">
+        <div class="scanner-crosshair">
+          <div class="scanner-laser"></div>
+          <i class="fa-solid fa-barcode" style="font-size:42px; opacity:0.6;"></i>
+          <div class="scanner-barcode-dummy">RAJ-DH-89214</div>
+        </div>
+      </div>
+
+      <div class="m-card" style="margin-top:8px;">
+        <div class="m-field-group">
+          <span class="m-label">মার্চেন্ট:</span>
+          <span class="m-val">মাহমুদ ফ্যাশন, জিন্দাবাজার</span>
+        </div>
+        <div class="m-field-group">
+          <span class="m-label">সংগৃহীত পার্সেল:</span>
+          <span class="m-val highlight">RAJ-DH-89214 (১টি)</span>
+        </div>
+        <div class="m-field-group">
+          <span class="m-label">সিওডি ট্যাগ:</span>
+          <span class="m-val" style="color:var(--brand-accent); font-weight:800;">৳২,০০০</span>
+        </div>
+      </div>
+
+      <button id="m-action-btn-2" class="m-btn m-btn-success">
+        <i class="fa-solid fa-barcode"></i> স্ক্যান কনফার্ম ও ব্যাগে লোড করুন
+      </button>
+    `,
+
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">সিলেট হাব কন্ট্রোল প্যানেল · পিকআপ মনিটরিং</div>
-          <div style="font-size: 12px; color: var(--text-muted);">হাব কোড: SYL-01 · জিন্দাবাজার জোন</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-satellite-dish"></i> সিলেট হাব - রাইডার পিকআপ ট্র্যাকিং লাইভ</div>
+          <table class="d-table">
+            <thead>
+              <tr><th>রাইডার</th><th>মার্চেন্ট</th><th>পার্সেল আইডি</th><th>অবস্থা</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>করিম আহমেদ</td>
+                <td>মাহমুদ ফ্যাশন</td>
+                <td><strong style="color:var(--brand-primary);">RAJ-DH-89214</strong></td>
+                <td><span class="status-badge success">✅ স্ক্যান সম্পন্ন (ইন-ব্যাগ)</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <span class="browser-live-badge"><span class="pulse-dot"></span> জিপিএস লাইভ ট্র্যাকিং সক্রিয়</span>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">অন-ফিল্ড পিকআপ রাইডার</div>
-          <div class="d-stat-num">৮ জন</div>
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-shield-halved"></i> ডিজিটাল অডিট ট্রেইল (Custody Stamp)</div>
+          <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
+            <div><strong>লগ আইডি:</strong> #LOG-SYL-98421</div>
+            <div><strong>আগের দায়িত্ব:</strong> মাহমুদ ফ্যাশন (মার্চেন্ট)</div>
+            <div><strong>বর্তমান দায়িত্ব:</strong> করিম আহমেদ (রাইডার ID #RD-09)</div>
+            <div><strong>টাইমস্ট্যাম্প:</strong> ১৯ অক্টো ২০২৬ · ১০:১৫:২২ AM</div>
+            <div style="margin-top:8px; color:var(--brand-success); font-weight:700;">
+              <i class="fa-solid fa-check-double"></i> কোনো তথ্য ম্যানুয়ালি টাইপ করার সুযোগ নেই। ১০০% বারকোড নির্ভর।
+            </div>
+          </div>
         </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">আজকের সম্পন্ন পিকআপ</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">৬৪টি</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">হাবে আসার পথে</div>
-          <div class="d-stat-num" style="color:var(--brand-primary);">১৮টি</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          রাইডার পিকআপ কাস্টডি লগ (PostgreSQL Audit Event)
-        </div>
-        <table class="d-table">
-          <thead>
-            <tr>
-              <th>টাইমস্ট্যাম্প</th>
-              <th>রাইডার</th>
-              <th>মার্চেন্ট</th>
-              <th>পার্সেল আইডি</th>
-              <th>কাস্টডি স্ট্যাটাস</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: rgba(16, 185, 129, 0.08); font-weight: 600;">
-              <td>১০:১৫:২২ AM</td>
-              <td>করিম মিয়া (R-09)</td>
-              <td>মাহমুদ ফ্যাশন শপ</td>
-              <td><span style="font-family:monospace; color:var(--brand-primary);">RAJ-DH-89214</span></td>
-              <td><span class="sim-status-chip delivered">IN_RIDER_BAG</span></td>
-            </tr>
-            <tr>
-              <td>১০:১২:০৫ AM</td>
-              <td>সুমন রায় (R-03)</td>
-              <td>জালালাবাদ ইলেকট্রনিক্স</td>
-              <td>RAJ-SY-88941</td>
-              <td>IN_RIDER_BAG</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     `
   },
 
   // ==========================================
-  // ধাপ ৩: হাব ইনবাউন্ড ও থার্মাল লেবেল
+  // ধাপ ৩: সিলেট হাব ইনবাউন্ড ও ৪x৬ থার্মাল লেবেল
   // ==========================================
   {
     step: 3,
-    title: 'হাব ইনবাউন্ড ও লেবেল প্রিন্ট',
-    mobileRole: 'হাব স্ক্যানার অ্যাপ',
-    mobileUser: 'সজল (হাব সুপারভাইজার)',
-    mobileAppTitle: 'RAJ Hub Inbound',
-    browserUrl: 'https://hub.rajcourier.com/inbound/barcode-scan',
-    custody: 'সিলেট হাব ম্যানেজার',
-    location: 'সিলেট সেন্ট্রাল হাব (সর্টিং জোন)',
+    title: 'সিলেট হাব ইনবাউন্ড ও থার্মাল লেবেল প্রিন্ট',
+    primaryApp: 'merchant',
+    riderName: 'করিম (পিকআপ রাইডার)',
+    browserUrl: 'https://hub.rajcourier.com/sylhet/inbound-scan',
+    custody: 'সিলেট সেন্ট্রাল হাব',
+    location: 'কদমতলী হাব, সিলেট',
     cashStatus: 'আদায় হয়নি (৳০)',
-    cashNote: 'টাকা এখনো কাস্টমারের পকেটে',
-    merchantPayout: '৳১,৮৮০ (হিসাব সংরক্ষিত)',
-    statusChip: { text: 'সিলেট হাবে ইনবাউন্ড', class: 'transit' },
+    cashNote: 'হাবে ওজন ও বারকোড যাচাই হচ্ছে',
+    merchantPayout: '৳১,৮৯০ (অপেক্ষমাণ)',
+    statusChip: { text: 'হাবে ইনবাউন্ড', class: 'in-transit' },
     statusTime: '১৯ অক্টো ২০২৬ · ১১:৩০ AM',
-    smsText: 'আপনার পার্সেল RAJ-DH-89214 সিলেট হাবে সর্টিং সম্পন্ন হয়েছে এবং ঢাকার গাড়ির জন্য প্রস্তুত।',
-    trackStatus: 'সিলেট হাবে সর্টিং সম্পন্ন',
-    trackEta: 'আগামীকাল দুপুর ২টা',
-    trackProgress: 38,
-    historyDone: ['অর্ডার বুকিং প্রস্তুত', 'মার্চেন্ট শপ থেকে পিকআপ সম্পন্ন', 'সিলেট হাবে ইনবাউন্ড ও ওজন যাচাই (১.২ কেজি)'],
+    smsText: 'আপনার পার্সেল সিলেট হাবে গ্রহণ করা হয়েছে। হাইওয়ে ট্রাকে লোডিং চলছে।',
+    trackStatus: 'সিলেট হাবে গ্রহণ করা হয়েছে',
+    trackEta: 'আগামীকাল দুপুর ০১:০০',
+    trackProgress: 36,
+    historyDone: [
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন',
+      '১৯ অক্টো ১১:৩০ AM · সিলেট সেন্ট্রাল হাবে ইনবাউন্ড রিসিভ ও ওজন যাচাই (১.২ কেজি)'
+    ],
 
-    mobileHtml: `
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
       <div class="m-card">
-        <span class="m-badge primary"><i class="fa-solid fa-weight-scale"></i> হাব ইনবাউন্ড ও পরিমাপ</span>
-        <div style="font-size: 14px; font-weight: 800; margin-bottom: 6px;">পার্সেল: RAJ-DH-89214</div>
-
-        <div style="background:var(--bg-card-subtle); padding:10px; border-radius:8px; margin-bottom:10px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12px;">
-            <span style="color:var(--text-muted);">ডিজিটাল স্কেল ওজন:</span>
-            <strong style="color:var(--brand-success);">১.২০ কেজি (Verified)</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between; font-size:12px;">
-            <span style="color:var(--text-muted);">রাউটিং ট্যাগ:</span>
-            <strong style="background:#000; color:#fff; padding:1px 6px; border-radius:4px; font-family:monospace;">DHK-MIR</strong>
-          </div>
+        <span class="m-badge info"><i class="fa-solid fa-warehouse"></i> সিলেট লোকাল হাবে ইনবাউন্ড</span>
+        <div class="m-field-group">
+          <span class="m-label">ইনবাউন্ড হাব:</span>
+          <span class="m-val">সিলেট সেন্ট্রাল হাব (কদমতলী)</span>
         </div>
-
-        <div style="background:var(--brand-accent-light); border:1px solid rgba(217, 119, 6, 0.3); padding:8px 10px; border-radius:6px; margin-bottom:10px; font-size:11px; color:var(--text-main); line-height:1.4;">
-          <strong>🏷️ ব্রাঞ্চ স্টিকার স্টেশন:</strong> মার্চেন্টের প্রিন্টার না থাকায় সিলেট ব্রাঞ্চ থেকে ৪x৬ ইঞ্চি থার্মাল স্টিকার প্রিন্ট করে প্যাকেটের গায়ে লাগানো হচ্ছে।
+        <div class="m-field-group">
+          <span class="m-label">পরিমাপকৃত ওজন:</span>
+          <span class="m-val">১.২ কেজি (ডিজিটাল স্কেল ভেরিফাইড)</span>
         </div>
-
-        <button type="button" class="m-btn m-btn-primary" id="m-action-btn-3">
-          <i class="fa-solid fa-print"></i> ব্রাঞ্চ ৪x৬ থার্মাল লেবেল প্রিন্ট করুন
-        </button>
+        <div class="m-field-group">
+          <span class="m-label">স্টিকার স্ট্যাটাস:</span>
+          <span class="m-val" style="color:var(--brand-primary); font-weight:800;">🖨️ ৪x৬ থার্মাল লেবেল প্রস্তুত</span>
+        </div>
       </div>
 
-      <div class="m-card" style="text-align:center; padding:10px;">
-        <span style="font-size:11px; color:var(--text-muted);">
-          <i class="fa-solid fa-shield-halved"></i> বারকোড স্ক্যান গান ও স্কেলের সাথে অটো-সিঙ্ক সম্পন্ন
-        </span>
+      <div class="m-card" style="border:1px dashed var(--brand-accent); background:rgba(245,158,11,0.04);">
+        <div style="font-size:12px; font-weight:700; color:var(--brand-accent); margin-bottom:4px;">
+          <i class="fa-solid fa-print"></i> ব্রাঞ্চ লেবেলিং পলিসি কার্যকর
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
+          যেহেতু বুকিংয়ের সময় আপনি "ব্রাঞ্চে প্রিন্ট" নির্বাচন করেছিলেন, তাই হাব অপারেটর হাই-স্পিড থার্মাল প্রিন্টারে বারকোড স্টিকার প্রিন্ট করে পার্সেলে পেস্ট করছেন।
+        </div>
+      </div>
+
+      <button id="m-action-btn-3" class="m-btn m-btn-warning">
+        <i class="fa-solid fa-eye"></i> ৪x৬ থার্মাল স্টিকার প্রিভিউ দেখুন
+      </button>
+    `,
+
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card">
+        <span class="m-badge success"><i class="fa-solid fa-circle-check"></i> সকালের পিকআপ শিফট সম্পন্ন!</span>
+        <div style="margin-top:8px; font-size:12px; line-height:1.6;">
+          <div><strong>রাইডার:</strong> করিম আহমেদ (#RD-09)</div>
+          <div><strong>মোট সংগৃহীত পার্সেল:</strong> ১২টি</div>
+          <div><strong>সিলেট হাবে জমা:</strong> ১২টি (১০০% হ্যান্ডওভার সফল)</div>
+          <div><strong>গ্রহণকারী হাব অফিসার:</strong> শাকিল হোসেন</div>
+        </div>
+      </div>
+
+      <div class="m-card" style="background:var(--bg-card-subtle);">
+        <div style="font-size:11px; color:var(--text-muted);">
+          <i class="fa-solid fa-clock"></i> পরবর্তী শিফট: দুপুর ২:৩০ (বিকেলের পিকআপ ও ড্রপ-অফ)
+        </div>
       </div>
     `,
 
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">সিলেট হাব ইনবাউন্ড ও ব্রাঞ্চ স্টিকার প্রিন্টিং ওয়ার্কস্টেশন</div>
-          <div style="font-size: 12px; color: var(--text-muted);">অপারেটর: সজল আহমেদ · ইউএসবি থার্মাল প্রিন্টার সংযুক্ত (মার্চেন্টের প্রিন্টার না থাকলে হাবে স্টিকার লাগানো হয়)</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-barcode"></i> সিলেট হাব ডেস্কটপ - ইনবাউন্ড ও থার্মাল প্রিন্ট কাউন্টার</div>
+          <div style="padding:10px; background:var(--bg-card-subtle); border-radius:6px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span>পার্সেল: <strong>RAJ-DH-89214</strong></span>
+              <span class="status-badge warning">লেবেল পলিসি: ব্রাঞ্চ প্রিন্ট</span>
+            </div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">
+              মার্চেন্টের কাছে প্রিন্টার নেই ➔ হাবে ডিজিটাল স্কেলে ওজন ১.২ কেজি পরিমাপের পর ৪x৬ থার্মাল বারকোড প্রিন্ট হচ্ছে।
+            </div>
+          </div>
+          <button id="d-action-btn-3" class="m-btn m-btn-primary" style="width:auto; padding:8px 16px;">
+            <i class="fa-solid fa-print"></i> ৪x৬ থার্মাল লেবেল প্রিন্ট করুন (মোডাল প্রিভিউ)
+          </button>
         </div>
-        <button type="button" class="sim-ctrl-btn sim-btn-play" id="d-action-btn-3">
-          <i class="fa-solid fa-print"></i> ব্রাঞ্চ থার্মাল স্টিকার প্রিন্ট প্রিভিউ
-        </button>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">আজকের মোট ইনবাউন্ড</div>
-          <div class="d-stat-num">১৪২টি</div>
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-boxes-stacked"></i> ঢাকা লাইন-হোল ব্যাগিং স্ট্যাটাস</div>
+          <table class="d-table">
+            <tr><td>লাইন-হোল মাস্টার ব্যাগ নং</td><td><strong>BAG-SYL-DH-084</strong></td></tr>
+            <tr><td>গন্তব্য হাব</td><td>ঢাকা সেন্ট্রাল সর্টিং হাব (তেজগাঁও)</td></tr>
+            <tr><td>ব্যাগে মোট পার্সেল</td><td>৪৫টি (বর্তমান পার্সেল অন্তর্ভুক্ত)</td></tr>
+            <tr><td>নিরাপত্তা সিল নং</td><td><span class="status-badge success">SEAL-98741</span></td></tr>
+          </table>
         </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">ওজন গরমিল (Dispute)</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">০টি</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">ঢাকা চালানের অপেক্ষায়</div>
-          <div class="d-stat-num" style="color:var(--brand-accent);">৩৮টি</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          লেবেল প্রিন্ট কিউ (ZPL / Direct Thermal)
-        </div>
-        <table class="d-table">
-          <thead>
-            <tr>
-              <th>পার্সেল আইডি</th>
-              <th>ওজন</th>
-              <th>রাউটিং</th>
-              <th>প্রেরক ➔ প্রাপক</th>
-              <th>প্রিন্ট স্ট্যাটাস</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 600;">
-              <td><span style="font-family:monospace; color:var(--brand-primary);">RAJ-DH-89214</span></td>
-              <td>১.২ কেজি</td>
-              <td><span style="background:#000; color:#fff; padding:2px 6px; font-size:11px; font-weight:800;">DHK-MIR</span></td>
-              <td>মাহমুদ শপ ➔ তানভীর (মিরপুর)</td>
-              <td><span class="sim-status-chip delivered">লেবেল মুদ্রিত ✅</span></td>
-            </tr>
-            <tr>
-              <td><span style="font-family:monospace;">RAJ-DH-89215</span></td>
-              <td>০.৮ কেজি</td>
-              <td>DHK-UTT</td>
-              <td>সুরমা হ্যান্ডিক্রাফটস ➔ রাশেদ</td>
-              <td><span class="sim-status-chip delivered">লেবেল মুদ্রিত ✅</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     `
   },
 
   // ==========================================
-  // ধাপ ৪: লাইন-হল চালান
+  // ধাপ ৪: লাইন-হোল হাইওয়ে ট্রান্সপোর্ট (সিলেট ➔ ঢাকা)
   // ==========================================
   {
     step: 4,
-    title: 'লাইন-হল চালান (হাইওয়ে)',
-    mobileRole: 'ড্রাইভার অ্যাপ (লাইন-হল)',
-    mobileUser: 'আলমগীর (চালক)',
-    mobileAppTitle: 'RAJ Fleet Tracker',
-    browserUrl: 'https://hq.rajcourier.com/fleet/linehaul-manifest',
-    custody: 'লাইন-হল চালক ও এস্কর্ট টিম',
-    location: 'সিলেট ➔ ঢাকা হাইওয়ে (ভৈরব ব্রিজ অতিক্রম)',
+    title: 'লাইন-হোল আন্তঃজেলা হাইওয়ে পরিবহন',
+    primaryApp: 'merchant',
+    riderName: 'কফিল উদ্দিন (হাইওয়ে ড্রাইভার)',
+    browserUrl: 'https://admin.rajcourier.com/linehaul/monitor',
+    custody: 'আন্তঃজেলা কাভার্ড ভ্যান (ঢাকা মেট্রো-উ-৮৮৭৬)',
+    location: 'ঢাকা-সিলেট মহাসড়ক (ভৈরব ব্রিজ)',
     cashStatus: 'আদায় হয়নি (৳০)',
-    cashNote: 'হাইওয়েতে কেবল পার্সেল ট্রানজিট হয়, ক্যাশ নয়',
-    merchantPayout: '৳১,৮৮০ (হিসাব সংরক্ষিত)',
-    statusChip: { text: 'হাইওয়ে ট্রানজিটে চলমান', class: 'transit' },
-    statusTime: '১৯ অক্টো ২০২৬ · ০৪:৩০ PM',
-    smsText: 'আপনার পার্সেল RAJ-DH-89214 হাইওয়ে ট্রাকে ঢাকার উদ্দেশ্যে যাত্রা করেছে। লাইভ ট্র্যাকিং চালু আছে।',
-    trackStatus: 'হাইওয়ে পরিবহনে চলমান',
-    trackEta: 'আগামীকাল দুপুর ১২টা',
-    trackProgress: 50,
+    cashNote: 'পার্সেল হাইওয়ে ট্রাকে সিলগালা অবস্থায় আছে',
+    merchantPayout: '৳১,৮৯০ (অপেক্ষমাণ)',
+    statusChip: { text: 'লাইন-হোল পথে', class: 'in-transit' },
+    statusTime: '১৯ অক্টো ২০২৬ · ০৮:০০ PM',
+    smsText: 'আপনার পার্সেল ঢাকা-সিলেট হাইওয়েতে ট্রানজিটে রয়েছে। জিপিএস মনিটরিং সক্রিয়।',
+    trackStatus: 'আন্তঃজেলা মহাসড়কে পথে রয়েছে',
+    trackEta: 'আগামীকাল দুপুর ০১:০০',
+    trackProgress: 48,
     historyDone: [
-      'অর্ডার বুকিং প্রস্তুত',
-      'মার্চেন্ট শপ থেকে পিকআপ সম্পন্ন',
-      'সিলেট হাবে ইনবাউন্ড ও লেবেলিং সম্পন্ন',
-      'সিলেট ➔ ঢাকা হাইওয়ে চালানে লোড ও সিকিউরিটি সিল সংযুক্ত'
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন',
+      '১৯ অক্টো ১১:৩০ AM · সিলেট সেন্ট্রাল হাবে ইনবাউন্ড ও ৪x৬ থার্মাল স্টিকার প্রিন্ট',
+      '১৯ অক্টো ০৮:০০ PM · সিলেট থেকে ঢাকার উদ্দেশ্যে হাইওয়ে কাভার্ড ভ্যানে যাত্রা শুরু'
     ],
 
-    mobileHtml: `
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
       <div class="m-card">
-        <span class="m-badge warning"><i class="fa-solid fa-truck"></i> লাইন-হল ট্রিপ #LH-4091</span>
-        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">সিলেট হাব ➔ ঢাকা সেন্ট্রাল হাব</div>
-        
-        <div style="background:var(--bg-card-subtle); padding:10px; border-radius:8px; margin-bottom:10px; font-size:12px;">
-          <div style="margin-bottom:4px;"><strong>গাড়ির নম্বর:</strong> ঢাকা মেট্রো-ট ১১-৮৯৩২</div>
-          <div style="margin-bottom:4px;"><strong>মোট পার্সেল:</strong> ১৪২টি (মূল্য: ৳৩,৪৮,০০০)</div>
-          <div style="color:var(--brand-primary); font-weight:700;"><strong>ডিজিটাল সিকিউরিটি সিল:</strong> #SL-88419 (লকড)</div>
+        <span class="m-badge info"><i class="fa-solid fa-truck-fast"></i> আন্তঃজেলা লাইন-হোল পরিবহন</span>
+        <div class="m-field-group">
+          <span class="m-label">যানবাহন:</span>
+          <span class="m-val">কাভার্ড ভ্যান (ঢাকা মেট্রো-উ-৮৮৭৬)</span>
         </div>
-
-        <div style="background:#0f172a; color:#fff; padding:12px; border-radius:8px; text-align:center;">
-          <div style="font-size:11px; color:#94a3b8;">লাইভ গতি ও অবস্থান</div>
-          <div style="font-size:20px; font-weight:800; color:#38bdf8; margin:4px 0;">৬২ কিমি/ঘণ্টা</div>
-          <div style="font-size:11px; color:#cbd5e1;">ভৈরব ব্রিজের কাছাকাছি · পরবর্তী স্টপ: তেজগাঁও হাব</div>
+        <div class="m-field-group">
+          <span class="m-label">রুট:</span>
+          <span class="m-val">সিলেট সেন্ট্রাল হাব ➔ ঢাকা তেজগাঁও হাব</span>
         </div>
+        <div class="m-field-group">
+          <span class="m-label">মাস্টার ব্যাগ আইডি:</span>
+          <span class="m-val highlight">BAG-SYL-DH-084</span>
+        </div>
+      </div>
 
-        <button type="button" class="m-btn m-btn-primary" id="m-action-btn-4" style="margin-top:10px;">
-          <i class="fa-solid fa-location-arrow"></i> লাইভ ট্রিপ স্ট্যাটাস আপডেট
-        </button>
+      <div class="m-card" style="background:rgba(2,132,199,0.04); border-color:#0284c7;">
+        <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#0284c7; font-weight:700;">
+          <i class="fa-solid fa-location-crosshairs fa-spin"></i> লাইভ জিপিএস রুট ট্র্যাকিং
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:6px; line-height:1.5;">
+          কাভার্ড ভ্যানটি বর্তমানে ভৈরব মেঘনা ব্রিজ অতিক্রম করছে। রাত ০৩:১৫ মিনিটে ঢাকা সেন্ট্রাল সর্টিং হাবে পৌঁছাবে।
+        </div>
       </div>
     `,
 
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card">
+        <span class="m-badge primary"><i class="fa-solid fa-moon"></i> নাইট স্ট্যান্ডবাই মোড</span>
+        <div style="margin-top:6px; font-size:12px; line-height:1.5;">
+          <strong>রহিম মিয়া (মিরপুর জোন রাইডার)</strong>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">
+            আন্তঃজেলা ট্রাক সিলেট থেকে ঢাকার পথে রয়েছে। তেজগাঁও সেন্ট্রাল সর্টিং শেষ হলে পার্সেলটি কাল সকালে আপনার রানশিটে আসবে।
+          </div>
+        </div>
+      </div>
+
+      <div class="m-card" style="background:var(--bg-card-subtle);">
+        <div style="font-size:12px; font-weight:700; margin-bottom:4px;">
+          <i class="fa-solid fa-calendar-day"></i> আগামীকালের সম্ভাব্য মিরপুর ডেলিভারি
+        </div>
+        <div style="font-size:11px; color:var(--text-muted);">
+          প্রত্যাশিত পার্সেল সংখ্যা: ১৮টি (সিলেট, চট্টগ্রাম ও খুলনা ইনবাউন্ড)
+        </div>
+      </div>
+    `,
+
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">সেন্ট্রাল ফ্লিট কন্ট্রোল · হাইওয়ে লাইন-হল চালান ট্র্যাকিং</div>
-          <div style="font-size: 12px; color: var(--text-muted);">চালান নম্বর: CH-SYL-DHK-4091 · রুট: ঢাকা-সিলেট জাতীয় মহাসড়ক</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-map-location-dot"></i> কেন্দ্রীয় ফ্লিট ম্যানেজমেন্ট - ঢাকা-সিলেট করিডোর</div>
+          <table class="d-table">
+            <tr><td>গাড়ি নং</td><td><strong>ঢাকা মেট্রো-উ-৮৮৭৬</strong> (১০ টন কাভার্ড ভ্যান)</td></tr>
+            <tr><td>ড্রাইভার</td><td>কফিল উদ্দিন (01911-554433)</td></tr>
+            <tr><td>বর্তমান গতি ও স্থান</td><td>৬২ কিমি/ঘন্টা · ভৈরব মেঘনা টোলপ্লাজা</td></tr>
+            <tr><td>ডিজিটাল লক স্ট্যাটাস</td><td><span class="status-badge success">🔒 ক্যাবিনেট নিরাপদ ও তালাবদ্ধ</span></td></tr>
+          </table>
         </div>
-        <span class="browser-live-badge"><span class="pulse-dot"></span> আইওটি জিপিএস রিসিভিং</span>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">চালানে থাকা পার্সেল</div>
-          <div class="d-stat-num">১৪২টি</div>
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-file-invoice"></i> ডিজিটাল রোড চালান (Highway Manifest)</div>
+          <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
+            <div><strong>চালান আইডি:</strong> #MF-2026-SYL-091</div>
+            <div><strong>মোট ব্যাগ:</strong> ১২টি মাস্টার ব্যাগ</div>
+            <div><strong>মোট পার্সেল:</strong> ৩৪০টি | <strong>মোট ঘোষিত COD:</strong> ৳৭,৬৫,০০০</div>
+            <div><strong>নিরাপত্তা চেকপয়েন্ট:</strong> হবিগঞ্জ হাব ➔ ব্রাহ্মণবাড়িয়া বাইপাস ➔ নরসিংদী</div>
+          </div>
         </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">কনসাইনমেন্ট মোট COD ভ্যালু</div>
-          <div class="d-stat-num" style="color:var(--brand-primary);">৳৩,৪৮,০০০</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">কনটেইনার সিকিউরিটি সিল</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">SL-88419 (OK)</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          চালানভুক্ত পার্সেল ম্যানিফেস্ট (নিরাপত্তা অডিট কপি)
-        </div>
-        <table class="d-table">
-          <thead>
-            <tr>
-              <th>ক্রম</th>
-              <th>পার্সেল আইডি</th>
-              <th>ওজন</th>
-              <th>গন্তব্য ব্রাঞ্চ</th>
-              <th>ক্যাশ অন ডেলিভারি (COD)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 600;">
-              <td>০১</td>
-              <td><span style="font-family:monospace; color:var(--brand-primary);">RAJ-DH-89214</span></td>
-              <td>১.২ কেজি</td>
-              <td>মিরপুর হাব (DHK-MIR)</td>
-              <td>৳২,০০০</td>
-            </tr>
-            <tr>
-              <td>০২</td>
-              <td>RAJ-DH-89215</td>
-              <td>০.৮ কেজি</td>
-              <td>উত্তরা হাব (DHK-UTT)</td>
-              <td>৳১,২০০</td>
-            </tr>
-            <tr>
-              <td>০৩</td>
-              <td>RAJ-DH-89216</td>
-              <td>২.৫ কেজি</td>
-              <td>ধানমন্ডি হাব (DHK-DHM)</td>
-              <td>৳৪,৫০০</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     `
   },
 
   // ==========================================
-  // ধাপ ৫: ডেস্টিনেশন হাব সর্টিং
+  // ধাপ ৫: ঢাকা সর্টিং ও মিরপুর হাব আউটবাউন্ড
   // ==========================================
   {
     step: 5,
-    title: 'ডেস্টিনেশন হাব সর্টিং',
-    mobileRole: 'হাব ইনবাউন্ড স্ক্যানার',
-    mobileUser: 'সজিব (মিরপুর হাব)',
-    mobileAppTitle: 'RAJ Hub Mirpur',
-    browserUrl: 'https://hub.rajcourier.com/mirpur/inbound',
-    custody: 'মিরপুর ব্রাঞ্চ ম্যানেজার',
-    location: 'ঢাকা মিরপুর হাব (সেকশন ১০)',
+    title: 'ঢাকা সর্টিং ও মিরপুর হাব আউটবাউন্ড',
+    primaryApp: 'rider',
+    riderName: 'রহিম (মিরপুর ডেলিভারি রাইডার)',
+    browserUrl: 'https://hub.rajcourier.com/mirpur/runs-sheet',
+    custody: 'রহিম (মিরপুর ডেলিভারি রাইডার)',
+    location: 'মিরপুর-১০ হাব, ঢাকা',
     cashStatus: 'আদায় হয়নি (৳০)',
-    cashNote: 'ডেলিভারি রাইডারের ব্যাগে দেওয়ার প্রস্তুতি',
-    merchantPayout: '৳১,৮৮০ (হিসাব সংরক্ষিত)',
-    statusChip: { text: 'মিরপুর হাবে পৌঁছেছে', class: 'transit' },
-    statusTime: '২০ অক্টো ২০২৬ · ০৮:০০ AM',
-    smsText: 'আপনার পার্সেল RAJ-DH-89214 মিরপুর হাবে পৌঁছেছে। আজই ডেলিভারি রাইডার আপনার ঠিকানায় যাবে।',
-    trackStatus: 'মিরপুর হাবে সর্টিং সম্পন্ন',
-    trackEta: 'আজ দুপুর ২টা',
-    trackProgress: 65,
+    cashNote: 'ডেলিভারি ম্যানের ব্যাগে তোলা হয়েছে',
+    merchantPayout: '৳১,৮৯০ (অপেক্ষমাণ)',
+    statusChip: { text: 'আউট ফর ডেলিভারি', class: 'in-transit' },
+    statusTime: '২০ অক্টো ২০২৬ · ০৯:৩০ AM',
+    smsText: 'আপনার পার্সেল ডেলিভারির জন্য বের হয়েছে। রাইডার: রহিম (01822-987654)। গোপন OTP: 7429',
+    trackStatus: 'ডেলিভারির জন্য বের হয়েছে',
+    trackEta: 'আজ দুপুর ১২:০০ - ০১:০০',
+    trackProgress: 60,
     historyDone: [
-      'অর্ডার বুকিং প্রস্তুত',
-      'মার্চেন্ট শপ থেকে পিকআপ সম্পন্ন',
-      'সিলেট হাবে ইনবাউন্ড ও লেবেলিং সম্পন্ন',
-      'সিলেট ➔ ঢাকা হাইওয়ে পরিবহন সমাপ্ত',
-      'মিরপুর হাবে রিসিভ ও ডেলিভারি রাইডার এসাইন'
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন',
+      '১৯ অক্টো ১১:৩০ AM · সিলেট সেন্ট্রাল হাবে ইনবাউন্ড ও থার্মাল লেবেলিং',
+      '১৯ অক্টো ০৮:০০ PM · আন্তঃজেলা লাইন-হোল ট্রাকে পরিবহন',
+      '২০ অক্টো ০৪:০০ AM · তেজগাঁও সর্টিং হাবে অটো-সর্ট সম্পন্ন',
+      '২০ অক্টো ০৯:৩০ AM · মিরপুর হাবে রাইডার রহিমের রানশিটে আউটবাউন্ড স্ক্যান'
     ],
 
-    mobileHtml: `
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
       <div class="m-card">
-        <span class="m-badge primary"><i class="fa-solid fa-building"></i> মিরপুর হাব আনলোডিং</span>
-        <div style="font-size: 14px; font-weight: 800; margin-bottom: 6px;">চালান আনলোড ও স্ক্যান রিসিভ</div>
-        
-        <div style="background:var(--bg-card-subtle); padding:10px; border-radius:8px; margin-bottom:10px; font-size:12px;">
-          <div style="margin-bottom:4px;"><strong>পার্সেল:</strong> RAJ-DH-89214</div>
-          <div style="margin-bottom:4px;"><strong>গ্রাহক:</strong> তানভীর আহমেদ (মিরপুর ১০)</div>
-          <div style="color:var(--brand-success); font-weight:700;"><strong>এসাইনকৃত রাইডার:</strong> রহিম মিয়া (R-MIR-04)</div>
+        <span class="m-badge info"><i class="fa-solid fa-motorcycle"></i> পার্সেল ডেলিভারির পথে</span>
+        <div class="m-field-group">
+          <span class="m-label">ডেলিভারি হাব:</span>
+          <span class="m-val">মিরপুর-১০ লাস্ট-মাইল হাব</span>
         </div>
+        <div class="m-field-group">
+          <span class="m-label">ডেলিভারি রাইডার:</span>
+          <span class="m-val">রহিম মিয়া (01822-987654)</span>
+        </div>
+        <div class="m-field-group">
+          <span class="m-label">রানশিট নং:</span>
+          <span class="m-val highlight">#MIR-RUN-104</span>
+        </div>
+      </div>
 
-        <button type="button" class="m-btn m-btn-primary" id="m-action-btn-5">
-          <i class="fa-solid fa-dolly"></i> লাস্ট-মাইল ডেলিভারি ব্যাগে এসাইন করুন
-        </button>
+      <div class="m-card" style="background:rgba(37,99,235,0.04); border-color:var(--brand-primary);">
+        <div style="font-size:12px; font-weight:700; color:var(--brand-primary); margin-bottom:4px;">
+          <i class="fa-solid fa-bell"></i> কাস্টমার এসএমএস নোটিফিকেশন প্রেরিত
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
+          ক্রেতা তানভীর আহমেদকে রাইডারের ফোন নম্বর ও ৪ ডিজিটের গোপন ওটিপি এসএমএস পাঠানো হয়েছে।
+        </div>
       </div>
     `,
 
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card">
+        <span class="m-badge primary"><i class="fa-solid fa-clipboard-list"></i> আজকের ডেলিভারি রানশিট #MIR-RUN-104</span>
+        <div style="margin-top:6px; font-size:12px; line-height:1.5;">
+          <div><strong>রাইডার:</strong> রহিম মিয়া (মিরপুর জোন)</div>
+          <div><strong>মোট পার্সেল:</strong> ১৮টি · <strong>মিরপুর-১০ জোন:</strong> ৫টি</div>
+        </div>
+      </div>
+
+      <div class="m-card" style="border:1.5px solid var(--brand-primary);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="color:var(--brand-primary); font-size:13px;">টাস্ক ১: RAJ-DH-89214</strong>
+          <span class="m-badge warning" style="margin:0;">COD ৳২,০০০</span>
+        </div>
+        <div style="margin-top:8px; font-size:12px; line-height:1.6;">
+          <div><strong>প্রাপক:</strong> তানভীর আহমেদ</div>
+          <div><strong>ফোন:</strong> 01711-234567</div>
+          <div><strong>ঠিকানা:</strong> বাসা ২৪, রোড ৩, মিরপুর-১০</div>
+          <div style="color:var(--brand-success); font-weight:700;">
+            <i class="fa-solid fa-barcode"></i> মিরপুর হাব আউটবাউন্ড স্ক্যান ভেরিফাইড
+          </div>
+        </div>
+      </div>
+
+      <button id="m-action-btn-5" class="m-btn m-btn-primary">
+        <i class="fa-solid fa-location-arrow"></i> ডেলিভারি ট্রিপ শুরু করুন
+      </button>
+    `,
+
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">ঢাকা মিরপুর হাব · লাস্ট-মাইল রান শিট প্রস্তুতকরণ</div>
-          <div style="font-size: 12px; color: var(--text-muted);">ব্রাঞ্চ ম্যানেজার: তানজিল আহমেদ · ডেলিভারি জোন: মিরপুর ১, ২, ১০, ১১</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-network-wired"></i> তেজগাঁও অটোমেটেড সর্টিং ও হাব ডিসপ্যাচ</div>
+          <table class="d-table">
+            <tr><td>সর্টিং হাব ইনবাউন্ড</td><td>২০ অক্টো · ০৪:০০ AM</td></tr>
+            <tr><td>অটো-কনভেয়ার লাইন</td><td>লাইন ৩ (মিরপুর ক্লাস্টার)</td></tr>
+            <tr><td>মিরপুর ভ্যান ডিসপ্যাচ</td><td>সকাল ০৭:১৫ AM</td></tr>
+            <tr><td>মিরপুর হাব রিসিভ</td><td>সকাল ০৮:৩০ AM (ইনচার্জ: তৌফিক)</td></tr>
+          </table>
         </div>
-        <button class="sim-ctrl-btn" style="background:var(--brand-success-light); color:var(--brand-success); border-color:var(--brand-success);">
-          <i class="fa-solid fa-list-check"></i> রানশিট প্রিন্ট
-        </button>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">আজকের আগত মোট পার্সেল</div>
-          <div class="d-stat-num">৮৪টি</div>
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-route"></i> মিরপুর-১০ রানশিট ডিসপ্যাচ লগ</div>
+          <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
+            <div><strong>রানশিট আইডি:</strong> #MIR-RUN-104</div>
+            <div><strong>রাইডার:</strong> রহিম মিয়া (#RD-DH-42)</div>
+            <div><strong>পার্সেল বরাদ্দ:</strong> ১৮টি | <strong>মোট সম্ভাব্য COD:</strong> ৳৩৮,৫০০</div>
+            <div><strong>আউটবাউন্ড গেটপাস:</strong> সকাল ০৯:৩০ AM (হাব আউটবাউন্ড স্ক্যানার ভেরিফাইড)</div>
+          </div>
         </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">ডেলিভারি রাইডার সংখ্যা</div>
-          <div class="d-stat-num">৬ জন</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">সম্ভাব্য আদায়যোগ্য COD</div>
-          <div class="d-stat-num" style="color:var(--brand-primary);">৳১,৮৫,০০০</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          রাইডার রহিম মিয়ার ডেলিভারি রানশিট (Runsheet #RS-9921)
-        </div>
-        <table class="d-table">
-          <thead>
-            <tr>
-              <th>ক্রম</th>
-              <th>পার্সেল আইডি</th>
-              <th>গ্রাহক ও ঠিকানা</th>
-              <th>ক্যাশ COD</th>
-              <th>এসাইন স্ট্যাটাস</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: rgba(37, 99, 235, 0.05); font-weight: 600;">
-              <td>০১</td>
-              <td><span style="font-family:monospace; color:var(--brand-primary);">RAJ-DH-89214</span></td>
-              <td>তানভীর আহমেদ (রোড ৪, ব্লক সি, মিরপুর ১০)</td>
-              <td>৳২,০০০</td>
-              <td><span class="sim-status-chip transit">ব্যাগে লোডেড</span></td>
-            </tr>
-            <tr>
-              <td>০২</td>
-              <td>RAJ-DH-89220</td>
-              <td>কামাল হোসেন (মিরপুর ২)</td>
-              <td>৳৮৫০</td>
-              <td><span class="sim-status-chip transit">ব্যাগে লোডেড</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     `
   },
 
   // ==========================================
-  // ধাপ ৬: লাস্ট-মাইল ডেলিভারি রান
+  // ধাপ ৬: লাস্ট-মাইল ডেলিভারি ও কাস্টমার ওটিপি
   // ==========================================
   {
     step: 6,
-    title: 'লাস্ট-মাইল ডেলিভারি রান',
-    mobileRole: 'রাইডার অ্যাপ (ডেলিভারি)',
-    mobileUser: 'রহিম (মিরপুর রাইডার)',
-    mobileAppTitle: 'RAJ Rider Pro',
-    browserUrl: 'https://hub.rajcourier.com/mirpur/riders-live',
-    custody: 'রহিম মিয়া (ডেলিভারি রাইডার)',
-    location: 'গ্রাহকের দরজায় (রোড ৪, মিরপুর ১০)',
-    cashStatus: 'আদায় হয়নি (৳০)',
-    cashNote: 'গ্রাহক ওটিপি যাচাই ও ক্যাশ বের করার অপেক্ষায়',
-    merchantPayout: '৳১,৮৮০ (হিসাব সংরক্ষিত)',
-    statusChip: { text: 'আউট ফর ডেলিভারি', class: 'transit' },
-    statusTime: '২০ অক্টো ২০২৬ · ১১:৪৫ AM',
-    smsText: 'রাইডার রহিম মিয়া পার্সেল নিয়ে আসছেন (ফোন: 01822-998877)। আপনার ডেলিভারি ওটিপি: 7429।',
-    trackStatus: 'ডেলিভারি রাইডার দরজায় উপস্থিত',
-    trackEta: 'এখনই ডেলিভারি',
-    trackProgress: 80,
+    title: 'লাস্ট-মাইল ডেলিভারি ও কাস্টমার ওটিপি যাচাই',
+    primaryApp: 'rider',
+    riderName: 'রহিম (মিরপুর ডেলিভারি রাইডার)',
+    browserUrl: 'https://hub.rajcourier.com/mirpur/delivery-live',
+    custody: 'রহিম (মিরপুর ডেলিভারি রাইডার)',
+    location: 'বাসা ২৪, রোড ৩, মিরপুর-১০',
+    cashStatus: 'আদায় প্রক্রিয়ায় (৳০ ➔ ৳২,০০০)',
+    cashNote: 'কাস্টমার ওটিপি ৭৪২৯ ও ক্যাশ প্রস্তুত করছেন',
+    merchantPayout: '৳১,৮৯০ (প্রক্রিয়াধীন)',
+    statusChip: { text: 'ওটিপি যাচাই', class: 'pending' },
+    statusTime: '২০ অক্টো ২০২৬ · ১১:৪০ AM',
+    smsText: 'রাইডার আপনার দরজায় উপস্থিত। ওটিপি ৭৪২৯ দিয়ে পার্সেল বুঝে নিন এবং ৳২,০০০ ক্যাশ পরিশোধ করুন।',
+    trackStatus: 'রাইডার গ্রাহকের দরজায় উপস্থিত',
+    trackEta: 'এখনই ডেলিভারি চলছে',
+    trackProgress: 75,
     historyDone: [
-      'অর্ডার বুকিং প্রস্তুত',
-      'মার্চেন্ট শপ থেকে পিকআপ সম্পন্ন',
-      'সিলেট হাবে ইনবাউন্ড ও লেবেলিং সম্পন্ন',
-      'সিলেট ➔ ঢাকা হাইওয়ে পরিবহন সমাপ্ত',
-      'মিরপুর হাবে রিসিভ ও ডেলিভারি রাইডার এসাইন',
-      'রাইডার রহিম মিয়া ডেলিভারি নিয়ে গ্রাহকের ঠিকানায় উপস্থিত'
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন',
+      '১৯ অক্টো ১১:৩০ AM · সিলেট সেন্ট্রাল হাবে ইনবাউন্ড ও থার্মাল লেবেলিং',
+      '১৯ অক্টো ০৮:০০ PM · আন্তঃজেলা লাইন-হোল ট্রাকে পরিবহন',
+      '২০ অক্টো ০৪:০০ AM · তেজগাঁও সর্টিং হাবে অটো-সর্ট সম্পন্ন',
+      '২০ অক্টো ০৯:৩০ AM · মিরপুর হাবে রাইডার রহিমের রানশিটে বরাদ্দ',
+      '২০ অক্টো ১১:৪০ AM · রাইডার রহিম গ্রাহকের ঠিকানায় উপস্থিত'
     ],
 
-    mobileHtml: `
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
       <div class="m-card">
-        <span class="m-badge warning"><i class="fa-solid fa-box-open"></i> সক্রিয় ডেলিভারি টাস্ক</span>
-        <div style="font-size: 15px; font-weight: 800; margin-bottom: 4px;">তানভীর আহমেদ</div>
-        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">
-          রোড ৪, ব্লক সি, বাসা ১২, মিরপুর ১০, ঢাকা
+        <span class="m-badge warning"><i class="fa-solid fa-street-view"></i> গ্রাহকের ঠিকানায় রাইডার</span>
+        <div class="m-field-group">
+          <span class="m-label">প্রাপক:</span>
+          <span class="m-val">তানভীর আহমেদ (মিরপুর-১০)</span>
         </div>
-
-        <div style="background:var(--bg-card-subtle); padding:10px; border-radius:8px; margin-bottom:12px; font-size:12px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span>পার্সেল আইডি:</span>
-            <strong style="font-family:monospace; color:var(--brand-primary);">RAJ-DH-89214</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span>আদায়যোগ্য ক্যাশ (COD):</span>
-            <strong style="color:var(--brand-accent); font-size:14px;">৳২,০০০</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between;">
-            <span>নিরাপত্তা নীতি:</span>
-            <span style="color:var(--brand-primary); font-weight:700;">OTP বাধ্যতামূলক</span>
-          </div>
+        <div class="m-field-group">
+          <span class="m-label">আদায়যোগ্য COD:</span>
+          <span class="m-val highlight" style="color:var(--brand-accent);">৳২,০০০</span>
         </div>
+        <div class="m-field-group">
+          <span class="m-label">রাইডার অবস্থান:</span>
+          <span class="m-val">গ্রাহকের দরজায় উপস্থিত</span>
+        </div>
+      </div>
 
-        <button type="button" class="m-btn m-btn-primary" id="m-action-btn-call" style="margin-bottom:8px;">
-          <i class="fa-solid fa-phone"></i> গ্রাহককে কল দিন (01711-XXXXXX)
-        </button>
-
-        <button type="button" class="m-btn m-btn-success" id="m-action-btn-6">
-          <i class="fa-solid fa-key"></i> ওটিপি যাচাই ও ক্যাশ গ্রহণ করুন
-        </button>
+      <div class="m-card" style="background:rgba(245,158,11,0.04); border-color:var(--brand-accent);">
+        <div style="font-size:12px; font-weight:700; color:var(--brand-accent); margin-bottom:4px;">
+          <i class="fa-solid fa-shield-keyhole"></i> সিকিউর ওটিপি ভেরিফিকেশন সক্রিয়
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
+          গ্রাহকের মোবাইলে পাঠানো গোপন ওটিপি রাইডার অ্যাপে ইনপুট দিয়ে যাচাই ছাড়া পার্সেল হস্তান্তর করা সম্ভব নয়।
+        </div>
       </div>
     `,
 
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="m-badge warning"><i class="fa-solid fa-person-shelter"></i> কাস্টমারের দরজায় উপস্থিত</span>
+          <strong style="color:var(--brand-accent); font-size:14px;">COD: ৳২,০০০</strong>
+        </div>
+        <div style="margin-top:8px; font-size:12px; line-height:1.6;">
+          <div><strong>গ্রাহক:</strong> তানভীর আহমেদ</div>
+          <div><strong>ঠিকানা:</strong> বাসা ২৪, রোড ৩, মিরপুর-১০, ঢাকা</div>
+        </div>
+        <button id="m-action-btn-call" class="m-btn m-btn-call" style="margin-top:8px; padding:6px 12px; font-size:12px;">
+          <i class="fa-solid fa-phone-volume"></i> তানভীর আহমেদকে কল দিন (01711-234567)
+        </button>
+      </div>
+
+      <!-- OTP Input Box -->
+      <div class="m-otp-box">
+        <div style="font-size:11px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">
+          <i class="fa-solid fa-key"></i> কাস্টমার ওটিপি দিন (গ্রাহকের এসএমএস কোড)
+        </div>
+        <div class="m-otp-inputs">
+          <input type="text" class="m-otp-digit" value="7" readonly>
+          <input type="text" class="m-otp-digit" value="4" readonly>
+          <input type="text" class="m-otp-digit" value="2" readonly>
+          <input type="text" class="m-otp-digit" value="9" readonly>
+        </div>
+        <div style="font-size:11px; color:var(--brand-success); font-weight:700;">
+          <i class="fa-solid fa-check"></i> কোড মিলেছে (তানভীরের ফোনে পাঠানো OTP: 7429)
+        </div>
+      </div>
+
+      <button id="m-action-btn-6" class="m-btn m-btn-success" style="margin-top:8px;">
+        <i class="fa-solid fa-shield-halved"></i> ওটিপি যাচাই ও ক্যাশ ৳২,০০০ গ্রহণ করুন
+      </button>
+    `,
+
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">মিরপুর হাব · লাইভ লাস্ট-মাইল রাইডার ড্যাশবোর্ড</div>
-          <div style="font-size: 12px; color: var(--text-muted);">রিয়েল-টাইম জিপিএস ট্র্যাকিং ও ডেলিভারি অগ্রগতি</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-shield-halved"></i> সেন্ট্রাল ওটিপি অথেনটিকেশন সার্ভার</div>
+          <table class="d-table">
+            <tr><td>পার্সেল ট্র্যাকিং আইডি</td><td><strong>RAJ-DH-89214</strong></td></tr>
+            <tr><td>অ্যাসাইনকৃত ওটিপি</td><td><strong style="color:var(--brand-accent); letter-spacing:2px;">7 4 2 9</strong></td></tr>
+            <tr><td>এসএমএস ডেলিভারি স্ট্যাটাস</td><td>✅ সফলভাবে ডেলিভার্ড (GP টেলিকম)</td></tr>
+            <tr><td>ওটিপি মেয়াদ</td><td>১৫ মিনিট (বাকি আছে ৮ মিনিট)</td></tr>
+          </table>
         </div>
-        <span class="browser-live-badge"><span class="pulse-dot"></span> রাইডার রহিম (মিরপুর ১০ এ সক্রিয়)</span>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">রহিমের মোট পার্সেল</div>
-          <div class="d-stat-num">১৫টি</div>
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-lock"></i> জাল ডেলিভারি ও প্রতারণা প্রতিরোধ পলিসি</div>
+          <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
+            <div><strong>১. রাইডার নিজের ইচ্ছেমত "Delivered" করতে পারে না।</strong></div>
+            <div>২. গ্রাহক নিজে ওটিপি না দিলে সিস্টেম ডেলিভারি ব্লক করে রাখবে।</div>
+            <div>৩. ওটিপি সাবমিট হওয়ার সাথে সাথে স্বয়ংক্রিয়ভাবে রাইডারের ডিজিটাল ক্যাশ লেজারে ৳২,০০০ যুক্ত হয়।</div>
+          </div>
         </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">ডেলিভারি সম্পন্ন</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">৭টি</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">রাইডারের ব্যাগে জমা ক্যাশ</div>
-          <div class="d-stat-num" style="color:var(--brand-accent);">৳৯,৪০০</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          অন-স্পট ডেলিভারি ইভেন্ট ট্র্যাকার
-        </div>
-        <table class="d-table">
-          <thead>
-            <tr>
-              <th>পার্সেল আইডি</th>
-              <th>গ্রাহক</th>
-              <th>ঠিকানা</th>
-              <th>COD ক্যাশ</th>
-              <th>লাইভ স্ট্যাটাস</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: rgba(245, 158, 11, 0.08); font-weight: 600;">
-              <td><span style="font-family:monospace; color:var(--brand-primary);">RAJ-DH-89214</span></td>
-              <td>তানভীর আহমেদ</td>
-              <td>মিরপুর ১০, ব্লক সি</td>
-              <td>৳২,০০০</td>
-              <td><span class="sim-status-chip pending">দরজায় অবস্থানরত</span></td>
-            </tr>
-            <tr>
-              <td>RAJ-DH-89211</td>
-              <td>নাজমুল হুদা</td>
-              <td>মিরপুর ১</td>
-              <td>৳১,২০০</td>
-              <td><span class="sim-status-chip delivered">ডেলিভারড ✅</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     `
   },
 
   // ==========================================
-  // ধাপ ৭: OTP ডেলিভারি ও ক্যাশ গ্রহণ
+  // ধাপ ৭: সফল ডেলিভারি ও ক্যাশ কালেকশন
   // ==========================================
   {
     step: 7,
-    title: 'OTP ডেলিভারি ও ক্যাশ গ্রহণ',
-    mobileRole: 'রাইডার অ্যাপ (ডেলিভারি)',
-    mobileUser: 'রহিম (মিরপুর রাইডার)',
-    mobileAppTitle: 'RAJ Rider Pro',
-    browserUrl: 'https://hq.rajcourier.com/audit/delivery-events',
-    custody: 'তানভীর আহমেদ (গ্রাহক হাতে পেলেন)',
-    location: 'মিরপুর ১০, ঢাকা (কাস্টমার ডেলিভার্ড)',
-    cashStatus: 'রাইডারের ব্যাগে (৳২,০০০ নগদ)',
-    cashNote: 'ক্যাশ আদায় সম্পন্ন · দায়িত্ব রাইডার রহিমের কাঁধে',
-    merchantPayout: '৳১,৮৮০ (মার্চেন্ট অ্যাকাউন্টে ক্রেডিট)',
-    statusChip: { text: 'সফল ডেলিভারি ও ক্যাশ আদায়', class: 'delivered' },
-    statusTime: '২০ অক্টো ২০২৬ · ১১:৫২ AM',
-    smsText: 'ধন্যবাদ! আপনার পার্সেল RAJ-DH-89214 সফলভাবে ডেলিভারি হয়েছে এবং ৳২,০০০ ক্যাশ পরিশোধ সম্পন্ন হয়েছে।',
-    trackStatus: 'ডেলিভারি সফল ও ক্যাশ পরিশোধিত ✅',
+    title: 'সফল ডেলিভারি ও ক্যাশ কালেকশন',
+    primaryApp: 'rider',
+    riderName: 'রহিম (মিরপুর ডেলিভারি রাইডার)',
+    browserUrl: 'https://hub.rajcourier.com/mirpur/cash-vault',
+    custody: 'তানভীর আহমেদ (গ্রাহক - পার্সেল)',
+    location: 'মিরপুর-১০, ঢাকা',
+    cashStatus: 'সংগৃহীত (৳২,০০০)',
+    cashNote: 'ক্যাশ রাইডার রহিমের হাতে/ক্যাশব্যাগে আছে',
+    merchantPayout: '৳১,৮৯০ (ক্যাশ ক্লোজিংয়ের অপেক্ষায়)',
+    statusChip: { text: 'ডেলিভারি সম্পন্ন', class: 'delivered' },
+    statusTime: '২০ অক্টো ২০২৬ · ১১:৪২ AM',
+    smsText: 'আপনার পার্সেল সফলভাবে ডেলিভারি হয়েছে। রাজ কুরিয়ার ব্যবহার করার জন্য ধন্যবাদ!',
+    trackStatus: 'পার্সেল সফলভাবে ডেলিভার্ড',
     trackEta: 'সম্পন্ন',
-    trackProgress: 92,
+    trackProgress: 88,
     historyDone: [
-      'অর্ডার বুকিং প্রস্তুত',
-      'মার্চেন্ট শপ থেকে পিকআপ সম্পন্ন',
-      'সিলেট হাবে ইনবাউন্ড ও লেবেলিং সম্পন্ন',
-      'সিলেট ➔ ঢাকা হাইওয়ে পরিবহন সমাপ্ত',
-      'মিরপুর হাবে রিসিভ ও ডেলিভারি রাইডার এসাইন',
-      'রাইডার রহিম মিয়া ডেলিভারি নিয়ে গ্রাহকের ঠিকানায় উপস্থিত',
-      'গ্রাহক OTP (7429) যাচাই এবং নগদ ৳২,০০০ আদায় সম্পন্ন'
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন',
+      '১৯ অক্টো ১১:৩০ AM · সিলেট সেন্ট্রাল হাবে ইনবাউন্ড ও থার্মাল লেবেলিং',
+      '১৯ অক্টো ০৮:০০ PM · আন্তঃজেলা লাইন-হোল ট্রাকে পরিবহন',
+      '২০ অক্টো ০৪:০০ AM · তেজগাঁও সর্টিং হাবে অটো-সর্ট সম্পন্ন',
+      '২০ অক্টো ০৯:৩০ AM · মিরপুর হাবে রাইডার রহিমের রানশিটে বরাদ্দ',
+      '২০ অক্টো ১১:৪০ AM · রাইডার রহিম গ্রাহকের ঠিকানায় উপস্থিত',
+      '২০ অক্টো ১১:৪২ AM · ওটিপি ৭৪২৯ যাচাই ও ৳২,০০০ ক্যাশ কালেকশন সম্পন্ন'
     ],
 
-    mobileHtml: `
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
       <div class="m-card">
-        <div class="m-success-check"><i class="fa-solid fa-check"></i></div>
-        <div style="text-align:center; margin-bottom:10px;">
-          <div style="font-size:16px; font-weight:800; color:var(--brand-success);">ডেলিভারি ও ক্যাশ আদায় সম্পন্ন!</div>
-          <div style="font-size:11px; color:var(--text-muted);">পার্সেল আইডি: RAJ-DH-89214</div>
-        </div>
-
-        <!-- Interactive OTP Validation Card -->
-        <div class="m-otp-box">
-          <div style="font-size:11px; font-weight:700; color:var(--brand-primary); margin-bottom:4px;">
-            <i class="fa-solid fa-shield-halved"></i> ভেরিফাইড গ্রাহক OTP:
+        <span class="m-badge success"><i class="fa-solid fa-circle-check"></i> পার্সেল সফলভাবে ডেলিভার্ড!</span>
+        <div style="margin-top:6px;">
+          <div class="m-field-group">
+            <span class="m-label">গ্রাহক:</span>
+            <span class="m-val">তানভীর আহমেদ</span>
           </div>
-          <div class="m-otp-inputs">
-            <input type="text" class="m-otp-digit" value="৭" readonly>
-            <input type="text" class="m-otp-digit" value="৪" readonly>
-            <input type="text" class="m-otp-digit" value="২" readonly>
-            <input type="text" class="m-otp-digit" value="৯" readonly>
+          <div class="m-field-group">
+            <span class="m-label">সংগৃহীত ক্যাশ:</span>
+            <span class="m-val" style="color:var(--brand-accent); font-weight:800;">৳২,০০০</span>
           </div>
-          <div style="font-size:11px; color:var(--brand-success); font-weight:700;">
-            <i class="fa-solid fa-circle-check"></i> OTP কোড ৭৪২৯ শতভাগ মিলেছে
+          <div class="m-field-group">
+            <span class="m-label">ডেলিভারি সময়:</span>
+            <span class="m-val">সকাল ১১:৪২ AM</span>
           </div>
         </div>
+      </div>
 
-        <div style="background:var(--brand-success-light); border:1px solid rgba(5,150,105,0.3); border-radius:8px; padding:10px; margin-top:10px; text-align:center;">
-          <div style="font-size:11px; color:var(--brand-success); font-weight:700;">নগদ টাকা আদায় (COD):</div>
-          <div style="font-size:20px; font-weight:800; color:var(--brand-success);">৳২,০০০ (নগদ গৃহীত)</div>
+      <div class="m-card" style="background:rgba(5,150,105,0.04); border-color:var(--brand-success);">
+        <div style="font-size:12px; font-weight:700; color:var(--brand-success); margin-bottom:4px;">
+          <i class="fa-solid fa-wallet"></i> আপনার প্রাপ্য টাকা: ৳১,৮৯০
         </div>
-
-        <button type="button" class="m-btn m-btn-primary" id="m-action-btn-7" style="margin-top:10px;">
-          <i class="fa-solid fa-vault"></i> দিন শেষে হাবে ক্যাশ জমা দিতে যান
-        </button>
+        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
+          রাইডার মিরপুর হাবে ক্যাশ জমা দিলে সাথে সাথে আপনার বিকাশ অ্যাকাউন্টে অটোমেটিক পেমেন্ট পৌঁছে যাবে।
+        </div>
       </div>
     `,
 
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card" style="text-align:center; padding:16px;">
+        <div class="m-success-check">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <strong style="color:var(--brand-success); font-size:15px; display:block; margin-top:8px;">
+          ডেলিভারি সফল ও ওটিপি নিশ্চিত!
+        </strong>
+        <span style="font-size:11px; color:var(--text-muted);">পার্সেল আইডি: RAJ-DH-89214</span>
+      </div>
+
+      <div class="m-card">
+        <div class="m-field-group">
+          <span class="m-label">সংগৃহীত COD:</span>
+          <span class="m-val highlight" style="color:var(--brand-accent); font-weight:800; font-size:14px;">৳২,০০০</span>
+        </div>
+        <div class="m-field-group">
+          <span class="m-label">রাইডারের বর্তমান ক্যাশ দায়:</span>
+          <span class="m-val" style="color:var(--brand-danger);">৳২,০০০ (হাতে সংরক্ষিত)</span>
+        </div>
+        <div style="margin-top:6px; font-size:11px; color:var(--text-muted);">
+          <i class="fa-solid fa-triangle-exclamation" style="color:var(--brand-accent);"></i> এই ক্যাশ টাকা মিরপুর হাবে ক্যাশিয়ারকে জমা না দেওয়া পর্যন্ত রাইডারের অ্যাকাউন্টে দায় হিসেবে থাকবে।
+        </div>
+      </div>
+
+      <button id="m-action-btn-7" class="m-btn m-btn-warning">
+        <i class="fa-solid fa-vault"></i> মিরপুর হাবে ক্যাশ ডিপোজিট করুন
+      </button>
+    `,
+
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">সেন্ট্রাল অডিট ইঞ্জিন · ক্রিপ্টোগ্রাফিক ডেলিভারি লগ (PostgreSQL)</div>
-          <div style="font-size: 12px; color: var(--text-muted);">টেবিল: parcel_audit_logs · অপরিবর্তনীয় ট্রেইল</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-vault"></i> মিরপুর হাব - রাইডার লাইভ ক্যাশ ট্র্যাকিং</div>
+          <table class="d-table">
+            <thead><tr><th>রাইডার</th><th>সংগৃহীত ক্যাশ</th><th>হ্যান্ডওভার স্ট্যাটাস</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>রহিম মিয়া (#RD-DH-42)</td>
+                <td><strong style="color:var(--brand-accent);">৳২,০০০</strong></td>
+                <td><span class="status-badge warning">⏳ হাবে জমার অপেক্ষায়</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <span class="browser-live-badge"><span class="pulse-dot"></span> ডিজিটাল সিলযুক্ত ইভেন্ট</span>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">ওটিপি ম্যাচ স্ট্যাটাস</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">MATCHED (7429)</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">আদায়কৃত নগদ ক্যাশ</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">৳২,০০০</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">গ্রাহকের ডিজিটাল স্বাক্ষর</div>
-          <div class="d-stat-num" style="color:var(--brand-primary);">SIGNED ✅</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          PostgreSQL JSONB ইভেন্ট পে-লোড (Event-Driven Record)
-        </div>
-        <div style="padding:14px; font-family:monospace; font-size:11px; background:#0f172a; color:#38bdf8; border-radius:0 0 8px 8px; line-height:1.5;">
-          {<br>
-          &nbsp;&nbsp;"event": "PARCEL_DELIVERED_SUCCESS",<br>
-          &nbsp;&nbsp;"parcel_id": "RAJ-DH-89214",<br>
-          &nbsp;&nbsp;"rider_id": "RIDER-MIR-04 (Rahim)",<br>
-          &nbsp;&nbsp;"otp_verified": true,<br>
-          &nbsp;&nbsp;"cod_collected": 2000.00,<br>
-          &nbsp;&nbsp;"coordinates": { "lat": 23.8069, "lng": 90.3687 },<br>
-          &nbsp;&nbsp;"timestamp": "2026-10-20T11:52:14.921Z",<br>
-          &nbsp;&nbsp;"financial_impact": "MERCHANT_LEDGER_CREDIT_PENDING"<br>
-          }
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-cash-register"></i> হেড অফিস ক্যাশ কন্ট্রোল ও অডিট</div>
+          <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
+            <div><strong>মোট কালেকশন লক্ষ্যমাত্রা:</strong> ৳৩৮,৫০০ (আজকের রানশিট)</div>
+            <div><strong>সংগৃহীত রিয়েল-টাইম:</strong> ৳২,০০০ (পার্সেল RAJ-DH-89214)</div>
+            <div><strong>রাইডার লায়াবিলিটি (দেনার হিসাব):</strong> ৳২,০০০ লাইভ ডেবিট করা হয়েছে</div>
+          </div>
         </div>
       </div>
     `
   },
 
   // ==========================================
-  // ধাপ ৮: হাবে ক্যাশ ক্লোজিং ও অডিট
+  // ধাপ ৮: হাব ক্যাশ ক্লোজিং ও রিকনসিলিয়েশন
   // ==========================================
   {
     step: 8,
-    title: 'হাবে ক্যাশ ক্লোজিং ও অডিট',
-    mobileRole: 'রাইডার অ্যাপ (ক্যাশ ক্লোজিং)',
-    mobileUser: 'রহিম (মিরপুর রাইডার)',
-    mobileAppTitle: 'RAJ Rider Pro',
-    browserUrl: 'https://accounts.rajcourier.com/reconciliation/hub-cash',
-    custody: 'মিরপুর হাব ক্যাশিয়ার (ভল্ট)',
-    location: 'মিরপুর হাব ভল্ট / অ্যাকাউন্টস ডেস্ক',
-    cashStatus: 'মিরপুর হাব ক্যাশিয়ারের ভল্টে (৳২,০০০ জমা)',
-    cashNote: 'রাইডারের দায় শেষ ➔ হাব ক্যাশিয়ারের দায় শুরু',
-    merchantPayout: '৳১,৮৮০ (সেটেলমেন্ট অনুমোদিত)',
-    statusChip: { text: 'হাবে ক্যাশ ক্লোজিং সম্পন্ন', class: 'delivered' },
-    statusTime: '২০ অক্টো ২০২৬ · ০৪:৩০ PM',
-    smsText: 'রাইডার রহিমের মাধ্যমে RAJ-DH-89214 এর ৳২,০০০ ক্যাশ মিরপুর হাবে সফলভাবে জমা হয়েছে।',
-    trackStatus: 'কুরিয়ার হাবে ক্যাশ অডিট সম্পন্ন',
+    title: 'হাব ক্যাশ ক্লোজিং ও ব্যাংক ডিপোজিট',
+    primaryApp: 'rider',
+    riderName: 'রহিম (মিরপুর ডেলিভারি রাইডার)',
+    browserUrl: 'https://accounts.rajcourier.com/cash-closing',
+    custody: 'মিরপুর হাব ক্যাশ ভল্ট',
+    location: 'মিরপুর-১০ হাব ক্যাশ কাউন্টার',
+    cashStatus: 'হাবে জমা হয়েছে (৳২,০০০)',
+    cashNote: 'হাব ক্যাশিয়ার তৌফিক কর্তৃক ভেরিফাইড',
+    merchantPayout: '৳১,৮৯০ (বিকাশ ডিজবার্সমেন্ট ব্যাচ সক্রিয়)',
+    statusChip: { text: 'ক্যাশ ক্লোজিং', class: 'delivered' },
+    statusTime: '২০ অক্টো ২০২৬ · ০২:১৫ PM',
+    smsText: 'আপনার পার্সেলের ক্যাশ ৳২,০০০ রাজ কুরিয়ার মিরপুর হাবে জমা হয়েছে। মার্চেন্ট পেআউট প্রসেস চলছে।',
+    trackStatus: 'ক্যাশ সংগৃহীত ও হাবে জমা',
     trackEta: 'সম্পন্ন',
-    trackProgress: 96,
+    trackProgress: 94,
     historyDone: [
-      'অর্ডার বুকিং প্রস্তুত',
-      'মার্চেন্ট শপ থেকে পিকআপ সম্পন্ন',
-      'সিলেট হাবে ইনবাউন্ড ও লেবেলিং সম্পন্ন',
-      'সিলেট ➔ ঢাকা হাইওয়ে পরিবহন সমাপ্ত',
-      'মিরপুর হাবে রিসিভ ও ডেলিভারি রাইডার এসাইন',
-      'গ্রাহক OTP যাচাই ও নগদ ক্যাশ আদায়',
-      'রাইডার কর্তৃক হাবে ক্যাশ জমা ও ক্যাশিয়ারের ডিজিটাল ভাউচার গ্রহণ'
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন',
+      '১৯ অক্টো ১১:৩০ AM · সিলেট সেন্ট্রাল হাবে ইনবাউন্ড ও থার্মাল লেবেলিং',
+      '১৯ অক্টো ০৮:০০ PM · আন্তঃজেলা লাইন-হোল ট্রাকে পরিবহন',
+      '২০ অক্টো ০৪:০০ AM · তেজগাঁও সর্টিং হাবে অটো-সর্ট সম্পন্ন',
+      '২০ অক্টো ০৯:৩০ AM · মিরপুর হাবে রাইডার রহিমের রানশিটে বরাদ্দ',
+      '২০ অক্টো ১১:৪০ AM · রাইডার রহিম গ্রাহকের ঠিকানায় উপস্থিত',
+      '২০ অক্টো ১১:৪২ AM · ওটিপি ৭৪২৯ যাচাই ও ৳২,০০০ ক্যাশ কালেকশন সম্পন্ন',
+      '২০ অক্টো ০২:১৫ PM · মিরপুর হাব ক্যাশিয়ার কাউন্টারে ক্যাশ জমা ও ক্লোজিং সম্পন্ন'
     ],
 
-    mobileHtml: `
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
       <div class="m-card">
-        <span class="m-badge success"><i class="fa-solid fa-vault"></i> দিন শেষের ক্যাশ হ্যান্ডওভার</span>
-        <div style="font-size: 15px; font-weight: 800; margin-bottom: 4px;">মিরপুর হাব ক্যাশ ডেস্ক</div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">রাইডার রহিম মিয়ার হিসাব মিলকরণ</div>
-
-        <div style="background:var(--bg-card-subtle); padding:10px; border-radius:8px; margin-bottom:10px; font-size:12px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span>আজকের মোট ডেলিভারি:</span>
-            <strong>১৫টি পার্সেল</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span>মোট আদায়কৃত ক্যাশ:</span>
-            <strong style="color:var(--brand-success);">৳৩১,৫০০</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span>RAJ-DH-89214 এর ক্যাশ:</span>
-            <strong>৳২,০০০ (পরিশোধিত)</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between; color:var(--brand-primary); font-weight:700;">
-            <span>মানি রিসিট নম্বর:</span>
-            <span>CR-2026-9021</span>
-          </div>
+        <span class="m-badge info"><i class="fa-solid fa-building-columns"></i> হাব ক্যাশ ক্লোজিং সম্পন্ন</span>
+        <div class="m-field-group">
+          <span class="m-label">জমা প্রদানকারী:</span>
+          <span class="m-val">রাইডার রহিম মিয়া</span>
         </div>
+        <div class="m-field-group">
+          <span class="m-label">গ্রহণকারী ক্যাশিয়ার:</span>
+          <span class="m-val">তৌফিকুর রহমান (মিরপুর হাব)</span>
+        </div>
+        <div class="m-field-group">
+          <span class="m-label">জমাকৃত ক্যাশ:</span>
+          <span class="m-val highlight" style="color:var(--brand-accent);">৳২,০০০ (১০০% রিকনসাইল্ড)</span>
+        </div>
+      </div>
 
-        <button type="button" class="m-btn m-btn-primary" id="m-action-btn-8">
-          <i class="fa-solid fa-wallet"></i> হেড অফিস বিকাশ ওয়ালেট সেটেলমেন্টে যান
-        </button>
+      <div class="m-card" style="border:1px dashed var(--brand-success); background:rgba(5,150,105,0.04);">
+        <div style="font-size:12px; font-weight:700; color:var(--brand-success); margin-bottom:4px;">
+          <i class="fa-solid fa-bolt"></i> অটোমেটিক পেমেন্ট রিলিজ হচ্ছে...
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
+          হেড অফিস ফিন্যান্স গেটওয়ে থেকে মাহমুদ ফ্যাশনের বিকাশ মার্চেন্ট অ্যাকাউন্টে ৳১,৮৯০ সরাসরি ট্রান্সফার হচ্ছে।
+        </div>
       </div>
     `,
 
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card">
+        <span class="m-badge success"><i class="fa-solid fa-file-circle-check"></i> মিরপুর হাব ক্যাশ কাউন্টার রিসিট</span>
+        <div style="margin-top:8px; font-size:12px; line-height:1.6;">
+          <div><strong>রিসিট নং:</strong> #REC-MIR-98214</div>
+          <div><strong>ক্যাশিয়ার:</strong> তৌফিকুর রহমান (#CASH-09)</div>
+          <div><strong>জমাকৃত টাকা:</strong> <span style="color:var(--brand-accent); font-weight:800;">৳২,০০০</span></div>
+          <div><strong>টাইমস্ট্যাম্প:</strong> ২০ অক্টো · ০২:১৫ PM</div>
+        </div>
+      </div>
+
+      <div class="m-card" style="background:rgba(5,150,105,0.04); border-color:var(--brand-success);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:12px; font-weight:700; color:var(--brand-success);">রাইডার বর্তমান ব্যালেন্স:</span>
+          <span style="font-size:14px; font-weight:800; color:var(--brand-success);">৳০ (ক্লিয়ার)</span>
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">
+          ✅ আপনার কোনো ক্যাশ দেনা নেই। আজকের শিফটের আর্থিক দায়িত্ব সফলভাবে ক্লোজ হয়েছে।
+        </div>
+      </div>
+
+      <button id="m-action-btn-8" class="m-btn m-btn-success">
+        <i class="fa-solid fa-arrow-right"></i> হেড অফিস পেআউট ব্যাচে অগ্রসর হোন
+      </button>
+    `,
+
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">অ্যাকাউন্টস ডিপার্টমেন্ট · ক্যাশ-ইন-ট্রানজিট (CIT) রিকনসিলিয়েশন</div>
-          <div style="font-size: 12px; color: var(--text-muted);">মিরপুর হাব ভল্ট অডিট · ক্যাশিয়ার: শামীম রেজা</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-cash-register"></i> মিরপুর হাব ক্যাশিয়ার কাউন্টার টার্মিনাল</div>
+          <table class="d-table">
+            <tr><td>ক্যাশিয়ার</td><td>তৌফিকুর রহমান (#CASH-09)</td></tr>
+            <tr><td>রাইডার রহিম থেকে জমা</td><td><strong>৳২,০০০</strong> (নোট স্ক্যানার ভেরিফাইড)</td></tr>
+            <tr><td>ব্যাংক সিআইটি (CIT) পিকআপ</td><td>ব্র্যাক ব্যাংক সিকিউর ক্যাশ ভ্যান (৩:৩০ PM)</td></tr>
+            <tr><td>অডিট স্ট্যাটাস</td><td><span class="status-badge success">✅ ব্যালেন্স রিকনসাইল্ড (০ অসঙ্গতি)</span></td></tr>
+          </table>
         </div>
-        <span class="sim-status-chip delivered"><i class="fa-solid fa-check-double"></i> ১০০% জিরো ক্যাশ লিকেজ</span>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">সফটওয়্যার নির্ধারিত ক্যাশ</div>
-          <div class="d-stat-num">৳৩১,৫০০</div>
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-bolt"></i> বিকাশ / ব্যাংক অটো-ডিসবার্সমেন্ট কিউ</div>
+          <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
+            <div><strong>ব্যাচ আইডি:</strong> #PAY-2026-OCT-884</div>
+            <div><strong>মার্চেন্ট:</strong> মাহমুদ ফ্যাশন (বিকাশ মার্চেন্ট: 01711-998877)</div>
+            <div><strong>মোট COD:</strong> ৳২,০০০</div>
+            <div><strong>কর্তন:</strong> ডেলিভারি ফি ৳১০০ + COD চার্জ (০.৫%) ৳১০ = ৳১১০</div>
+            <div><strong>নেট মার্চেন্ট পেআউট:</strong> <strong style="color:var(--brand-success); font-size:14px;">৳১,৮৯০</strong></div>
+          </div>
         </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">ভৌত নগদ ক্যাশ জমা</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">৳৩১,৫০০</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">পার্থক্য (Discrepancy)</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">৳০ (মিলিত)</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          ব্যাংক ডিপোজিট ও মার্চেন্ট ওয়ালেট ডিসবার্সমেন্ট ব্যাচ
-        </div>
-        <table class="d-table">
-          <thead>
-            <tr>
-              <th>রাইডার</th>
-              <th>পার্সেল কাউন্ট</th>
-              <th>আদায়কৃত ক্যাশ</th>
-              <th>হাব ডিপোজিট স্ট্যাটাস</th>
-              <th>অ্যাকাউন্টস ছাড়পত্র</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: rgba(16, 185, 129, 0.08); font-weight: 600;">
-              <td>রহিম মিয়া (R-MIR-04)</td>
-              <td>১৫টি (RAJ-DH-89214 সহ)</td>
-              <td>৳৩১,৫০০</td>
-              <td>ভল্টে জমা গৃহীত ✅</td>
-              <td><span class="sim-status-chip delivered">অনুমোদিত (RELEASED)</span></td>
-            </tr>
-            <tr>
-              <td>সুমন কবির (R-MIR-01)</td>
-              <td>১২টি</td>
-              <td>৳২৪,০০০</td>
-              <td>ভল্টে জমা গৃহীত ✅</td>
-              <td><span class="sim-status-chip delivered">অনুমোদিত</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     `
   },
 
   // ==========================================
-  // ধাপ ৯: বিকাশ ওয়ালেট পেমেন্ট
+  // ধাপ ৯: মার্চেন্ট অ্যাকাউন্টে ইনস্ট্যান্ট বিকাশ পেআউট
   // ==========================================
   {
     step: 9,
-    title: 'বিকাশ ওয়ালেট পেমেন্ট',
-    mobileRole: 'মার্চেন্ট অ্যাপ (ওয়ালেট)',
-    mobileUser: 'মাহমুদ ভাই',
-    mobileAppTitle: 'RAJ Merchant',
-    browserUrl: 'https://accounts.rajcourier.com/disbursements/bkash-batch',
-    custody: 'মাহমুদ ফ্যাশন শপ (বিকাশ ওয়ালেট)',
-    location: 'মার্চেন্টের বিকাশ অ্যাকাউন্ট (01712-XXXXXX)',
-    cashStatus: 'মার্চেন্টের বিকাশ ওয়ালেটে তাৎক্ষণিক জমা (৳১,৮৮০)',
-    cashNote: 'কুরিয়ার ফি ৳১০০ ও COD কমিশন ৳২০ কেটে নিট অর্থ জমা',
-    merchantPayout: '৳১,৮৮০ (সম্পূর্ণ পরিশোধিত 🎉)',
-    statusChip: { text: 'বিকাশ পেমেন্ট সম্পন্ন 🎉', class: 'delivered' },
-    statusTime: '২০ অক্টো ২০২৬ · ০৫:০০ PM',
-    smsText: 'আপনার বিকাশ অ্যাকাউন্ট 01712-XXXXXX এ পার্সেল RAJ-DH-89214 এর নিট ৳১,৮৮০ পাঠানো হয়েছে। TxnID: 9X82KL90।',
-    trackStatus: 'মার্চেন্ট পেমেন্ট সম্পন্ন ও ট্রানজেকশন ক্লোজড 🎉',
-    trackEta: 'লাইফসাইকেল সফল সমাপ্তি',
+    title: 'মার্চেন্ট অ্যাকাউন্টে বিকাশ ইনস্ট্যান্ট পেআউট',
+    primaryApp: 'merchant',
+    riderName: 'রহিম / করিম',
+    browserUrl: 'https://merchant.rajcourier.com/wallet/statement',
+    custody: 'মাহমুদ ফ্যাশন (মার্চেন্ট অ্যাকাউন্ট)',
+    location: 'জিন্দাবাজার, সিলেট (মার্চেন্ট ব্যাংক/বিকাশ)',
+    cashStatus: 'পরিশোধিত (৳১,৮৯০ বিকাশ ক্রেডিট)',
+    cashNote: 'ডেলিভারি ও সিওডি ফি কেটে নেট পেমেন্ট সম্পন্ন',
+    merchantPayout: '৳১,৮৯০ (সফলভাবে পেইড)',
+    statusChip: { text: 'পেআউট সম্পন্ন', class: 'delivered' },
+    statusTime: '২০ অক্টো ২০২৬ · ০২:১৮ PM',
+    smsText: 'অভিনন্দন! পার্সেল RAJ-DH-89214 এর নেট পেমেন্ট ৳১,৮৯০ আপনার বিকাশ মার্চেন্ট অ্যাকাউন্টে ক্রেডিট হয়েছে।',
+    trackStatus: 'লাইফসাইকেল সফলভাবে সমাপ্ত',
+    trackEta: 'সম্পন্ন',
     trackProgress: 100,
     historyDone: [
-      'অর্ডার বুকিং প্রস্তুত',
-      'মার্চেন্ট শপ থেকে পিকআপ সম্পন্ন',
-      'সিলেট হাবে ইনবাউন্ড ও লেবেলিং সম্পন্ন',
-      'সিলেট ➔ ঢাকা হাইওয়ে পরিবহন সমাপ্ত',
-      'মিরপুর হাবে রিসিভ ও ডেলিভারি রাইডার এসাইন',
-      'গ্রাহক OTP যাচাই ও নগদ ক্যাশ আদায়',
-      'হাবে ক্যাশ ক্লোজিং ও হিসাব মিলকরণ',
-      'মার্চেন্টের বিকাশ মার্চেন্ট ওয়ালেটে সরাসরি ৳১,৮৮০ টাকা ট্রান্সফার সম্পন্ন'
+      '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন',
+      '১৯ অক্টো ১১:৩০ AM · সিলেট সেন্ট্রাল হাবে ইনবাউন্ড ও থার্মাল লেবেলিং',
+      '১৯ অক্টো ০৮:০০ PM · আন্তঃজেলা লাইন-হোল ট্রাকে পরিবহন',
+      '২০ অক্টো ০৪:০০ AM · তেজগাঁও সর্টিং হাবে অটো-সর্ট সম্পন্ন',
+      '২০ অক্টো ০৯:৩০ AM · মিরপুর হাবে রাইডার রহিমের রানশিটে বরাদ্দ',
+      '২০ অক্টো ১১:৪০ AM · রাইডার রহিম গ্রাহকের ঠিকানায় উপস্থিত',
+      '২০ অক্টো ১১:৪২ AM · ওটিপি ৭৪২৯ যাচাই ও ৳২,০০০ ক্যাশ কালেকশন সম্পন্ন',
+      '২০ অক্টো ০২:১৫ PM · মিরপুর হাব ক্যাশিয়ার কাউন্টারে ক্যাশ ক্লোজিং সম্পন্ন',
+      '২০ অক্টো ০২:১৮ PM · মার্চেন্ট বিকাশ একাউন্টে ৳১,৮৯০ তাৎক্ষণিক ট্রান্সফার সফল'
     ],
 
-    mobileHtml: `
+    // ১. মার্চেন্ট অ্যাপ স্ক্রিন
+    merchantHtml: `
+      <!-- bKash Instant Payout Card -->
+      <div class="m-card" style="border:2px solid #e11d48; background:linear-gradient(135deg, rgba(225,29,72,0.06) 0%, rgba(225,29,72,0.01) 100%);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-weight:900; color:#e11d48; font-size:13px;"><i class="fa-solid fa-money-bill-wave"></i> bKash Merchant Payout</span>
+          <span class="m-badge success" style="margin:0;">তাৎক্ষণিক ক্রেডিট</span>
+        </div>
+        <div style="font-size:24px; font-weight:900; color:var(--text-main); margin-bottom:4px;">
+          +৳১,৮৯০
+        </div>
+        <div style="font-size:11px; color:var(--text-muted);">
+          TrxID: <strong>BK89320145</strong> · ২০ অক্টো ০২:১৮ PM
+        </div>
+      </div>
+
       <div class="m-card">
-        <span class="m-badge success"><i class="fa-solid fa-gift"></i> পেমেন্ট নোটিফিকেশন</span>
-        <div style="font-size: 15px; font-weight: 800; color:var(--brand-success); margin-bottom: 4px;">
-          🎉 ৳১,৮৮০ আপনার বিকাশে জমা হয়েছে!
+        <div style="font-size:12px; font-weight:800; margin-bottom:8px; color:var(--brand-primary);">
+          <i class="fa-solid fa-receipt"></i> আর্থিক হিসাবের পূর্ণাঙ্গ বিবরণ (Invoicing)
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">
-          পার্সেল RAJ-DH-89214 সফল ডেলিভারি পে-আউট
+        <div class="m-field-group">
+          <span class="m-label">গ্রাহক থেকে সংগৃহীত COD:</span>
+          <span class="m-val">৳২,০০০</span>
         </div>
+        <div class="m-field-group">
+          <span class="m-label">ডেলিভারি চার্জ (সিলেট ➔ ঢাকা):</span>
+          <span class="m-val" style="color:var(--brand-danger);">-৳১০০</span>
+        </div>
+        <div class="m-field-group">
+          <span class="m-label">COD চার্জ (০.৫%):</span>
+          <span class="m-val" style="color:var(--brand-danger);">-৳১০</span>
+        </div>
+        <div class="m-field-group" style="border-top:1px dashed var(--border-color); padding-top:6px; margin-top:6px;">
+          <span class="m-label" style="font-weight:800;">মার্চেন্ট নেট আয়:</span>
+          <span class="m-val" style="color:var(--brand-success); font-weight:900; font-size:14px;">৳১,৮৯০</span>
+        </div>
+      </div>
 
-        <!-- Financial Ledger Breakdown Box -->
-        <div style="background:var(--bg-card-subtle); border:1px solid var(--border-color); border-radius:8px; padding:10px; margin-bottom:10px; font-size:12px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span>গ্রাহক থেকে সংগৃহীত COD:</span>
-            <strong style="color:var(--brand-primary);">+ ৳২,০০০</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px; color:#ef4444;">
-            <span>ডেলিভারি ফি (১.২ কেজি):</span>
-            <strong>- ৳১০০</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:6px; color:#ef4444; border-bottom:1px dashed var(--border-color); padding-bottom:6px;">
-            <span>ক্যাশ কালেকশন (১% COD ফি):</span>
-            <strong>- ৳২০</strong>
-          </div>
-          <div style="display:flex; justify-content:space-between; font-size:14px; font-weight:800; color:var(--brand-success);">
-            <span>মার্চেন্ট নিট পাওনা (Net Amount):</span>
-            <span>৳১,৮৮০</span>
-          </div>
-        </div>
+      <button id="m-action-btn-9" class="m-btn m-btn-primary">
+        <i class="fa-solid fa-file-invoice-dollar"></i> ডিজিটাল চালান ও ব্যাংক স্টেটমেন্ট ডাউনলোড
+      </button>
+    `,
 
-        <div style="background:#e11462; color:#fff; border-radius:8px; padding:8px 12px; font-size:11px; display:flex; justify-content:space-between; align-items:center;">
-          <span>bKash B2B Payout Success</span>
-          <span style="font-family:monospace; font-weight:700;">TxnID: 9X82KL90</span>
+    // ২. রাইডার অ্যাপ স্ক্রিন
+    riderHtml: `
+      <div class="m-card">
+        <span class="m-badge success"><i class="fa-solid fa-award"></i> রাইডার আর্নিং ও বোনাস</span>
+        <div style="margin-top:6px; font-size:12px; line-height:1.6;">
+          <div><strong>রাইডার:</strong> রহিম মিয়া</div>
+          <div><strong>আজকের সফল ডেলিভারি:</strong> ১৮ / ১৮টি (১০০% সাকসেস)</div>
+          <div><strong>ডেলিভারি কমিশন অর্জিত:</strong> <strong style="color:var(--brand-success);">+৳৫৪০</strong></div>
+          <div><strong>কাস্টমার রেটিং:</strong> ৫.০ ⭐⭐⭐⭐⭐</div>
         </div>
+      </div>
 
-        <button type="button" class="m-btn m-btn-primary" id="m-action-btn-9" style="margin-top:10px;">
-          <i class="fa-solid fa-file-invoice-dollar"></i> পূর্ণাঙ্গ ডিজিটাল চালান ডাউনলোড
-        </button>
+      <div class="m-card" style="background:rgba(5,150,105,0.04); border-color:var(--brand-success);">
+        <div style="font-size:12px; font-weight:700; color:var(--brand-success); margin-bottom:4px;">
+          <i class="fa-solid fa-circle-check"></i> সম্পূর্ণ লাইফসাইকেল সম্পন্ন
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
+          পার্সেল হ্যান্ডওভার, কাস্টমার ওটিপি ও হাব ক্যাশ ক্লোজিং নির্ভুলভাবে সমাপ্ত হয়েছে।
+        </div>
       </div>
     `,
 
+    // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
     desktopHtml: `
-      <div class="d-topbar">
-        <div>
-          <div class="d-title">সেন্ট্রাল ফিন্যান্স ইঞ্জিন · অটোমেটেড bKash B2B ডিসবার্সমেন্ট</div>
-          <div style="font-size: 12px; color: var(--text-muted);">ফাস্টফাই কিউ ইঞ্জিন (BullMQ) · মার্চেন্ট সেটেলমেন্ট ব্যাচ #SET-891</div>
+      <div class="d-grid-2">
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-building-columns"></i> হেড অফিস ফিন্যান্স - মার্চেন্ট ব্যাংক/বিকাশ স্টেটমেন্ট</div>
+          <table class="d-table">
+            <tr><td>মার্চেন্ট নাম</td><td>মাহমুদ ফ্যাশন (জিন্দাবাজার, সিলেট)</td></tr>
+            <tr><td>বিকাশ মার্চেন্ট অ্যাকাউন্ট</td><td>০১৭১১-৯৯৮৮৭৭</td></tr>
+            <tr><td>ট্রানজাকশন আইডি (TrxID)</td><td><strong style="color:#e11d48;">BK89320145</strong></td></tr>
+            <tr><td>স্ট্যাটাস</td><td><span class="status-badge success">✅ সফলভাবে স্থানান্তরিত (Cleared)</span></td></tr>
+            <tr><td>অটো-রিকনসিলিয়েশন</td><td>১০০% ম্যাচড (ERP পোস্ট সম্পন্ন)</td></tr>
+          </table>
         </div>
-        <button class="sim-ctrl-btn" style="background:var(--brand-success-light); color:var(--brand-success); border-color:var(--brand-success);">
-          <i class="fa-solid fa-file-excel"></i> অ্যাকাউন্টস এক্সেল এক্সপোর্ট
-        </button>
-      </div>
-
-      <div class="d-stats-grid">
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">আজকের মোট মার্চেন্ট পে-আউট</div>
-          <div class="d-stat-num">৩৫০ জন</div>
+        <div class="d-panel">
+          <div class="d-panel-title"><i class="fa-solid fa-circle-check"></i> পার্সেল লাইফসাইকেল অডিট সামারি</div>
+          <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
+            <div>✅ <strong>বুকিং থেকে পেআউট:</strong> পূর্ণ ডিজিটাল চেইন অফ কাস্টডি সম্পন্ন</div>
+            <div>✅ <strong>শূন্য ম্যানুয়াল এন্ট্রি:</strong> প্রতি ধাপে ক্যামেরা ও লেজার বারকোড স্ক্যান</div>
+            <div>✅ <strong>শূন্য ক্যাশ গরমিল:</strong> ওটিপি ও হাব ভল্ট ক্লোজিং রিকনসাইল্ড</div>
+            <div>✅ <strong>মার্চেন্ট সন্তুষ্টি:</strong> ২৪ ঘন্টার মধ্যে দ্রুততম অটোমেটিক বিকাশ পেআউট</div>
+          </div>
         </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">বিতরণকৃত মোট অর্থ</div>
-          <div class="d-stat-num" style="color:var(--brand-success);">৳৮,৪২,৫০০</div>
-        </div>
-        <div class="d-stat-box">
-          <div class="d-stat-lbl">API ডিসবার্সমেন্ট স্পিড</div>
-          <div class="d-stat-num" style="color:var(--brand-primary);">২.৪ সেকেন্ড</div>
-        </div>
-      </div>
-
-      <div class="d-table-card">
-        <div style="padding:10px 14px; font-weight:700; font-size:13px; border-bottom:1px solid var(--border-color); background:var(--bg-card-subtle);">
-          ডাবল-এন্ট্রি লেজার ডিসবার্সমেন্ট হিস্ট্রি (General Ledger)
-        </div>
-        <table class="d-table">
-          <thead>
-            <tr>
-              <th>পার্সেল আইডি</th>
-              <th>মার্চেন্ট</th>
-              <th>গ্রস COD</th>
-              <th>কুরিয়ার চার্জ</th>
-              <th>নিট ট্রান্সফার</th>
-              <th>বিকাশ ট্রানজেকশন আইডি</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: rgba(16, 185, 129, 0.08); font-weight: 600;">
-              <td><span style="font-family:monospace; color:var(--brand-primary);">RAJ-DH-89214</span></td>
-              <td>মাহমুদ ফ্যাশন শপ (01712-...)</td>
-              <td>৳২,০০০</td>
-              <td>- ৳১২০</td>
-              <td><strong style="color:var(--brand-success);">৳১,৮৮০</strong></td>
-              <td><span style="font-family:monospace; color:#e11462; font-weight:800;">9X82KL90</span></td>
-            </tr>
-            <tr>
-              <td>RAJ-DH-89211</td>
-              <td>সিল্ক বাজার</td>
-              <td>৳১,২০০</td>
-              <td>- ৳১১২</td>
-              <td>৳১,০৮৮</td>
-              <td><span style="font-family:monospace; color:#e11462;">9X82KL91</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     `
   }
 ];
 
-// সিমুলেটরের স্টেট
-let simCurrentStep = 1;
-let simIsAutoPlaying = false;
-let simAutoPlayTimer = null;
-let simViewMode = 'command';
-let simDevice = 'iphone';
+// থার্মাল মোডাল
+const simThermalModal = document.getElementById('sim-thermal-modal');
+const simCloseThermalBtn = document.getElementById('sim-close-thermal-btn');
+const simPrintConfirmBtn = document.getElementById('sim-print-confirm-btn');
 
-// DOM রেফারেন্স
+// ডুয়েল অ্যাপ সুইচিং লজিক
+let simActiveMobileApp = 'merchant'; // 'merchant' | 'rider'
+let userManuallySelectedApp = false;
+
+function switchMobileApp(appType, isUserManual = false) {
+  simActiveMobileApp = appType;
+  if (isUserManual) userManuallySelectedApp = true;
+
+  const btnMerchant = document.getElementById('sim-btn-tab-merchant');
+  const btnRider = document.getElementById('sim-btn-tab-rider');
+  const wrapperMerchant = document.getElementById('sim-phone-wrapper-merchant');
+  const wrapperRider = document.getElementById('sim-phone-wrapper-rider');
+
+  if (btnMerchant) btnMerchant.classList.toggle('active', appType === 'merchant');
+  if (btnRider) btnRider.classList.toggle('active', appType === 'rider');
+
+  // ৪-ইন-১ কমান্ড সেন্টারে শুধু সক্রিয় ফোন দেখানো হয়
+  // ডুয়েল মোবাইল ভিউতে CSS দিয়ে উভয় ফোন পাশাপাশি দেখানো হয়
+  if (simViewMode !== 'mobile') {
+    if (wrapperMerchant) wrapperMerchant.classList.toggle('active', appType === 'merchant');
+    if (wrapperRider) wrapperRider.classList.toggle('active', appType === 'rider');
+  }
+}
+
+// অ্যাপ সুইচিং ট্যাব বাটন ক্লিক
+const btnTabMerchant = document.getElementById('sim-btn-tab-merchant');
+const btnTabRider = document.getElementById('sim-btn-tab-rider');
+if (btnTabMerchant) {
+  btnTabMerchant.addEventListener('click', () => {
+    switchMobileApp('merchant', true);
+    playSimSound('click');
+  });
+}
+if (btnTabRider) {
+  btnTabRider.addEventListener('click', () => {
+    switchMobileApp('rider', true);
+    playSimSound('click');
+  });
+}
+
+// কন্ট্রোল ও স্টেজ উপাদানসমূহ
 const simAutoPlayBtn = document.getElementById('sim-autoplay-btn');
 const simPrevBtn = document.getElementById('sim-prev-btn');
 const simNextBtn = document.getElementById('sim-next-btn');
@@ -2288,10 +2298,11 @@ const simDeviceButtons = document.querySelectorAll('.sim-device-btn');
 const simTimelineItems = document.querySelectorAll('.sim-step-item');
 const simStageContainer = document.getElementById('sim-stage-container');
 
-// থার্মাল মোডাল
-const simThermalModal = document.getElementById('sim-thermal-modal');
-const simCloseThermalBtn = document.getElementById('sim-close-thermal-btn');
-const simPrintConfirmBtn = document.getElementById('sim-print-confirm-btn');
+let simCurrentStep = 1;
+let simViewMode = 'command';
+let simDevice = 'iphone';
+let simIsAutoPlaying = false;
+let simAutoPlayTimer = null;
 
 // ধাপ রেন্ডারিং ফাংশন
 function renderSimulatorStep(stepNum, shouldPlaySound = true) {
@@ -2345,16 +2356,19 @@ function renderSimulatorStep(stepNum, shouldPlaySound = true) {
     processStatus.innerHTML = `<span class="sim-status-chip ${data.statusChip.class}">${data.statusChip.text}</span>`;
   }
 
-  // ৪. মোবাইল স্ক্রিন আপডেট
-  const mobileRoleBadge = document.getElementById('sim-mobile-role-badge');
-  const simAppTitle = document.getElementById('sim-app-title');
-  const simAppUser = document.getElementById('sim-app-user');
-  const simAppBody = document.getElementById('sim-app-body');
+  // ৪. ডুয়েল মোবাইল স্ক্রিন আপডেট (মার্চেন্ট ও রাইডার উভয়ের স্ক্রিন আপডেট)
+  const simAppBodyMerchant = document.getElementById('sim-app-body-merchant');
+  const simAppBodyRider = document.getElementById('sim-app-body-rider');
+  const simRiderNameTag = document.getElementById('sim-rider-name-tag');
 
-  if (mobileRoleBadge) mobileRoleBadge.textContent = data.mobileRole;
-  if (simAppTitle) simAppTitle.textContent = data.mobileAppTitle;
-  if (simAppUser) simAppUser.textContent = data.mobileUser;
-  if (simAppBody) simAppBody.innerHTML = data.mobileHtml;
+  if (simAppBodyMerchant) simAppBodyMerchant.innerHTML = data.merchantHtml;
+  if (simAppBodyRider) simAppBodyRider.innerHTML = data.riderHtml;
+  if (simRiderNameTag && data.riderName) simRiderNameTag.textContent = data.riderName;
+
+  // যদি ব্যবহারকারী নিজে ট্যাপ করে না থাকেন, তবে সংশ্লিষ্ট ধাপের প্রধান অ্যাপে অটো সুইচ করুন
+  if (!userManuallySelectedApp && data.primaryApp) {
+    switchMobileApp(data.primaryApp, false);
+  }
 
   // ৫. ডেস্কটপ ব্রাউজার স্ক্রিন আপডেট
   const simBrowserUrl = document.getElementById('sim-browser-url');
@@ -2392,9 +2406,9 @@ function renderSimulatorStep(stepNum, shouldPlaySound = true) {
     `).join('');
   }
 
-  // রাইডার কার্ড দৃশ্যমান হবে ধাপ ৬ ও ৭ এ
+  // রাইডার কার্ড দৃশ্যমান হবে ধাপ ৫, ৬ ও ৭ এ
   if (simTrackRiderCard) {
-    simTrackRiderCard.style.display = (stepNum === 6 || stepNum === 7) ? 'flex' : 'none';
+    simTrackRiderCard.style.display = (stepNum >= 5 && stepNum <= 7) ? 'flex' : 'none';
   }
 
   // ওটিপি কার্ড হাইলাইট হবে ধাপ ৬ ও ৭ এ
@@ -2428,7 +2442,7 @@ function bindSimulatorScreenActions(stepNum) {
   const btnStep1 = document.getElementById('m-action-btn-1');
   if (btnStep1) {
     btnStep1.addEventListener('click', () => {
-      showSimToast('পার্সেল বুকিং সফল! বারকোড RAJ-DH-89214 জেনারেট হয়েছে।', 'fa-barcode');
+      showSimToast('পার্সেল বুকিং সফল! রাইডার করিমকে পিকআপ নোটিফিকেশন পাঠানো হয়েছে।', 'fa-barcode');
       setTimeout(() => renderSimulatorStep(2), 600);
     });
   }
@@ -2448,30 +2462,20 @@ function bindSimulatorScreenActions(stepNum) {
   const btnStep3D = document.getElementById('d-action-btn-3');
   const openThermalModal = () => {
     if (simThermalModal) simThermalModal.classList.add('active');
-    playSimSound('click');
   };
   if (btnStep3M) btnStep3M.addEventListener('click', openThermalModal);
   if (btnStep3D) btnStep3D.addEventListener('click', openThermalModal);
 
-  // ধাপ ৪: ট্রিপ আপডেট
-  const btnStep4 = document.getElementById('m-action-btn-4');
-  if (btnStep4) {
-    btnStep4.addEventListener('click', () => {
-      showSimToast('হাইওয়ে ট্র্যাকিং আপডেট: গাড়ি ভৈরব থেকে ঢাকা প্রবেশ করছে।', 'fa-truck');
-      setTimeout(() => renderSimulatorStep(5), 700);
-    });
-  }
-
-  // ধাপ ৫: লাস্ট মাইল ব্যাগে লোড
+  // ধাপ ৫: ডেলিভারি ট্রিপ শুরু
   const btnStep5 = document.getElementById('m-action-btn-5');
   if (btnStep5) {
     btnStep5.addEventListener('click', () => {
-      showSimToast('পার্সেলটি রাইডার রহিমের ব্যাগে এসাইন করা হয়েছে।', 'fa-motorcycle');
+      showSimToast('🛵 রাইডার রহিম ডেলিভারির উদ্দেশ্যে যাত্রা শুরু করেছেন...', 'fa-motorcycle');
       setTimeout(() => renderSimulatorStep(6), 700);
     });
   }
 
-  // ধাপ ৬: কাস্টমারকে কল
+  // ধাপ ৬: কাস্টমারকে কল ও ওটিপি
   const btnCall = document.getElementById('m-action-btn-call');
   const btnCustCall = document.getElementById('sim-cust-call-btn');
   const callCustomer = () => {
@@ -2554,6 +2558,7 @@ if (simPrevBtn) {
 if (simResetBtn) {
   simResetBtn.addEventListener('click', () => {
     stopSimAutoPlay();
+    userManuallySelectedApp = false;
     renderSimulatorStep(1);
     showSimToast('সিমুলেটর ধাপ ১ (বুকিং) এ রিসেট করা হয়েছে।', 'fa-rotate-left');
   });
@@ -2622,7 +2627,7 @@ simTimelineItems.forEach((item) => {
   });
 });
 
-// ভিউ মোড সুইচিং (কমান্ড সেন্টার / মোবাইল / ডেস্কটপ)
+// ভিউ মোড সুইচিং (কমান্ড সেন্টার / ডুয়েল মোবাইল / ডেস্কটপ)
 simModeButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
     const mode = btn.dataset.mode;
@@ -2634,32 +2639,46 @@ simModeButtons.forEach((btn) => {
     }
     simViewMode = mode;
     playSimSound('click');
+
+    // মোড পরিবর্তনের পর ফোনের দৃশ্যমানতা আপডেট
+    if (mode === 'mobile') {
+      showSimToast('📱 ডুয়েল মোবাইল ভিউ: মার্চেন্ট ও রাইডার অ্যাপ পাশাপাশি প্রদর্শিত!', 'fa-mobile-screen');
+    } else {
+      switchMobileApp(simActiveMobileApp, false);
+    }
   });
 });
 
-// ফোন ফ্রেম সুইচিং (iPhone 15 Pro vs Android Samsung/Pixel)
-const phoneFrameEl = document.getElementById('sim-phone-frame');
+// ফোন ফ্রেম সুইচিং (iPhone 15 Pro vs Android Samsung/Pixel) - উভয় ফোনের জন্য
+const phoneFrames = [
+  document.getElementById('sim-phone-frame-merchant'),
+  document.getElementById('sim-phone-frame-rider')
+];
+
 simDeviceButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
     const device = btn.dataset.device;
     simDeviceButtons.forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
 
-    if (phoneFrameEl) {
+    phoneFrames.forEach((frame) => {
+      if (!frame) return;
+      const isRider = frame.classList.contains('rider-frame');
       if (device === 'iphone') {
-        phoneFrameEl.className = 'phone-frame iphone-frame';
+        frame.className = isRider ? 'phone-frame iphone-frame rider-frame' : 'phone-frame iphone-frame';
       } else {
-        phoneFrameEl.className = 'phone-frame android-frame';
+        frame.className = isRider ? 'phone-frame android-frame rider-frame' : 'phone-frame android-frame';
       }
-    }
+    });
+
     simDevice = device;
     playSimSound('click');
-    showSimToast(device === 'iphone' ? '🍏 iPhone 15 Pro (iOS Dynamic Island) মোড সক্রিয়' : '🤖 Android (Material Design Punch-Hole) মোড সক্রিয়', device === 'iphone' ? 'fa-apple' : 'fa-android');
+    showSimToast(
+      device === 'iphone' ? '🍏 iPhone 15 Pro (iOS Dynamic Island) মোড সক্রিয়' : '🤖 Android (Material Design Punch-Hole) মোড সক্রিয়',
+      device === 'iphone' ? 'fa-apple' : 'fa-android'
+    );
   });
 });
 
 // ইনিশিয়াল সিমুলেটর রেন্ডারিং
 renderSimulatorStep(1, false);
-
-
-

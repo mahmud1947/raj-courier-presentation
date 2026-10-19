@@ -1907,18 +1907,140 @@ body {
   align-items: start;
 }
 
-/* Mobile Focus Mode */
+/* Dual Mobile View (Merchant Phone + Rider Phone Side-by-Side) */
 .sim-stage-container.view-mobile {
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 1fr 340px;
   align-items: start;
 }
 
-.sim-stage-container.view-mobile #sim-col-tracking {
-  display: block;
+.sim-stage-container.view-mobile #sim-col-mobile {
+  max-width: 100%;
+}
+
+.sim-stage-container.view-mobile .sim-dual-phones-container {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 20px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.sim-stage-container.view-mobile .sim-phone-wrapper {
+  display: block !important;
+  width: 325px !important;
+  min-width: 320px !important;
+  max-width: 335px !important;
+  flex-shrink: 0 !important;
 }
 
 .sim-stage-container.view-mobile #sim-col-desktop {
+  display: none !important;
+}
+
+.sim-stage-container.view-mobile #sim-col-tracking {
+  display: block !important;
+}
+
+/* App Switcher Tabs & Dual Phone Components */
+.sim-dual-phones-container {
+  position: relative;
+  width: 100%;
+}
+
+.sim-phone-wrapper {
   display: none;
+}
+
+.sim-phone-wrapper.active {
+  display: block;
+  animation: phoneFadeIn 0.25s ease;
+}
+
+@keyframes phoneFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sim-app-toggle-tabs {
+  display: flex;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 4px;
+}
+
+.sim-app-tab-btn {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all var(--transition-fast);
+}
+
+.sim-app-tab-btn:hover {
+  color: var(--text-main);
+}
+
+.sim-app-tab-btn.active {
+  background: var(--brand-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+}
+
+.sim-app-tab-btn[data-app="rider"].active {
+  background: var(--brand-success);
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.35);
+}
+
+.phone-dedicated-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.merchant-badge {
+  background: var(--brand-primary-light);
+  color: var(--brand-primary);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.rider-badge {
+  background: var(--brand-success-light);
+  color: var(--brand-success);
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.app-header.merchant-theme .brand-ico {
+  color: #2563eb;
+}
+
+.app-header.rider-theme .brand-ico.rider-ico {
+  color: var(--brand-success);
+}
+
+.rider-pill {
+  background: var(--brand-success-light);
+  color: var(--brand-success);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+.phone-frame.rider-frame {
+  box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.25), 0 0 0 2px #065f46;
 }
 
 /* Desktop Focus Mode */
@@ -2247,6 +2369,24 @@ body {
   background: var(--brand-success);
   color: #ffffff;
   box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+}
+
+.m-btn-warning {
+  background: var(--brand-accent);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+}
+
+.m-btn-call {
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+}
+
+.m-btn-secondary {
+  background: var(--bg-card-subtle);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
 }
 
 /* Camera Barcode Laser Scanner Simulation */

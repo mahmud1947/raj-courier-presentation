@@ -1183,7 +1183,7 @@
             <i class="fa-solid fa-table-cells-large"></i> ৪-ইন-১ কমান্ড সেন্টার
           </button>
           <button type="button" class="sim-mode-btn" data-mode="mobile">
-            <i class="fa-solid fa-mobile-screen"></i> মোবাইল অ্যাপ ভিউ
+            <i class="fa-solid fa-mobile-screen"></i> ডুয়েল মোবাইল অ্যাপস (মার্চেন্ট + রাইডার)
           </button>
           <button type="button" class="sim-mode-btn" data-mode="desktop">
             <i class="fa-solid fa-display"></i> ডেস্কটপ পোর্টাল
@@ -1300,65 +1300,133 @@
       <!-- Main Stage Container (Grid adjusts based on view mode) -->
       <div class="sim-stage-container view-command" id="sim-stage-container">
 
-        <!-- Stage Component 1: Mobile Smartphone Mockup -->
+        <!-- Stage Component 1: Mobile Smartphone Mockup (Dual Apps: Merchant & Rider) -->
         <div class="sim-device-column" id="sim-col-mobile">
           <div class="sim-col-header">
             <span class="sim-col-title">
-              <i class="fa-solid fa-mobile-screen-button"></i> মোবাইল অ্যাপ স্ক্রিন
+              <i class="fa-solid fa-mobile-screen-button"></i> মোবাইল অ্যাপস
             </span>
-            <span class="sim-col-badge" id="sim-mobile-role-badge">মার্চেন্ট অ্যাপ</span>
+            <div class="sim-app-toggle-tabs" id="sim-app-toggle-tabs">
+              <button type="button" class="sim-app-tab-btn active" data-app="merchant" id="sim-btn-tab-merchant" title="মার্চেন্ট অ্যাপ দেখুন">
+                <i class="fa-solid fa-shop"></i> মার্চেন্ট অ্যাপ
+              </button>
+              <button type="button" class="sim-app-tab-btn" data-app="rider" id="sim-btn-tab-rider" title="রাইডার/ডেলিভারি অ্যাপ দেখুন">
+                <i class="fa-solid fa-motorcycle"></i> রাইডার অ্যাপ
+              </button>
+            </div>
           </div>
 
-          <!-- Smartphone Outer Frame (Default: iPhone) -->
-          <div class="phone-frame iphone-frame" id="sim-phone-frame">
-            <!-- Hardware Details -->
-            <div class="phone-island" id="sim-phone-island" title="Dynamic Island">
-              <span class="island-camera"></span>
-              <span class="island-sensor"></span>
+          <!-- Dual Phone Stage Wrapper -->
+          <div class="sim-dual-phones-container" id="sim-dual-phones-container">
+
+            <!-- PHONE 1: DEDICATED MERCHANT MOBILE APP -->
+            <div class="sim-phone-wrapper active" id="sim-phone-wrapper-merchant">
+              <div class="phone-dedicated-badge merchant-badge">
+                <i class="fa-solid fa-shop"></i> মার্চেন্ট অ্যাপ (RAJ Merchant)
+              </div>
+              <div class="phone-frame iphone-frame" id="sim-phone-frame-merchant">
+                <div class="phone-island" title="Dynamic Island">
+                  <span class="island-camera"></span>
+                  <span class="island-sensor"></span>
+                </div>
+                <div class="phone-speaker"></div>
+
+                <div class="phone-screen">
+                  <!-- Status Bar -->
+                  <div class="screen-status-bar">
+                    <span class="status-time">09:41</span>
+                    <div class="status-notch-spacer"></div>
+                    <div class="status-icons">
+                      <i class="fa-solid fa-signal"></i>
+                      <i class="fa-solid fa-wifi"></i>
+                      <span class="status-battery">98% <i class="fa-solid fa-battery-full"></i></span>
+                    </div>
+                  </div>
+
+                  <!-- In-App Header (Merchant Theme) -->
+                  <div class="app-header merchant-theme">
+                    <div class="app-brand">
+                      <i class="fa-solid fa-bolt brand-ico"></i>
+                      <span class="app-title">RAJ Merchant</span>
+                    </div>
+                    <div class="app-header-right">
+                      <span class="app-user-pill">মাহমুদ ফ্যাশন</span>
+                      <i class="fa-solid fa-bell notification-bell" id="sim-bell-merchant"></i>
+                    </div>
+                  </div>
+
+                  <!-- Merchant Dynamic App Body -->
+                  <div class="app-body" id="sim-app-body-merchant">
+                    <!-- Populated by app.js -->
+                  </div>
+
+                  <!-- Bottom Nav Bar -->
+                  <div class="app-bottom-bar">
+                    <div class="app-nav-item active"><i class="fa-solid fa-house"></i><span>হোম</span></div>
+                    <div class="app-nav-item"><i class="fa-solid fa-box"></i><span>পার্সেল</span></div>
+                    <div class="app-nav-item"><i class="fa-solid fa-wallet"></i><span>ওয়ালেট</span></div>
+                    <div class="app-nav-item"><i class="fa-solid fa-user"></i><span>প্রোফাইল</span></div>
+                  </div>
+
+                  <div class="phone-home-indicator"></div>
+                </div>
+              </div>
             </div>
-            <div class="phone-speaker"></div>
 
-            <!-- Phone Screen Inner -->
-            <div class="phone-screen" id="sim-phone-screen">
-              <!-- Top Status Bar -->
-              <div class="screen-status-bar">
-                <span class="status-time" id="sim-phone-clock">09:41</span>
-                <div class="status-notch-spacer"></div>
-                <div class="status-icons">
-                  <i class="fa-solid fa-signal"></i>
-                  <i class="fa-solid fa-wifi"></i>
-                  <span class="status-battery">98% <i class="fa-solid fa-battery-full"></i></span>
+            <!-- PHONE 2: DEDICATED RIDER / DELIVERY MOBILE APP -->
+            <div class="sim-phone-wrapper" id="sim-phone-wrapper-rider">
+              <div class="phone-dedicated-badge rider-badge">
+                <i class="fa-solid fa-motorcycle"></i> রাইডার অ্যাপ (RAJ Rider Pro)
+              </div>
+              <div class="phone-frame iphone-frame rider-frame" id="sim-phone-frame-rider">
+                <div class="phone-island" title="Dynamic Island">
+                  <span class="island-camera"></span>
+                  <span class="island-sensor"></span>
+                </div>
+                <div class="phone-speaker"></div>
+
+                <div class="phone-screen">
+                  <!-- Status Bar -->
+                  <div class="screen-status-bar">
+                    <span class="status-time">09:41</span>
+                    <div class="status-notch-spacer"></div>
+                    <div class="status-icons">
+                      <i class="fa-solid fa-signal"></i>
+                      <i class="fa-solid fa-wifi"></i>
+                      <span class="status-battery">85% <i class="fa-solid fa-battery-three-quarters"></i></span>
+                    </div>
+                  </div>
+
+                  <!-- In-App Header (Rider Theme - Emerald Green) -->
+                  <div class="app-header rider-theme">
+                    <div class="app-brand">
+                      <i class="fa-solid fa-motorcycle brand-ico rider-ico"></i>
+                      <span class="app-title">RAJ Rider Pro</span>
+                    </div>
+                    <div class="app-header-right">
+                      <span class="app-user-pill rider-pill" id="sim-rider-name-tag">করিম (পিকআপ)</span>
+                      <i class="fa-solid fa-location-dot" style="color:var(--brand-success); margin-left:8px;"></i>
+                    </div>
+                  </div>
+
+                  <!-- Rider Dynamic App Body -->
+                  <div class="app-body" id="sim-app-body-rider">
+                    <!-- Populated by app.js -->
+                  </div>
+
+                  <!-- Bottom Nav Bar (Rider Actions) -->
+                  <div class="app-bottom-bar">
+                    <div class="app-nav-item active"><i class="fa-solid fa-list-check"></i><span>টাস্ক</span></div>
+                    <div class="app-nav-item"><i class="fa-solid fa-barcode"></i><span>স্ক্যানার</span></div>
+                    <div class="app-nav-item"><i class="fa-solid fa-route"></i><span>রানশিট</span></div>
+                    <div class="app-nav-item"><i class="fa-solid fa-id-badge"></i><span>আইডি</span></div>
+                  </div>
+
+                  <div class="phone-home-indicator"></div>
                 </div>
               </div>
-
-              <!-- In-App Header -->
-              <div class="app-header" id="sim-app-header">
-                <div class="app-brand">
-                  <i class="fa-solid fa-bolt brand-ico"></i>
-                  <span class="app-title" id="sim-app-title">RAJ Merchant</span>
-                </div>
-                <div class="app-header-right">
-                  <span class="app-user-pill" id="sim-app-user">মাহমুদ ভাই</span>
-                  <i class="fa-solid fa-bell notification-bell"></i>
-                </div>
-              </div>
-
-              <!-- Dynamic App Body (injected by app.js based on step) -->
-              <div class="app-body" id="sim-app-body">
-                <!-- Content dynamically populated -->
-              </div>
-
-              <!-- Bottom App Bar / Navigation -->
-              <div class="app-bottom-bar" id="sim-app-nav">
-                <div class="app-nav-item active"><i class="fa-solid fa-house"></i><span>হোম</span></div>
-                <div class="app-nav-item"><i class="fa-solid fa-box"></i><span>পার্সেল</span></div>
-                <div class="app-nav-item"><i class="fa-solid fa-wallet"></i><span>ওয়ালেট</span></div>
-                <div class="app-nav-item"><i class="fa-solid fa-user"></i><span>প্রোফাইল</span></div>
-              </div>
-
-              <!-- Phone Home Indicator Bar -->
-              <div class="phone-home-indicator"></div>
             </div>
+
           </div>
         </div>
 
