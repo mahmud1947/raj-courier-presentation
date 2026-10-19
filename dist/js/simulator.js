@@ -606,20 +606,18 @@ simModeButtons.forEach((btn) => {
     playSimSound('click');
 
     if (mode === 'command') {
-      showSimToast('🎛️ ৪টি আলাদা স্ক্রিন ভিউ: মার্চেন্ট ফোন + রাইডার ফোন + ডেস্কটপ + কাস্টমার ট্র্যাকিং!', 'fa-table-columns');
+      showSimToast('🎛️ ৪টি আলাদা স্ক্রিন ভিউ: উপরে মার্চেন্ট ও রাইডার অ্যাপ, নিচে ব্রাঞ্চ ওয়েব পোর্টাল ও পাবলিক ট্র্যাকিং!', 'fa-table-columns');
     } else if (mode === 'mobile') {
       showSimToast('📱 ডুয়েল মোবাইল ভিউ: মার্চেন্ট ও রাইডার অ্যাপ পাশাপাশি প্রদর্শিত!', 'fa-mobile-screen');
     } else if (mode === 'merchant-full') {
       showSimToast('🏪 মার্চেন্ট ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (পার্সেল, ওয়ালেট, প্রোফাইল) এক্সপ্লোর করুন।', 'fa-shop');
     } else if (mode === 'rider-full') {
       showSimToast('🛵 রাইডার ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (স্ক্যানার, রানশিট, ভল্ট) এক্সপ্লোর করুন।', 'fa-motorcycle');
-    } else if (mode === 'branch-full') {
-      showSimToast('🏢 ব্রাঞ্চ ও হাব ড্যাশবোর্ড ফোকাস মোড সক্রিয়! ইনবাউন্ড স্ক্যান, রানশিট ডিসপ্যাচ ও ক্যাশ ভল্ট এক্সপ্লোর করুন।', 'fa-building-user');
+    } else if (mode === 'branch-full' || mode === 'desktop') {
+      showSimToast('🏢 ব্রাঞ্চ ওয়েব পোর্টাল ফোকাস মোড সক্রিয়! ইনবাউন্ড স্ক্যান, রানশিট ডিসপ্যাচ ও ক্যাশ ভল্ট এক্সপ্লোর করুন।', 'fa-building-user');
       if (simBranchCurrentTab === 'step') {
         switchBranchDashboardTab('overview');
       }
-    } else if (mode === 'desktop') {
-      showSimToast('💻 ডেস্কটপ পোর্টাল ভিউ সক্রিয়!', 'fa-desktop');
     }
   });
 });

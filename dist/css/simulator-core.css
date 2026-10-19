@@ -372,38 +372,101 @@
   align-items: start;
 }
 
-/* 1. All-in-One Command Center: 4 Dedicated Screens (Merchant Phone, Rider Phone, Desktop Web, Tracking) */
+/* 1. All-in-One Command Center: 2 Rows Layout (Apps on Top, Web Portals on Bottom) */
 .sim-stage-container.view-command {
-  grid-template-columns: 325px 325px minmax(360px, 1.2fr) 310px;
-  overflow-x: auto;
-  padding-bottom: 12px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 28px 24px;
+  width: 100%;
 }
 
-.sim-stage-container.view-command .sim-col-merchant,
-.sim-stage-container.view-command .sim-col-rider,
-.sim-stage-container.view-command .sim-desktop-column,
-.sim-stage-container.view-command .sim-tracking-column {
+/* Top Row: Dual Dedicated Smartphones side-by-side, centered */
+.sim-stage-container.view-command .sim-col-merchant {
+  grid-column: span 6;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sim-stage-container.view-command .sim-col-rider {
+  grid-column: span 6;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sim-stage-container.view-command .sim-col-merchant .sim-col-header,
+.sim-stage-container.view-command .sim-col-rider .sim-col-header {
+  width: 100%;
+  max-width: 360px;
+}
+
+/* Bottom Row: Web Portals (Branch Web Portal on left, Public Tracking on right) */
+.sim-stage-container.view-command #sim-col-desktop {
+  grid-column: span 8;
   display: block !important;
+}
+
+.sim-stage-container.view-command #sim-col-tracking {
+  grid-column: span 4;
+  display: block !important;
+}
+
+/* Medium screens & compact laptops (992px - 1240px): 7 + 5 ratio for web portals */
+@media (max-width: 1240px) and (min-width: 993px) {
+  .sim-stage-container.view-command #sim-col-desktop {
+    grid-column: span 7;
+  }
+  .sim-stage-container.view-command #sim-col-tracking {
+    grid-column: span 5;
+  }
+}
+
+/* Tablets and mobile screens below 992px: stack columns cleanly */
+@media (max-width: 992px) {
+  .sim-stage-container.view-command .sim-col-merchant,
+  .sim-stage-container.view-command .sim-col-rider {
+    grid-column: span 12;
+  }
+  .sim-stage-container.view-command #sim-col-desktop {
+    grid-column: span 12;
+  }
+  .sim-stage-container.view-command #sim-col-tracking {
+    grid-column: span 12;
+  }
 }
 
 /* 2. Dual Mobile Apps View (Merchant + Rider Side-by-Side) */
 .sim-stage-container.view-dual-mobile,
 .sim-stage-container.view-mobile {
-  grid-template-columns: 340px 340px 320px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 390px));
   justify-content: center;
+  gap: 32px;
+  width: 100%;
 }
 
 .sim-stage-container.view-dual-mobile .sim-col-merchant,
 .sim-stage-container.view-dual-mobile .sim-col-rider,
-.sim-stage-container.view-dual-mobile .sim-tracking-column,
 .sim-stage-container.view-mobile .sim-col-merchant,
-.sim-stage-container.view-mobile .sim-col-rider,
-.sim-stage-container.view-mobile .sim-tracking-column {
-  display: block !important;
+.sim-stage-container.view-mobile .sim-col-rider {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sim-stage-container.view-dual-mobile .sim-col-merchant .sim-col-header,
+.sim-stage-container.view-dual-mobile .sim-col-rider .sim-col-header,
+.sim-stage-container.view-mobile .sim-col-merchant .sim-col-header,
+.sim-stage-container.view-mobile .sim-col-rider .sim-col-header {
+  width: 100%;
+  max-width: 360px;
 }
 
 .sim-stage-container.view-dual-mobile #sim-col-desktop,
-.sim-stage-container.view-mobile #sim-col-desktop {
+.sim-stage-container.view-dual-mobile #sim-col-tracking,
+.sim-stage-container.view-mobile #sim-col-desktop,
+.sim-stage-container.view-mobile #sim-col-tracking {
   display: none !important;
 }
 

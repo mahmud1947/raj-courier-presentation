@@ -611,24 +611,9 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
-  .sim-stage-container.view-command {
-    grid-template-columns: 340px 1fr;
-  }
-  .sim-stage-container.view-command #sim-col-tracking {
-    grid-column: span 2;
-  }
-}
-
 @media (max-width: 860px) {
-  .sim-stage-container.view-command {
-    grid-template-columns: 1fr;
-  }
-  .sim-stage-container.view-command #sim-col-tracking {
-    grid-column: span 1;
-  }
   .phone-frame {
     height: 640px;
   }
-
 }
+
