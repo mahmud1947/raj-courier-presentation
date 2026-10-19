@@ -122,6 +122,7 @@ const simPrintConfirmBtn = document.getElementById('sim-print-confirm-btn');
 // আলাদা আলাদা ফুল অ্যাপস স্টেট ও ইন-অ্যাপ ট্যাব কন্ট্রোলার
 let simMerchantCurrentTab = 'home'; // 'home' | 'parcels' | 'wallet' | 'profile'
 let simRiderCurrentTab = 'tasks';   // 'tasks' | 'scanner' | 'runsheet' | 'vault'
+let simBranchCurrentTab = 'overview'; // 'overview' | 'inbound' | 'dispatch' | 'vault' | 'returns' | 'step'
 
 function switchMerchantAppTab(tabKey) {
   simMerchantCurrentTab = tabKey;
@@ -165,7 +166,51 @@ function switchRiderAppTab(tabKey) {
   }
 }
 
-// ইন-অ্যাপ বটম বার ইভেন্ট ইনিশিয়ালাইজেশন
+function switchBranchDashboardTab(tabKey) {
+  simBranchCurrentTab = tabKey;
+  const navBtns = document.querySelectorAll('#sim-branch-portal-nav .b-nav-item');
+  navBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.bTab === tabKey);
+  });
+
+  const browserBody = document.getElementById('sim-browser-body');
+  const browserUrl = document.getElementById('sim-browser-url');
+  const roleBadge = document.getElementById('sim-desktop-role-badge');
+  if (!browserBody) return;
+
+  if (tabKey === 'step') {
+    const data = simStepsData[simCurrentStep - 1];
+    if (data) {
+      browserBody.innerHTML = data.desktopHtml;
+      if (browserUrl) browserUrl.textContent = data.browserUrl;
+      if (roleBadge) {
+        roleBadge.textContent = simCurrentStep === 1 ? 'মার্চেন্ট ওয়েব' : (simCurrentStep === 8 || simCurrentStep === 9 ? 'অ্যাকাউন্টস ও ফিন্যান্স' : 'হাব কন্ট্রোল');
+      }
+    }
+  } else if (typeof branchDashboardScreens !== 'undefined' && branchDashboardScreens[tabKey]) {
+    browserBody.innerHTML = branchDashboardScreens[tabKey]();
+    if (browserUrl) {
+      const urls = {
+        overview: 'https://hub.rajcourier.com/branch/sylhet-01/dashboard',
+        inbound: 'https://hub.rajcourier.com/branch/inbound/barcode-scan-gun',
+        dispatch: 'https://hub.rajcourier.com/branch/dispatch/runsheets',
+        vault: 'https://hub.rajcourier.com/branch/cash-vault/bank-deposit',
+        returns: 'https://hub.rajcourier.com/branch/returns/hold-exceptions'
+      };
+      browserUrl.textContent = urls[tabKey] || 'https://hub.rajcourier.com/branch/sylhet-01/dashboard';
+    }
+    if (roleBadge) {
+      roleBadge.textContent = 'সিলেট হাব ড্যাশবোর্ড';
+    }
+  }
+}
+
+// গ্লোবালি এক্সপোজ যাতে ইনলাইন অনক্লিক পাওয়া যায়
+window.switchMerchantAppTab = switchMerchantAppTab;
+window.switchRiderAppTab = switchRiderAppTab;
+window.switchBranchDashboardTab = switchBranchDashboardTab;
+
+// ইন-অ্যাপ বটম বার ও ইন-পোর্টাল ট্যাব ইভেন্ট ইনিশিয়ালাইজেশন
 function initInAppNavigation() {
   const merchantTabs = document.querySelectorAll('#sim-merchant-bottom-nav .app-nav-item');
   merchantTabs.forEach(btn => {
@@ -180,6 +225,14 @@ function initInAppNavigation() {
     btn.addEventListener('click', () => {
       playSimSound('click');
       switchRiderAppTab(btn.dataset.rTab);
+    });
+  });
+
+  const branchTabs = document.querySelectorAll('#sim-branch-portal-nav .b-nav-item');
+  branchTabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      playSimSound('click');
+      switchBranchDashboardTab(btn.dataset.bTab);
     });
   });
 }
@@ -279,10 +332,18 @@ function renderSimulatorStep(stepNum, shouldPlaySound = true) {
   const simBrowserBody = document.getElementById('sim-browser-body');
   const simDesktopRoleBadge = document.getElementById('sim-desktop-role-badge');
 
-  if (simBrowserUrl) simBrowserUrl.textContent = data.browserUrl;
-  if (simBrowserBody) simBrowserBody.innerHTML = data.desktopHtml;
-  if (simDesktopRoleBadge) {
-    simDesktopRoleBadge.textContent = stepNum === 1 ? 'মার্চেন্ট ওয়েব' : (stepNum === 8 || stepNum === 9 ? 'অ্যাকাউন্টস ও ফিন্যান্স' : 'হাব কন্ট্রোল');
+  const bTabs = document.querySelectorAll('#sim-branch-portal-nav .b-nav-item');
+  bTabs.forEach(btn => btn.classList.toggle('active', btn.dataset.bTab === simBranchCurrentTab));
+
+  if (simBranchCurrentTab === 'step') {
+    if (simBrowserUrl) simBrowserUrl.textContent = data.browserUrl;
+    if (simBrowserBody) simBrowserBody.innerHTML = data.desktopHtml;
+    if (simDesktopRoleBadge) {
+      simDesktopRoleBadge.textContent = stepNum === 1 ? 'মার্চেন্ট ওয়েব' : (stepNum === 8 || stepNum === 9 ? 'অ্যাকাউন্টস ও ফিন্যান্স' : 'হাব কন্ট্রোল');
+    }
+  } else if (typeof branchDashboardScreens !== 'undefined' && branchDashboardScreens[simBranchCurrentTab]) {
+    if (simBrowserBody) simBrowserBody.innerHTML = branchDashboardScreens[simBranchCurrentTab]();
+    if (simDesktopRoleBadge) simDesktopRoleBadge.textContent = 'সিলেট হাব ড্যাশবোর্ড';
   }
 
   // ৬. ট্র্যাকিং ও এসএমএস কার্ড আপডেট
@@ -552,6 +613,11 @@ simModeButtons.forEach((btn) => {
       showSimToast('🏪 মার্চেন্ট ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (পার্সেল, ওয়ালেট, প্রোফাইল) এক্সপ্লোর করুন।', 'fa-shop');
     } else if (mode === 'rider-full') {
       showSimToast('🛵 রাইডার ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (স্ক্যানার, রানশিট, ভল্ট) এক্সপ্লোর করুন।', 'fa-motorcycle');
+    } else if (mode === 'branch-full') {
+      showSimToast('🏢 ব্রাঞ্চ ও হাব ড্যাশবোর্ড ফোকাস মোড সক্রিয়! ইনবাউন্ড স্ক্যান, রানশিট ডিসপ্যাচ ও ক্যাশ ভল্ট এক্সপ্লোর করুন।', 'fa-building-user');
+      if (simBranchCurrentTab === 'step') {
+        switchBranchDashboardTab('overview');
+      }
     } else if (mode === 'desktop') {
       showSimToast('💻 ডেস্কটপ পোর্টাল ভিউ সক্রিয়!', 'fa-desktop');
     }

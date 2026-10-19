@@ -545,17 +545,22 @@
   box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.25), 0 0 0 2px #065f46;
 }
 
-/* 5. Desktop Focus Mode */
+/* 5. Branch Dashboard & Desktop Focus Mode */
+.sim-stage-container.view-branch-full,
 .sim-stage-container.view-desktop {
   grid-template-columns: 1fr;
 }
 
+.sim-stage-container.view-branch-full .sim-col-merchant,
+.sim-stage-container.view-branch-full .sim-col-rider,
+.sim-stage-container.view-branch-full .sim-tracking-column,
 .sim-stage-container.view-desktop .sim-col-merchant,
 .sim-stage-container.view-desktop .sim-col-rider,
 .sim-stage-container.view-desktop .sim-tracking-column {
   display: none !important;
 }
 
+.sim-stage-container.view-branch-full #sim-col-desktop,
 .sim-stage-container.view-desktop #sim-col-desktop {
   display: block !important;
 }
