@@ -1226,6 +1226,22 @@ const simStepsData = [
             <div><span style="color:var(--text-muted); font-size:10px;">আইটেম:</span> <strong>পোশাক</strong></div>
             <div><span style="color:var(--text-muted); font-size:10px;">ক্যাশ (COD):</span> <strong style="color:var(--brand-primary);">৳২,০০০</strong></div>
           </div>
+          <div style="background:var(--bg-card-subtle); padding:8px 10px; border-radius:6px; margin-top:8px;">
+            <span style="color:var(--text-muted); font-size:10px; font-weight:700; display:block; margin-bottom:4px;">বারকোড স্টিকার পলিসি:</span>
+            <div style="font-size:11px; display:flex; flex-direction:column; gap:4px;">
+              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:var(--brand-primary);">
+                <input type="radio" name="sim-label-mode" value="branch" checked>
+                <span>🏷️ ব্রাঞ্চ/হাব থেকে লাগাবে (মার্চেন্টের প্রিন্টার নেই)</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; color:var(--text-muted);">
+                <input type="radio" name="sim-label-mode" value="self">
+                <span>🖨️ মার্চেন্ট নিজে লাগাবেন (প্রিন্টার থাকলে)</span>
+              </label>
+            </div>
+            <div style="font-size:10px; color:var(--text-muted); margin-top:4px; line-height:1.3;">
+              *প্রিন্টার না থাকলে প্যাকেটের গায়ে মার্কার দিয়ে <strong>RAJ-89214</strong> লিখে রাখলেই হবে; ব্রাঞ্চ হাব ফ্রিতে স্টিকার লাগিয়ে দেবে।
+            </div>
+          </div>
         </div>
 
         <button type="button" class="m-btn m-btn-primary" id="m-action-btn-1" style="margin-top: 12px;">
@@ -1460,8 +1476,12 @@ const simStepsData = [
           </div>
         </div>
 
+        <div style="background:var(--brand-accent-light); border:1px solid rgba(217, 119, 6, 0.3); padding:8px 10px; border-radius:6px; margin-bottom:10px; font-size:11px; color:var(--text-main); line-height:1.4;">
+          <strong>🏷️ ব্রাঞ্চ স্টিকার স্টেশন:</strong> মার্চেন্টের প্রিন্টার না থাকায় সিলেট ব্রাঞ্চ থেকে ৪x৬ ইঞ্চি থার্মাল স্টিকার প্রিন্ট করে প্যাকেটের গায়ে লাগানো হচ্ছে।
+        </div>
+
         <button type="button" class="m-btn m-btn-primary" id="m-action-btn-3">
-          <i class="fa-solid fa-print"></i> ৪x৬ থার্মাল লেবেল প্রিন্ট করুন
+          <i class="fa-solid fa-print"></i> ব্রাঞ্চ ৪x৬ থার্মাল লেবেল প্রিন্ট করুন
         </button>
       </div>
 
@@ -1475,11 +1495,11 @@ const simStepsData = [
     desktopHtml: `
       <div class="d-topbar">
         <div>
-          <div class="d-title">সিলেট হাব ইনবাউন্ড ওয়ার্কস্টেশন (High-Speed Gun Scanner)</div>
-          <div style="font-size: 12px; color: var(--text-muted);">অপারেটর: সজল আহমেদ · ইউএসবি থার্মাল প্রিন্টার সংযুক্ত</div>
+          <div class="d-title">সিলেট হাব ইনবাউন্ড ও ব্রাঞ্চ স্টিকার প্রিন্টিং ওয়ার্কস্টেশন</div>
+          <div style="font-size: 12px; color: var(--text-muted);">অপারেটর: সজল আহমেদ · ইউএসবি থার্মাল প্রিন্টার সংযুক্ত (মার্চেন্টের প্রিন্টার না থাকলে হাবে স্টিকার লাগানো হয়)</div>
         </div>
         <button type="button" class="sim-ctrl-btn sim-btn-play" id="d-action-btn-3">
-          <i class="fa-solid fa-print"></i> থার্মাল লেবেল স্টিকার প্রিভিউ
+          <i class="fa-solid fa-print"></i> ব্রাঞ্চ থার্মাল স্টিকার প্রিন্ট প্রিভিউ
         </button>
       </div>
 
