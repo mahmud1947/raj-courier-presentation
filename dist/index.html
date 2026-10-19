@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RAJ Courier · Interactive Presentation</title>
-  
+
   <!-- Modern Clean Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+
   <!-- Presentation Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- Security Access Gate (Password: RAJ2026) -->
   <div id="auth-gate-modal" class="auth-gate-overlay">
@@ -23,12 +27,14 @@
       </div>
       <h2 class="auth-gate-title">RAJ Courier</h2>
       <p class="auth-gate-subtitle">ইন্টারেক্টিভ লজিস্টিকস প্রেজেন্টেশন অ্যাক্সেস করতে পাসওয়ার্ড দিন</p>
-      
+
       <form id="auth-form" class="auth-form">
         <div class="auth-input-group">
           <i class="fa-solid fa-key auth-input-icon"></i>
-          <input type="password" id="auth-pass-input" class="auth-input" placeholder="পাসওয়ার্ড লিখুন..." autocomplete="off" autofocus required>
-          <button type="button" id="toggle-pass-visibility" class="auth-toggle-pass" aria-label="Show password" title="পাসওয়ার্ড দেখুন">
+          <input type="password" id="auth-pass-input" class="auth-input" placeholder="পাসওয়ার্ড লিখুন..."
+            autocomplete="off" autofocus required>
+          <button type="button" id="toggle-pass-visibility" class="auth-toggle-pass" aria-label="Show password"
+            title="পাসওয়ার্ড দেখুন">
             <i class="fa-solid fa-eye"></i>
           </button>
         </div>
@@ -40,7 +46,7 @@
           <i class="fa-solid fa-arrow-right"></i>
         </button>
       </form>
-      
+
       <div class="auth-gate-footer">
         <i class="fa-solid fa-bolt"></i> Solution Architecture by <strong>Dofva Automation</strong>
       </div>
@@ -48,7 +54,7 @@
   </div>
 
   <main id="main-content" class="presentation-container">
-    
+
     <!-- Header Section -->
     <header class="presentation-header">
       <div class="presentation-title">
@@ -69,12 +75,20 @@
           <button class="nav-tab-btn" data-target="roles" role="tab">
             <i class="fa-solid fa-users-viewfinder"></i> কে কী দেখবেন
           </button>
+          <button class="nav-tab-btn" data-target="terms" role="tab">
+            <i class="fa-solid fa-book-bookmark"></i> টেকনিক্যাল টার্মস
+          </button>
+          <button class="nav-tab-btn" data-target="simulator" role="tab">
+            <i class="fa-solid fa-gamepad"></i> লাইভ সিস্টেম সিমুলেটর
+          </button>
         </nav>
-        
-        <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle dark/light theme" title="থিম পরিবর্তন করুন">
+
+        <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle dark/light theme"
+          title="থিম পরিবর্তন করুন">
           <i class="fa-solid fa-moon"></i>
         </button>
-        <button id="lock-app-btn" class="theme-toggle-btn" type="button" aria-label="Lock Presentation" title="স্ক্রিন লক করুন">
+        <button id="lock-app-btn" class="theme-toggle-btn" type="button" aria-label="Lock Presentation"
+          title="স্ক্রিন লক করুন">
           <i class="fa-solid fa-lock"></i>
         </button>
       </div>
@@ -82,7 +96,7 @@
 
     <!-- Tab 1: Journey Panel -->
     <section id="panel-journey" class="presentation-panel active" role="tabpanel">
-      
+
       <!-- Dual Filters: Business Model & Delivery Outcome -->
       <div class="scenario-selector-card">
         <!-- Model Selector -->
@@ -95,7 +109,7 @@
           </div>
           <select id="model-select" class="scenario-select" aria-label="Business Model">
             <option value="b2c">🛍️ B2C (বিজনেস ➔ কাস্টমার)</option>
-            <option value="c2c">👥 C2C (ব্যক্তি ➔ ব্যক্তি / ফ্রেন্ডস)</option>
+            <option value="p2p">👥 P2P (পারসন টু পারসন / ব্যক্তি ➔ ব্যক্তি)</option>
             <option value="b2b">🏢 B2B (বিজনেস to বিজনেস - পাইকারি চালান)</option>
             <option value="reverse">🔄 Reverse (রিটার্ন ও সাইজ এক্সচেঞ্জ)</option>
           </select>
@@ -155,7 +169,7 @@
             <div class="card-icon icon-cash">
               <i class="fa-solid fa-money-bill-wave"></i>
             </div>
-            <span class="card-label">COD টাকা কার কাছে?</span>
+            <span class="card-label">টাকা কার কাছে?</span>
           </div>
           <div id="val-cash" class="card-value">COD এখনো আদায় হয়নি</div>
         </div>
@@ -171,11 +185,14 @@
       <footer class="presentation-footnotes">
         <div class="footnote-item">
           <span class="footnote-dot"></span>
-          <span id="footnote-characters"><strong>গল্পের চরিত্র:</strong> মাহমুদ ভাই = মার্চেন্ট (সিলেট বন্দর বাজার) · তানভীর সাহেব = কাস্টমার (ঢাকা মিরপুর)।</span>
+          <span id="footnote-characters"><strong>গল্পের চরিত্র:</strong> মাহমুদ ভাই = মার্চেন্ট (সিলেট বন্দর বাজার) ·
+            তানভীর সাহেব = কাস্টমার (ঢাকা মিরপুর)।</span>
         </div>
         <div class="footnote-item">
           <span class="footnote-dot"></span>
-          <span id="footnote-policy"><strong>আর্থিক নীতি:</strong> সফল ডেলিভারিতে কুরিয়ার চার্জ ৳১০০ কেটে মাহমুদ ভাই পাবেন ৳১,৯০০। আর ডেলিভারি ফেইল হলে রিটার্ন চার্জ ৳৬০ মাহমুদ ভাইয়ের বিল বা পরবর্তী ডেলিভারির ব্যালেন্স থেকে অটোমেটিক কেটে নেওয়া হবে।</span>
+          <span id="footnote-policy"><strong>আর্থিক নীতি:</strong> সফল ডেলিভারিতে কুরিয়ার চার্জ ৳১০০ কেটে মাহমুদ ভাই
+            পাবেন ৳১,৯০০। আর ডেলিভারি ফেইল হলে রিটার্ন চার্জ ৳৬০ মাহমুদ ভাইয়ের বিল বা পরবর্তী ডেলিভারির ব্যালেন্স থেকে
+            অটোমেটিক কেটে নেওয়া হবে।</span>
         </div>
       </footer>
 
@@ -183,7 +200,7 @@
 
     <!-- Tab 2: Roles Panel -->
     <section id="panel-roles" class="presentation-panel" role="tabpanel">
-      
+
       <div class="roles-grid">
         <!-- 1. Merchant Card -->
         <article class="role-card">
@@ -194,7 +211,8 @@
             <div class="role-title">মার্চেন্ট (ই-কমার্স সেলার)</div>
           </div>
           <p class="role-description">
-            এক ক্লিকে বাল্ক পার্সেল বুকিং, পিকআপ রিকোয়েস্ট, ডেলিভারি ও রিটার্নের লাইভ স্ট্যাটাস, নিশ্চিত পাওনা ট্র্যাকিং ও ব্যাংক/MFS এ সরাসরি পেমেন্ট হিস্ট্রি স্টেটমেন্ট।
+            এক ক্লিকে বাল্ক পার্সেল বুকিং, পিকআপ রিকোয়েস্ট, ডেলিভারি ও রিটার্নের লাইভ স্ট্যাটাস, নিশ্চিত পাওনা
+            ট্র্যাকিং ও ব্যাংক/MFS এ সরাসরি পেমেন্ট হিস্ট্রি স্টেটমেন্ট।
           </p>
         </article>
 
@@ -207,7 +225,8 @@
             <div class="role-title">ব্রাঞ্চ / হাব ম্যানেজার</div>
           </div>
           <p class="role-description">
-            কাউন্টার বুকিং ও ইনস্ট্যান্ট বারকোড প্রিন্টিং, রসিদ তৈরি, অন্তর্মুখী পার্সেল গ্রহণ স্ক্যান, চালানের মাধ্যমে গাড়ি লোডিং, রাইডার ডেলিভারি অ্যাসাইন এবং প্রতিদিনের ক্যাশ ক্লোজিং।
+            কাউন্টার বুকিং ও ইনস্ট্যান্ট বারকোড প্রিন্টিং, রসিদ তৈরি, অন্তর্মুখী পার্সেল গ্রহণ স্ক্যান, চালানের মাধ্যমে
+            গাড়ি লোডিং, রাইডার ডেলিভারি অ্যাসাইন এবং প্রতিদিনের ক্যাশ ক্লোজিং।
           </p>
         </article>
 
@@ -220,7 +239,8 @@
             <div class="role-title">রাইডার / ডেলিভারি ম্যান</div>
           </div>
           <p class="role-description">
-            আজকের পিকআপ ও ডেলিভারি লিস্ট, কাস্টমারের লোকেশন ম্যাপ, সরাসরি কল সুবিধা, ওটিপি (OTP) ভেরিফিকেশন দিয়ে ডেলিভারি এবং সংগৃহীত COD ক্যাশ জমা দেওয়ার অ্যাকাউন্ট।
+            আজকের পিকআপ ও ডেলিভারি লিস্ট, কাস্টমারের লোকেশন ম্যাপ, সরাসরি কল সুবিধা, ওটিপি (OTP) ভেরিফিকেশন দিয়ে
+            ডেলিভারি এবং সংগৃহীত COD ক্যাশ জমা দেওয়ার অ্যাকাউন্ট।
           </p>
         </article>
 
@@ -233,7 +253,8 @@
             <div class="role-title">সাধারণ গ্রাহক (রিসিভার)</div>
           </div>
           <p class="role-description">
-            এসএমএস/হোয়াটসঅ্যাপে ডেলিভারি আপডেট, লাইভ ট্র্যাকিং পেজ, সম্ভাব্য পৌঁছানোর সময়, কুরিয়ার চার্জ ক্যালকুলেটর এবং ইনস্ট্যান্ট কমপ্লেইন সাপোর্ট।
+            এসএমএস/হোয়াটসঅ্যাপে ডেলিভারি আপডেট, লাইভ ট্র্যাকিং পেজ, সম্ভাব্য পৌঁছানোর সময়, কুরিয়ার চার্জ ক্যালকুলেটর
+            এবং ইনস্ট্যান্ট কমপ্লেইন সাপোর্ট।
           </p>
         </article>
 
@@ -246,14 +267,1264 @@
             <div class="role-title">প্রধান কার্যালয় / মালিক</div>
           </div>
           <p class="role-description">
-            ৬৪ জেলার কেন্দ্রীয় রিয়েলটাইম ড্যাশবোর্ড, আটকে থাকা পার্সেল ট্র্যাকিং, জমা না হওয়া টাকার হিসাব, মার্চেন্টের সামগ্রিক বকেয়া এবং রেট ও সিস্টেম পারমিশন নিয়ন্ত্রণ।
+            ৬৪ জেলার কেন্দ্রীয় রিয়েলটাইম ড্যাশবোর্ড, আটকে থাকা পার্সেল ট্র্যাকিং, জমা না হওয়া টাকার হিসাব, মার্চেন্টের
+            সামগ্রিক বকেয়া এবং রেট ও সিস্টেম পারমিশন নিয়ন্ত্রণ।
           </p>
         </article>
       </div>
 
       <div class="roles-summary-banner">
         <i class="fa-solid fa-circle-check"></i>
-        <span>প্রস্তাবিত কেন্দ্রীয় আর্কিটেকচার ও অটোমেশন: <strong>Dofva Automation</strong> · একক পার্সেল আইডি (Single Source of Truth)</span>
+        <span>প্রস্তাবিত কেন্দ্রীয় আর্কিটেকচার ও অটোমーション: <strong>Dofva Automation</strong> · একক পার্সেল আইডি (Single
+          Source of Truth)</span>
+      </div>
+
+    </section>
+
+    <!-- Tab 3: Technical Terms Panel -->
+    <section id="panel-terms" class="presentation-panel" role="tabpanel">
+
+      <!-- Header & Interactive Filter Bar -->
+      <div class="terms-header-card">
+        <div class="terms-header-top">
+          <div class="terms-title-block">
+            <i class="fa-solid fa-book-bookmark"></i>
+            <div>
+              <div class="terms-title-text">লজিস্টিকস ও সফটওয়্যার টেকনিক্যাল গাইড</div>
+              <div class="terms-subtitle-text">রাজ কুরিয়ার ম্যানেজমেন্ট সিস্টেমের মূল টেকনিক্যাল টার্মস ও আর্কিটেকচারাল ব্যাখ্যা</div>
+            </div>
+          </div>
+          <div id="terms-counter-badge" class="terms-counter-badge">
+            <i class="fa-solid fa-list-check"></i>
+            <span id="terms-counter-text">মোট ১৬টি টার্ম প্রদর্শিত</span>
+          </div>
+        </div>
+
+        <!-- Search Input -->
+        <div class="terms-search-wrap">
+          <i class="fa-solid fa-magnifying-glass terms-search-icon"></i>
+          <input type="text" id="terms-search-input" class="terms-search-input"
+            placeholder="যেকোনো টার্ম সার্চ করুন (যেমন: COD, Challan, Ledger, OTP, BullMQ, Redis...)" autocomplete="off">
+          <button type="button" id="terms-search-clear" class="terms-search-clear" title="ক্লিয়ার করুন">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="terms-filter-pills" role="group" aria-label="ফিল্টার ক্যাটাগরি">
+          <button type="button" class="term-filter-pill active" data-category="all">
+            <i class="fa-solid fa-layer-group"></i> সবগুলো <span class="pill-count" id="count-all">২৩</span>
+          </button>
+          <button type="button" class="term-filter-pill" data-category="database">
+            <i class="fa-solid fa-database"></i> ডাটাবেস ও স্টোরেজ <span class="pill-count" id="count-database">৩</span>
+          </button>
+          <button type="button" class="term-filter-pill" data-category="tech">
+            <i class="fa-solid fa-code"></i> ল্যাঙ্গুয়েজ ও ব্যাকএন্ড <span class="pill-count" id="count-tech">৭</span>
+          </button>
+          <button type="button" class="term-filter-pill" data-category="finance">
+            <i class="fa-solid fa-sack-dollar"></i> টাকা ও ফিন্যান্স <span class="pill-count" id="count-finance">৪</span>
+          </button>
+          <button type="button" class="term-filter-pill" data-category="logistics">
+            <i class="fa-solid fa-boxes-packing"></i> লজিস্টিকস ও হাব <span class="pill-count" id="count-logistics">৫</span>
+          </button>
+          <button type="button" class="term-filter-pill" data-category="security">
+            <i class="fa-solid fa-shield-halved"></i> সিকিউরিটি ও ট্র্যাকিং <span class="pill-count" id="count-security">৪</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tech Stack & Database Architecture Blueprint Showcase -->
+      <div class="tech-blueprint-card">
+        <div class="tech-blueprint-header">
+          <div class="tech-blueprint-title">
+            <i class="fa-solid fa-cubes-stacked"></i>
+            <span>অফিশিয়াল সিস্টেম টেক-স্ট্যাক ও ডাটাবেস ব্লুপ্রিন্ট (The Unified TypeScript Stack)</span>
+          </div>
+          <span class="tech-blueprint-badge">
+            <i class="fa-solid fa-microchip"></i> Architecture by <strong>Dofva Automation</strong>
+          </span>
+        </div>
+
+        <div class="tech-pillars-grid">
+          <!-- Pillar 1: Language & Runtime -->
+          <div class="tech-pillar-card">
+            <div class="tech-pillar-header">
+              <div class="tech-pillar-icon pillar-icon-lang">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div>
+                <div class="tech-pillar-title">প্রোগ্রামিং ভাষা ও রানটাইম</div>
+                <div class="tech-pillar-subtitle">Unified Language Ecosystem</div>
+              </div>
+            </div>
+            <div class="tech-items-list">
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-brands fa-js" style="color:#3178c6;"></i> TypeScript</span>
+                  <span class="tech-item-role-tag">Core Language</span>
+                </div>
+                <p class="tech-item-desc">ব্যাকএন্ড, ওয়েব ও মোবাইল—সবখানে একক টাইপস্ক্রিপ্ট কোডবেস। জিরো টাইপ-এরর ও দ্রুত ডেভেলপমেন্ট।</p>
+              </div>
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-brands fa-node-js" style="color:#22c55e;"></i> Node.js (v20+ LTS)</span>
+                  <span class="tech-item-role-tag">Runtime</span>
+                </div>
+                <p class="tech-item-desc">লং-টার্ম সাপোর্ট (LTS) এন্টারপ্রাইজ অ্যাসিনক্রোনাস নন-ব্লকিং ইভেন্ট ড্রাইভেন জাভাস্ক্রিপ্ট রানটাইম।</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Databases & Storage -->
+          <div class="tech-pillar-card">
+            <div class="tech-pillar-header">
+              <div class="tech-pillar-icon pillar-icon-db">
+                <i class="fa-solid fa-database"></i>
+              </div>
+              <div>
+                <div class="tech-pillar-title">ডাটাবেস ও ওআরএম (Databases)</div>
+                <div class="tech-pillar-subtitle">Persistence, Cache & ORM</div>
+              </div>
+            </div>
+            <div class="tech-items-list">
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-solid fa-server" style="color:#0284c7;"></i> PostgreSQL</span>
+                  <span class="tech-item-role-tag">Primary Relational DB</span>
+                </div>
+                <p class="tech-item-desc">পার্সেল, মার্চেন্ট, ব্রাঞ্চ ও দ্বি-তরফা আর্থিক লেজারের মূল এন্টারপ্রাইজ ডাটাবেস (ACID Compliant + PostGIS)।</p>
+              </div>
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-solid fa-bolt" style="color:#ef4444;"></i> Redis 7.x (ioredis)</span>
+                  <span class="tech-item-role-tag">In-Memory Cache & DB</span>
+                </div>
+                <p class="tech-item-desc">RAM ক্যাশ মেমোরি, ২ মিলিসেকেন্ড ট্র্যাকিং লুকআপ, এপিআই রেট-লিমিটিং ও ডিস্ট্রিবিউটেড লক।</p>
+              </div>
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-solid fa-shield-halved" style="color:#7c3aed;"></i> Prisma ORM</span>
+                  <span class="tech-item-role-tag">Data Access & Migration</span>
+                </div>
+                <p class="tech-item-desc">টাইপস্ক্রিপ্টের সাথে ১০০% টাইপ-সেফ ডাটাবেস কুয়েরি ইঞ্জিন এবং অটোমেটিক স্কিমা মাইগ্রেশন।</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3: Backend & Background Queue -->
+          <div class="tech-pillar-card">
+            <div class="tech-pillar-header">
+              <div class="tech-pillar-icon pillar-icon-engine">
+                <i class="fa-solid fa-gears"></i>
+              </div>
+              <div>
+                <div class="tech-pillar-title">ব্যাকএন্ড ইঞ্জিন ও কিউ প্রসেসর</div>
+                <div class="tech-pillar-subtitle">High Throughput & Asynchronous</div>
+              </div>
+            </div>
+            <div class="tech-items-list">
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-solid fa-bolt-lightning" style="color:#f59e0b;"></i> Fastify (TypeScript)</span>
+                  <span class="tech-item-role-tag">API Engine</span>
+                </div>
+                <p class="tech-item-desc">এক্সপ্রেসের চেয়ে ৪ গুণ দ্রুতগতির লাইটওয়েট হাই-থ্রুপুট RESTful API ও ওয়েব-সকেট ইঞ্জিন।</p>
+              </div>
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-solid fa-layer-group" style="color:#8b5cf6;"></i> BullMQ (Queue)</span>
+                  <span class="tech-item-role-tag">Async Worker</span>
+                </div>
+                <p class="tech-item-desc">রেডিস ব্যাকড ব্যাকগ্রাউন্ড কিউ: বাল্ক SMS, হোয়াটসঅ্যাপ মেসেজ ও এক্সেল ফাইল প্রসেসিং।</p>
+              </div>
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-solid fa-microchip" style="color:#059669;"></i> PM2 (Cluster Mode)</span>
+                  <span class="tech-item-role-tag">Process Manager</span>
+                </div>
+                <p class="tech-item-desc">সার্ভারের প্রতিটি CPU কোরে ব্যালেন্সড মাল্টি-প্রসেস এবং জিরো-ডাউনটাইম রিলোডিং।</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 4: Frontend Web & Mobile App -->
+          <div class="tech-pillar-card">
+            <div class="tech-pillar-header">
+              <div class="tech-pillar-icon pillar-icon-ui">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <div>
+                <div class="tech-pillar-title">ওয়েব পোর্টাল ও মোবাইল অ্যাপ</div>
+                <div class="tech-pillar-subtitle">Client Portals & Rider App</div>
+              </div>
+            </div>
+            <div class="tech-items-list">
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-brands fa-react" style="color:#06b6d4;"></i> React.js + Vite</span>
+                  <span class="tech-item-role-tag">Web Portal</span>
+                </div>
+                <p class="tech-item-desc">অ্যাডমিন, হাব ও মার্চেন্টদের জন্য Shadcn UI ও Tailwind CSS ভিত্তিক আল্ট্রা-ফাস্ট ড্যাশবোর্ড।</p>
+              </div>
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-solid fa-mobile-screen" style="color:#3b82f6;"></i> React Native (Expo)</span>
+                  <span class="tech-item-role-tag">Mobile App</span>
+                </div>
+                <p class="tech-item-desc">রাইডারদের জন্য Android & iOS অ্যাপ: ইনস্ট্যান্ট ক্যামেরা বারকোড স্ক্যানার ও জিপিএস নেভিগেশন।</p>
+              </div>
+              <div class="tech-item-row">
+                <div class="tech-item-headline">
+                  <span class="tech-item-pill"><i class="fa-solid fa-shield-virus" style="color:#10b981;"></i> Nginx & Cloudflare</span>
+                  <span class="tech-item-role-tag">Reverse Proxy</span>
+                </div>
+                <p class="tech-item-desc">SSL এনক্রিপশন, HTTP/2 কম্প্রেশন এবং ডিডিওএস (DDoS) অ্যাটাক প্রোটেকশন গেটওয়ে।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 23 Terms Grid -->
+      <div id="terms-grid" class="terms-grid">
+
+        <!-- 1. COD -->
+        <article class="term-card" data-category="finance" data-keywords="cod cash on delivery ক্যাশ অন ডেলিভারি নগদ টাকা কালেকশন">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-finance">
+              <i class="fa-solid fa-money-bill-wave"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-finance"><i class="fa-solid fa-circle-dollar-to-slot"></i> ফিন্যান্স</span>
+              </div>
+              <div class="term-name-en">COD (Cash on Delivery)</div>
+              <div class="term-name-bn">ক্যাশ অন ডেলিভারি</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            পার্সেল কাস্টমারের হাতে পৌঁছে দেওয়ার মুহূর্তে পণ্যের নির্ধারিত মূল্য ও ডেলিভারি ফি সরাসরি নগদ সংগ্রহ করার পদ্ধতি।
+          </p>
+          <div class="term-role-box border-finance">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> মিরপুরের রাইডার কাস্টমার থেকে নগদ টাকা নেওয়ার সাথে সাথে সিস্টেমে কালেকশন রেকর্ড হয় এবং দিনশেষে হাব ভল্টে জমা না দেওয়া পর্যন্ত তা রাইডারের ডিজিটাল দায়িত্বে থাকে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-shield-halved"></i> জিরো ক্যাশ লিকেজ</span>
+            <span class="term-tag"><i class="fa-solid fa-receipt"></i> তাৎক্ষণিক ডিজিটাল রসিদ</span>
+            <span class="term-tag"><i class="fa-solid fa-bolt"></i> লাইভ লেজার</span>
+          </div>
+        </article>
+
+        <!-- 2. Double-Entry Ledger -->
+        <article class="term-card" data-category="finance" data-keywords="double entry ledger দ্বি-তরফা দাখিলা হিসাব লেজার ব্যালেন্স অডিট">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-finance">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-finance"><i class="fa-solid fa-circle-dollar-to-slot"></i> ফিন্যান্স</span>
+              </div>
+              <div class="term-name-en">Double-Entry Ledger</div>
+              <div class="term-name-bn">ডিজিটাল দ্বি-তরফা দাখিলা হিসাব</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            আন্তর্জাতিক হিসাববিজ্ঞান মানদণ্ড অনুযায়ী প্রতিটি আর্থিক লেনদেনের দুটি সমপরিমাণ ডেবিট ও ক্রেডিট পাশ স্বয়ংক্রিয়ভাবে সংরক্ষিত হওয়ার সিস্টেম।
+          </p>
+          <div class="term-role-box border-finance">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> রাইডারের ক্যাশ কালেকশন, হাব ভল্টে জমা, মার্চেন্টের পাওনা বা সার্ভিস চার্জ—কোনো অবস্থাতেই ১ টাকারও গরমিল হওয়া সম্ভব নয়; সম্পূর্ণ হিসাব গাণিতিকভাবে অপরিবর্তনযোগ্য।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-calculator"></i> গাণিতিক নির্ভুলতা</span>
+            <span class="term-tag"><i class="fa-solid fa-check-double"></i> ১০০% ব্যালেন্স ম্যাচিং</span>
+            <span class="term-tag"><i class="fa-solid fa-lock"></i> অডিট প্রুফ</span>
+          </div>
+        </article>
+
+        <!-- 3. Cash-in-Transit (CIT) -->
+        <article class="term-card" data-category="finance" data-keywords="cash in transit cit ট্রানজিট ক্যাশ নগদ টাকা ভল্ট রাইডার কালেকশন">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-finance">
+              <i class="fa-solid fa-vault"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-finance"><i class="fa-solid fa-circle-dollar-to-slot"></i> ফিন্যান্স</span>
+              </div>
+              <div class="term-name-en">Cash-in-Transit (CIT)</div>
+              <div class="term-name-bn">ট্রানজিট ক্যাশ / চলমান নগদ অর্থ</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            ডেলিভারির পর রাইডারের হাতে বা ব্রাঞ্চ হাবের লকারে থাকা সংগৃহীত নগদ টাকা, যা এখনো সেন্ট্রাল ব্যাংক একাউন্টে জমা হয়নি।
+          </p>
+          <div class="term-role-box border-finance">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> হেড অফিস ড্যাশবোর্ড থেকে এক ক্লিকে দেখা যায় দেশের ৬৪ জেলার কোন রাইডারের পকেটে বা কোন হাবের ক্যাশ বাক্সে ঠিক কত টাকা নগদ রক্ষিত আছে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-eye"></i> রিয়েলটাইম মনিটরিং</span>
+            <span class="term-tag"><i class="fa-solid fa-shield-halved"></i> ঝুঁকি নিয়ন্ত্রণ</span>
+            <span class="term-tag"><i class="fa-solid fa-clock"></i> দৈনিক ক্যাশ ক্লোজিং</span>
+          </div>
+        </article>
+
+        <!-- 4. Reconciliation & Payout -->
+        <article class="term-card" data-category="finance" data-keywords="reconciliation payout মার্চেন্ট সেটেলমেন্ট পে-আউট ব্যাংক বিকাশ বিলিং">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-finance">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-finance"><i class="fa-solid fa-circle-dollar-to-slot"></i> ফিন্যান্স</span>
+              </div>
+              <div class="term-name-en">Reconciliation & Payout</div>
+              <div class="term-name-bn">মার্চেন্ট সেটেলমেন্ট ও পে-আউট</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            ডেলিভারিকৃত পার্সেলের মোট COD টাকা থেকে কুরিয়ার ডেলিভারি ফি ও রিটার্ন চার্জ স্বয়ংক্রিয় সমন্বয় করে নিট পাওনা মার্চেন্টের ব্যাংক বা বিকাশে প্রেরণের প্রক্রিয়া।
+          </p>
+          <div class="term-role-box border-finance">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> মাহমুদ ভাইয়ের সফল অর্ডারের ৳২,০০০ থেকে ৳১০০ কুরিয়ার চার্জ কেটে অবশিষ্ট ৳১,৯০০ অটোমেটিক ব্যাংক/বিকাশ স্টেটমেন্টসহ পরিশোধ করা হয়।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-building-columns"></i> ব্যাংক ও MFS পেআউট</span>
+            <span class="term-tag"><i class="fa-solid fa-file-invoice"></i> অটোমেটেড ইনভয়েস</span>
+            <span class="term-tag"><i class="fa-solid fa-bolt"></i> দ্রুত নিষ্পত্তি</span>
+          </div>
+        </article>
+
+        <!-- 5. Line-Haul -->
+        <article class="term-card" data-category="logistics" data-keywords="line haul linehaul লাইন-হল হাইওয়ে পরিবহন কাভার্ড ভ্যান আন্তঃজেলা">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-logistics">
+              <i class="fa-solid fa-truck-moving"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-logistics"><i class="fa-solid fa-truck-fast"></i> লজিস্টিকস</span>
+              </div>
+              <div class="term-name-en">Line-Haul Transit</div>
+              <div class="term-name-bn">লাইন-হল / হাইওয়ে বাল্ক পরিবহন</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            এক জেলার হাব থেকে অন্য জেলার হাবে ভারী কাভার্ড ভ্যান বা গাড়িতে বাল্ক পার্সেল স্থানান্তরের আন্তঃজেলা দীর্ঘ ট্রাঙ্ক রুট।
+          </p>
+          <div class="term-role-box border-logistics">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> সিলেট হাব থেকে ঢাকার মিরপুর হাবে নিয়মিত নাইট-ট্রিপ বা ডে-ট্রিপে হাজার হাজার পার্সেল একসাথে হাইওয়ে চালান ভেরিফিকেশনের মাধ্যমে নিরাপদে যাতায়াত করে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-road"></i> আন্তঃজেলা হাইওয়ে</span>
+            <span class="term-tag"><i class="fa-solid fa-truck"></i> কাভার্ড ভ্যান বহর</span>
+            <span class="term-tag"><i class="fa-solid fa-route"></i> ট্রাঙ্ক ট্রানজিট</span>
+          </div>
+        </article>
+
+        <!-- 6. Challan (Manifest) -->
+        <article class="term-card" data-category="logistics" data-keywords="challan manifest চালান ডিজিটাল চালান ইনওয়ার্ড আউটওয়ার্ড লোডিং আনলোডিং">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-logistics">
+              <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-logistics"><i class="fa-solid fa-truck-fast"></i> লজিস্টিকস</span>
+              </div>
+              <div class="term-name-en">Challan (Inward & Outward)</div>
+              <div class="term-name-bn">ডিজিটাল চালান ম্যানিফেস্ট</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            এক হাব থেকে অন্য হাবে গাড়ি ছাড়ার পূর্বে পার্সেলগুলোর ডিজিটাল তালিকা (আউটওয়ার্ড) এবং পৌঁছানোর পর স্ক্যান করে মিলিয়ে নেওয়ার অফিশিয়াল রেকর্ড (ইনওয়ার্ড)।
+          </p>
+          <div class="term-role-box border-logistics">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> গাড়িতে তোলার সময় ও নামানোর সময় প্রতিটি পার্সেল বারকোড স্ক্যান করা হয়; কোনো পার্সেল কম পড়লে বা ভুল গাড়িতে উঠলে সাথে সাথে লাল অ্যালার্ট বেজে ওঠে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-barcode"></i> স্ক্যান ম্যানিফেস্ট</span>
+            <span class="term-tag"><i class="fa-solid fa-bell"></i> মিসিং পার্সেল অ্যালার্ট</span>
+            <span class="term-tag"><i class="fa-solid fa-shield"></i> নো পার্সেল লস্ট</span>
+          </div>
+        </article>
+
+        <!-- 7. Reverse Logistics (RTM) -->
+        <article class="term-card" data-category="logistics" data-keywords="reverse logistics rtm রিটার্ন এক্সচেঞ্জ failed delivery রিভার্স লজিস্টিকস">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-logistics">
+              <i class="fa-solid fa-rotate-left"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-logistics"><i class="fa-solid fa-truck-fast"></i> লজিস্টিকস</span>
+              </div>
+              <div class="term-name-en">Reverse Logistics (RTM)</div>
+              <div class="term-name-bn">রিভার্স লজিস্টিকস / রিটার্ন ও এক্সচেঞ্জ</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            কাস্টমার পার্সেল গ্রহণ না করলে (Failed Delivery) বা পণ্যের সাইজ পরিবর্তনের জন্য পার্সেলটি পুনরায় মার্চেন্টের কাছে নিরাপদে ফিরিয়ে নেওয়ার সমন্বিত প্রক্রিয়া।
+          </p>
+          <div class="term-role-box border-logistics">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> তানভীর সাহেব শার্ট রিসিভ না করলে রিটার্ন চার্জ ৳৬০ স্বয়ংক্রিয়ভাবে মার্চেন্ট মাহমুদ ভাইয়ের অ্যাকাউন্ট থেকে সমন্বয় হয় এবং পার্সেলটি সিলেটে মার্চেন্টের দোকানে ফেরত পৌঁছানো হয়।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-arrows-rotate"></i> সাইজ এক্সচেঞ্জ</span>
+            <span class="term-tag"><i class="fa-solid fa-tags"></i> অটো রিটার্ন চার্জ</span>
+            <span class="term-tag"><i class="fa-solid fa-box"></i> রিটার্ন টু মার্চেন্ট</span>
+          </div>
+        </article>
+
+        <!-- 8. Hub & Sorting Facility -->
+        <article class="term-card" data-category="logistics" data-keywords="hub sorting facility হাব সর্টিং সেন্টার ব্রাঞ্চ কাউন্টার বুকিং">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-logistics">
+              <i class="fa-solid fa-warehouse"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-logistics"><i class="fa-solid fa-truck-fast"></i> লজিস্টিকস</span>
+              </div>
+              <div class="term-name-en">Hub & Sorting Facility</div>
+              <div class="term-name-bn">হাব ও সেন্ট্রাল সর্টিং সেন্টার</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            নির্দিষ্ট ভৌগোলিক এলাকার পার্সেল গ্রহণ, ওজন মাপা, দ্রুত বাছাই, এবং স্থানীয় রাইডারদের মধ্যে ডেলিভারি রুট অনুযায়ী পার্সেল বণ্টনের অপারেশনাল হাব।
+          </p>
+          <div class="term-role-box border-logistics">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> ৬৪ জেলায় রাজ কুরিয়ারের নিজস্ব ও ফ্র্যাঞ্চাইজি হাবগুলোর মাধ্যমে স্থানীয় কাউন্টার বুকিং, থার্মাল লেবেল প্রিন্টিং এবং রাইডারদের রান-শিট পরিচালনা করা হয়।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-location-dot"></i> জোনাল সর্টিং</span>
+            <span class="term-tag"><i class="fa-solid fa-print"></i> কাউন্টার প্রিন্টিং</span>
+            <span class="term-tag"><i class="fa-solid fa-motorcycle"></i> রাইডার ব্যাচিং</span>
+          </div>
+        </article>
+
+        <!-- 9. Dead Weight vs Volumetric Weight -->
+        <article class="term-card" data-category="logistics" data-keywords="dead weight volumetric weight ওজন ভলিউমেট্রিক চার্জ কার্টন সাইজ">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-logistics">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-logistics"><i class="fa-solid fa-truck-fast"></i> লজিস্টিকস</span>
+              </div>
+              <div class="term-name-en">Dead Weight vs Volumetric</div>
+              <div class="term-name-bn">প্রকৃত ওজন বনাম ভলিউমেট্রিক হিসাব</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            পার্সেলের স্কেলে মাপা আসল ওজন (Dead Weight) এবং পার্সেলের আয়তন অনুযায়ী হিসাবকৃত ওজনের [(L × W × H সেমি) ÷ ৫০০০] মধ্যে যেটি বেশি, তার ভিত্তিতে চার্জ নির্ধারণ।
+          </p>
+          <div class="term-role-box border-logistics">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> ফোম, বড় কার্টন বা হালকা কিন্তু বিশাল আয়তনের পার্সেলের ক্ষেত্রে গাড়ির স্থান দখল বিবেচনায় নিয়ে স্বয়ংক্রিয় অ্যালগরিদমে স্বচ্ছ ও যৌক্তিক চার্জ হিসাব করা হয়।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-ruler-combined"></i> আন্তর্জাতিক আয়তন সূত্র</span>
+            <span class="term-tag"><i class="fa-solid fa-calculator"></i> ফেয়ার বিলিং</span>
+            <span class="term-tag"><i class="fa-solid fa-weight-hanging"></i> দ্বৈত স্কেল নীতি</span>
+          </div>
+        </article>
+
+        <!-- Database 1: PostgreSQL -->
+        <article class="term-card" data-category="database" data-keywords="postgresql postgres database relational sql ডাটাবেস পোস্টগ্রেস লেজার টেবিল এসিড postgis">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-database">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-database"><i class="fa-solid fa-database"></i> প্রাইমারি ডাটাবেস</span>
+              </div>
+              <div class="term-name-en">PostgreSQL (Relational Database)</div>
+              <div class="term-name-bn">কোর রিলেশনাল ডাটাবেস ও লেজার ইঞ্জিন</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            বিশ্বসেরা ওপেন-সোর্স এন্টারপ্রাইজ রিলেশনাল ডাটাবেস। রাজ কুরিয়ারের সমস্ত পার্সেল রেকর্ড, ৬৪ জেলার ব্রাঞ্চ, মার্চেন্ট প্রোফাইল, রাইডার রান-লগ এবং দ্বৈত-দাখিলা আর্থিক হিসাব (ACID Compliant) সংরক্ষণের প্রধান ডাটাবেস।
+          </p>
+          <div class="term-role-box border-database">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> অ্যাডভান্সড রো-লেভেল লকিং (MVCC), নেটিভ JSONB অডিট লগ এবং PostGIS ম্যাপ জোন সাপোর্ট রয়েছে। ফলে কোটি কোটি পার্সেল ট্রানজেকশনে জিরো ডাটা লস এবং ০% ডেডলক নিশ্চিত হয়।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-shield-check"></i> ACID ট্রানজেকশন</span>
+            <span class="term-tag"><i class="fa-solid fa-map-location-dot"></i> PostGIS রেডি</span>
+            <span class="term-tag"><i class="fa-solid fa-lock"></i> ১০০% অডিট সেফটি</span>
+          </div>
+        </article>
+
+        <!-- Database 2: Redis 7.x -->
+        <article class="term-card" data-category="database" data-keywords="redis in-memory cache key-value রেডিস ক্যাশ মেমোরি কিউ ট্র্যাকিং">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-database">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-database"><i class="fa-solid fa-database"></i> ইন-মেমোরি ডাটাবেস</span>
+              </div>
+              <div class="term-name-en">Redis 7.x (ioredis Cache Engine)</div>
+              <div class="term-name-bn">ইন-মেমোরি আল্ট্রা-স্পিড ক্যাশ ও কিউ ডাটাবেস</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            মেমোরিতে (RAM) ডেটা সংরক্ষণকারী সুপার-ফাস্ট নোএসকিউএল কি-ভ্যালু ডাটাবেস, যা ডাটাবেস রিড অপারেশনকে চোখের পলকে (২ মিলিসেকেন্ডে) সম্পন্ন করে।
+          </p>
+          <div class="term-role-box border-database">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> লাখ লাখ কাস্টমার যখন একযোগে পার্সেল ট্র্যাকিং কুয়েরি করবে, তা PostgreSQL ডাটাবেসে চাপ না ফেলে সরাসরি Redis র‍্যাম থেকে নিমিষে লোড হবে। একই সাথে API রেট-লিমিট ও ডিস্ট্রিবিউটেড মিউটেক্স লক হ্যান্ডেল করে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-gauge-high"></i> ২ মিলিসেকেন্ড রেসপন্স</span>
+            <span class="term-tag"><i class="fa-solid fa-memory"></i> Cache-Aside প্যাটার্ন</span>
+            <span class="term-tag"><i class="fa-solid fa-shield-halved"></i> রেট-লিমিটিং গার্ড</span>
+          </div>
+        </article>
+
+        <!-- Database 3: Prisma ORM -->
+        <article class="term-card" data-category="database" data-keywords="prisma orm database client migration প্রিজমা ওআরএম টাইপস্ক্রিপ্ট কুয়েরি">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-database">
+              <i class="fa-solid fa-cubes"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-database"><i class="fa-solid fa-database"></i> ওআরএম টুল</span>
+              </div>
+              <div class="term-name-en">Prisma ORM (Data Access Layer)</div>
+              <div class="term-name-bn">টাইপ-সেফ ডাটাবেস ক্লায়েন্ট ও অটো মাইগ্রেশন</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            টাইপস্ক্রিপ্ট ভিত্তিক নেক্সট-জেনারেশন অবজেক্ট-রিলেশনাল ম্যাপিং (ORM) টুল, যা ডাটাবেস স্কিমা তৈরি, অটোমেটিক মাইগ্রেশন এবং রানটাইম টাইপ নিরাপত্তা নিশ্চিত করে।
+          </p>
+          <div class="term-role-box border-database">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> কোডিং চলাকালে কোনো ভুল টেবিল ফিল্ড বা ভুল ডেটা-টাইপ পাস করলে কোড কম্পাইলই হবে না; ফলে ডাটাবেস ক্র্যাশ বা টাইপ-মিসম্যাচের ঝুঁকি ০% হয়ে যায়।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-circle-check"></i> ১০০% টাইপ-সেফ কুয়েরি</span>
+            <span class="term-tag"><i class="fa-solid fa-code-merge"></i> অটো স্কিমা মাইগ্রেশন</span>
+            <span class="term-tag"><i class="fa-solid fa-bug-slash"></i> জিরো এসকিউএল এরর</span>
+          </div>
+        </article>
+
+        <!-- Tech 1: TypeScript -->
+        <article class="term-card" data-category="tech" data-keywords="typescript nodejs language প্রোগ্রামিং ভাষা টাইপস্ক্রিপ্ট নোডজেএস কোড">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-tech">
+              <i class="fa-brands fa-js"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-tech"><i class="fa-solid fa-code"></i> মূল প্রোগ্রামিং ভাষা</span>
+              </div>
+              <div class="term-name-en">TypeScript & Node.js (v20+ LTS)</div>
+              <div class="term-name-bn">ইউনিফাইড প্রোগ্রামিং ইকোসিস্টেম</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            মাইক্রোসফটের তৈরি স্ট্রংলি-টাইপড প্রোগ্রামিং ভাষা। সম্পূর্ণ রাজ কুরিয়ার সিস্টেমে (ব্যাকএন্ড এপিআই, ওয়েব পোর্টাল, রাইডার মোবাইল অ্যাপ) একটি একক ভাষা হিসেবে টাইপস্ক্রিপ্ট ব্যবহৃত হবে।
+          </p>
+          <div class="term-role-box border-tech">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> ব্যাকএন্ড ও ফ্রন্টএন্ডের মধ্যে একই ডাটা মডেল ও টাইপ শেয়ার করায় ডেটা পাসিংয়ে কোনো ত্রুটি হয় না এবং সিস্টেম রক্ষণাবেক্ষণ ও নতুন ফিচার ডেভেলপমেন্ট অত্যন্ত দ্রুত হয়।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-shield"></i> স্ট্রংলি টাইপড</span>
+            <span class="term-tag"><i class="fa-solid fa-arrows-spin"></i> ফুল-স্ট্যাক ইউনিফিকেশন</span>
+            <span class="term-tag"><i class="fa-solid fa-microchip"></i> Node.js 20+ LTS</span>
+          </div>
+        </article>
+
+        <!-- Tech 2: Fastify -->
+        <article class="term-card" data-category="tech" data-keywords="fastify backend framework api engine ব্যাকএন্ড ফ্রেমওয়ার্ক ফাস্টিফাই এপিআই">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-tech">
+              <i class="fa-solid fa-bolt-lightning"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-tech"><i class="fa-solid fa-code"></i> ব্যাকএন্ড ফ্রেমওয়ার্ক</span>
+              </div>
+              <div class="term-name-en">Fastify API Engine</div>
+              <div class="term-name-bn">উচ্চ কার্যক্ষমতার ব্যাকএন্ড ফ্রেমওয়ার্ক</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            Node.js-এর জন্য অত্যন্ত কম মেমোরি খরচ করা ও প্রতি সেকেন্ডে প্রায় ৩০,০০০+ রিকোয়েস্ট হ্যান্ডেল করতে সক্ষম আধুনিক ব্যাকএন্ড ওয়েব ফ্রেমওয়ার্ক (Express.js-এর চেয়ে ৪ গুণ দ্রুত)।
+          </p>
+          <div class="term-role-box border-tech">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> রাজ কুরিয়ারের সমস্ত মোবাইল অ্যাপ এপিআই, মার্চেন্ট পোর্টাল রিকোয়েস্ট ও ওয়েব-সকেট ইভেন্ট Fastify দ্বারা প্রসেস হবে যাতে পিক-সিজনেও ০% ল্যাগ থাকে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-gauge-high"></i> ৪ গুণ দ্রুতগতির API</span>
+            <span class="term-tag"><i class="fa-solid fa-shield-halved"></i> নেটিভ স্কিমা ভ্যালিডেশন</span>
+            <span class="term-tag"><i class="fa-solid fa-feather"></i> লো-মেমোরি ওভারহেড</span>
+          </div>
+        </article>
+
+        <!-- Tech 3: React.js & Vite -->
+        <article class="term-card" data-category="tech" data-keywords="react vite tailwind frontend web portal ফ্রন্টএন্ড ওয়েব পোর্টাল রিঅ্যাক্ট ড্যাশবোর্ড">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-tech">
+              <i class="fa-brands fa-react"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-tech"><i class="fa-solid fa-code"></i> ওয়েব ফ্রন্টএন্ড</span>
+              </div>
+              <div class="term-name-en">React.js + Vite + Tailwind CSS</div>
+              <div class="term-name-bn">অ্যাডমিন ও মার্চেন্ট ওয়েব পোর্টাল</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            বিশ্বের সর্বাধিক জনপ্রিয় ফ্রন্টএন্ড লাইব্রেরি ও আল্ট্রা-ফাস্ট বান্ডলার, যা সিঙ্গেল পেজ অ্যাপ্লিকেশনে (SPA) তাৎক্ষণিক পেজ ট্রানজিশন ও ইন্টারেক্টিভ চার্ট সরবরাহ করে।
+          </p>
+          <div class="term-role-box border-tech">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> হেড অফিস ড্যাশবোর্ড, ব্রাঞ্চ হাব কাউন্টার বুকিং সিস্টেম ও মার্চেন্ট পোর্টালে হাজার হাজার পার্সেল ফিল্টারিং, চার্ট এবং বারকোড প্রিন্টিং চোখের পলকে পরিচালনা করে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-paintbrush"></i> Shadcn UI + Tailwind</span>
+            <span class="term-tag"><i class="fa-solid fa-database"></i> TanStack Query</span>
+            <span class="term-tag"><i class="fa-solid fa-bolt"></i> ইনস্ট্যান্ট রেন্ডারিং</span>
+          </div>
+        </article>
+
+        <!-- Tech 4: React Native Expo -->
+        <article class="term-card" data-category="tech" data-keywords="react native expo mobile app rider অ্যাপ রাইডার মোবাইল অ্যাপ অ্যান্ড্রয়েড আইওএস">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-tech">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-tech"><i class="fa-solid fa-code"></i> মোবাইল ফ্রেমওয়ার্ক</span>
+              </div>
+              <div class="term-name-en">React Native (Expo SDK 51+)</div>
+              <div class="term-name-bn">রাইডার ক্রস-প্ল্যাটফর্ম মোবাইল অ্যাপ</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            অ্যান্ড্রয়েড ও আইওএস (iOS)—উভয় প্ল্যাটফর্মের জন্য একটি মাত্র কোডবেস দিয়ে হাই-পারফরম্যান্স নেটিভ মোবাইল অ্যাপ তৈরির আধুনিক প্রযুক্তি।
+          </p>
+          <div class="term-role-box border-tech">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> ডেলিভারি ও পিকআপ রাইডারদের মোবাইল ক্যামেরা দিয়ে আল্ট্রা-ফাস্ট বারকোড স্ক্যানিং, জিপিএস লাইভ লোকেশন এবং ওটিপি ডেলিভারি সরাসরি ফিল্ডে পরিচালনা করে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-camera"></i> Expo Camera বারকোড</span>
+            <span class="term-tag"><i class="fa-solid fa-location-crosshairs"></i> লাইভ GPS ট্র্যাকিং</span>
+            <span class="term-tag"><i class="fa-brands fa-android"></i> Android ও iOS সাপোর্ট</span>
+          </div>
+        </article>
+
+        <!-- 10. Single Source of Truth (SSOT) -->
+        <article class="term-card" data-category="tech" data-keywords="single source of truth ssot একক পার্সেল আইডি বারকোড ডাটাবেস সেন্ট্রাল">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-tech">
+              <i class="fa-solid fa-barcode"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-tech"><i class="fa-solid fa-code"></i> আর্কিটেকচার</span>
+              </div>
+              <div class="term-name-en">Single Source of Truth (SSOT)</div>
+              <div class="term-name-bn">একক পার্সেল আইডি ও মাস্টার ডাটা</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            সম্পূর্ণ আর্কিটেকচারে প্রতিটি পার্সেলের একটি মাত্র অপরিবর্তনযোগ্য ইউনিক আইডি থাকে, যা সমস্ত সিস্টেম, অ্যাপ ও ডাটাবেসে মূল রেফারেন্স হিসেবে কাজ করে।
+          </p>
+          <div class="term-role-box border-tech">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> মার্চেন্ট, রাইডার, হাব ম্যানেজার বা কাস্টমার—যে যেখান থেকেই দেখুক না কেন, সবার স্ক্রিনে একই মুহূর্তে একই নিখুঁত ও আপডেটেড ডাটা প্রদর্শিত হবে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-database"></i> সেন্ট্রাল মাস্টার রেকর্ড</span>
+            <span class="term-tag"><i class="fa-solid fa-check"></i> জিরো কনফ্লিক্ট</span>
+            <span class="term-tag"><i class="fa-solid fa-arrows-split-up-and-left"></i> সিঙ্কড সিস্টেম</span>
+          </div>
+        </article>
+
+        <!-- 11. Zero-Lag Architecture -->
+        <article class="term-card" data-category="tech" data-keywords="zero-lag architecture redis fastify স্পিড জিরো ল্যাগ পারফরম্যান্স ক্যাশ">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-tech">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-tech"><i class="fa-solid fa-code"></i> আর্কিটেকচার</span>
+              </div>
+              <div class="term-name-en">Zero-Lag Architecture (Redis + Fastify)</div>
+              <div class="term-name-bn">জিরো-ল্যাগ পারফরম্যান্স আর্কিটেকচার</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            ডাটাবেসের ওপর সরাসরি চাপ না ফেলে ইন-মেমোরি র‍্যাম ক্যাশিং (Redis) ও আল্ট্রা-ফাস্ট ইভেন্ট-লুপ ফ্রেমওয়ার্ক (Fastify) দিয়ে পরিচালিত হাই-থ্রুপুট সিস্টেম।
+          </p>
+          <div class="term-role-box border-tech">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> ঈদের মৌসুমে বা বিশেষ সেল অফারে একসাথে ১০ লাখ পার্সেল ট্র্যাকিং বা বাল্ক স্ক্যান হলেও সিস্টেম ১ সেকেন্ডও হ্যাং বা স্লো হবে না; মাত্র ২ মিলিসেকেন্ডে ট্র্যাকিং ফলাফল দেবে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-gauge-high"></i> ২ মিলিসেকেন্ড ট্র্যাকিং</span>
+            <span class="term-tag"><i class="fa-solid fa-memory"></i> ইন-মেমোরি ক্যাশ</span>
+            <span class="term-tag"><i class="fa-solid fa-server"></i> ক্লাস্টার ইঞ্জিন</span>
+          </div>
+        </article>
+
+        <!-- 12. BullMQ Asynchronous Processing -->
+        <article class="term-card" data-category="tech" data-keywords="bullmq asynchronous workers ব্যাকগ্রাউন্ড কিউ এসএমএস এক্সেল প্রসেসিং">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-tech">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-tech"><i class="fa-solid fa-code"></i> আর্কিটেকচার</span>
+              </div>
+              <div class="term-name-en">BullMQ Asynchronous Queue</div>
+              <div class="term-name-bn">অ্যাসিনক্রোনাস ব্যাকগ্রাউন্ড কিউ প্রসেসর</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            ভারী ও সময়সাপেক্ষ কাজগুলোকে (যেমন বাল্ক SMS, চালান PDF তৈরি, ৫০০০ পার্সেলের এক্সেল ফাইল প্রসেস) মূল সার্ভার থ্রেড থেকে আলাদা ব্যাকগ্রাউন্ড কর্মীদের মাধ্যমে সম্পন্ন করার প্রযুক্তি।
+          </p>
+          <div class="term-role-box border-tech">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> মার্চেন্ট যখন একসাথে ১০০০ পার্সেলের এক্সেল ফাইল আপলোড করবে, স্ক্রিন আটকে থাকবে না; ব্যাকগ্রাউন্ডে নিমিষেই প্রতিটি পার্সেল ডাটাবেসে সেভ হয়ে যাবে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-list-check"></i> ব্যাকগ্রাউন্ড ওয়ার্কার</span>
+            <span class="term-tag"><i class="fa-solid fa-comment-sms"></i> বাল্ক SMS কিউ</span>
+            <span class="term-tag"><i class="fa-solid fa-file-excel"></i> হাই-স্পিড এক্সেল প্রসেসিং</span>
+          </div>
+        </article>
+
+        <!-- 13. OTP Verification -->
+        <article class="term-card" data-category="security" data-keywords="otp verification ওটিপি পিন কাস্টমার ডেলিভারি সিকিউরিটি ভেরিফিকেশন">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-security">
+              <i class="fa-solid fa-key"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-security"><i class="fa-solid fa-shield-halved"></i> সিকিউরিটি</span>
+              </div>
+              <div class="term-name-en">OTP Verification (One-Time PIN)</div>
+              <div class="term-name-bn">ডিজিটাল ওটিপি যাচাইকরণ</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            পার্সেল ডেলিভারি সম্পন্ন করার মুহূর্তে কাস্টমারের নিবন্ধিত মোবাইল নম্বরে স্বয়ংক্রিয়ভাবে প্রেরিত ৪ বা ৬ ডিজিটের এককালীন গোপনীয় সিকিউরিটি পিন।
+          </p>
+          <div class="term-role-box border-security">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> কাস্টমার তানভীর সাহেব ওটিপি কোড রাইডারকে না বলা পর্যন্ত রাইডারের অ্যাপে 'ডেলিভারি সম্পন্ন' বাটন কাজ করবে না; ফলে ভুল ডেলিভারি বা মিথ্যা ডেলিভারির কোনো সুযোগ নেই।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-mobile-screen-button"></i> মোবাইল ওটিপি</span>
+            <span class="term-tag"><i class="fa-solid fa-user-check"></i> অথেনটিক ডেলিভারি</span>
+            <span class="term-tag"><i class="fa-solid fa-shield-halved"></i> জিরো ফলস ক্লেইম</span>
+          </div>
+        </article>
+
+        <!-- 14. RBAC -->
+        <article class="term-card" data-category="security" data-keywords="rbac role based access control পারমিশন রোল সিকিউরিটি ইউজার এক্সেস">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-security">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-security"><i class="fa-solid fa-shield-halved"></i> সিকিউরিটি</span>
+              </div>
+              <div class="term-name-en">RBAC (Role-Based Access Control)</div>
+              <div class="term-name-bn">পদমর্যাদাভিত্তিক অনুমতি ও নিরাপত্তা</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            প্রতিষ্ঠানে ব্যবহারকারীর পদমর্যাদা (অ্যাডমিন, হাব ম্যানেজার, রাইডার, মার্চেন্ট) অনুসারে সুনির্দিষ্ট তথ্য দেখার এবং কাজ করার স্তরভিত্তিক সিকিউরিটি মডেল।
+          </p>
+          <div class="term-role-box border-security">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> রাইডার শুধুমাত্র তার আজকের ডেলিভারি তালিকা দেখবে, হাব ম্যানেজার তার এলাকার পার্সেল ও ভল্ট দেখবে, আর মালিক পুরো দেশের সামগ্রিক লাভ-ক্ষতি ও পার্সেল ফ্লো মনিটর করবেন।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-lock"></i> ডাটা প্রাইভেসি</span>
+            <span class="term-tag"><i class="fa-solid fa-users-gear"></i> রোল নিয়ন্ত্রণ</span>
+            <span class="term-tag"><i class="fa-solid fa-shield"></i> এন্টারপ্রাইজ সিকিউরিটি</span>
+          </div>
+        </article>
+
+        <!-- 15. Merchant API & Webhook -->
+        <article class="term-card" data-category="security" data-keywords="merchant api webhook ই-কমার্স অটোমেশন উকমার্স শপিফাই এপিআই">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-security">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-security"><i class="fa-solid fa-shield-halved"></i> সিকিউরিটি</span>
+              </div>
+              <div class="term-name-en">Merchant API & Webhook</div>
+              <div class="term-name-bn">ই-কমার্স অটোমেশন ও রিয়েলটাইম ওয়েবহুক</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            মার্চেন্টের ই-কমার্স ওয়েবসাইট (WooCommerce, Shopify, Custom Portal)-এর সাথে রাজ কুরিয়ার সার্ভারের রিয়েলটাইম স্বয়ংক্রিয় দ্বিমুখী সংযোগ ব্যবস্থা।
+          </p>
+          <div class="term-role-box border-security">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> মার্চেন্টের অনলাইন দোকানে কোনো ক্রেতা অর্ডার করার সাথে সাথে স্বয়ংক্রিয়ভাবে রাজ কুরিয়ারে পার্সেল বুক হয়ে যাবে এবং ট্র্যাকিং লিঙ্ক কাস্টমারের মোবাইলে পৌঁছে যাবে।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-plug"></i> শপিফাই ও উকমার্স</span>
+            <span class="term-tag"><i class="fa-solid fa-bolt"></i> ইনস্ট্যান্ট ওয়েবহুক</span>
+            <span class="term-tag"><i class="fa-solid fa-gears"></i> সম্পূর্ণ অটোমেশন</span>
+          </div>
+        </article>
+
+        <!-- 16. Chain of Custody -->
+        <article class="term-card" data-category="security" data-keywords="chain of custody অডিট হেফাজত শৃঙ্খল স্ক্যান টাইমস্ট্যাম্প ট্র্যাকিং">
+          <div class="term-card-header">
+            <div class="term-icon-wrap term-icon-security">
+              <i class="fa-solid fa-link"></i>
+            </div>
+            <div class="term-title-wrap">
+              <div class="term-meta-row">
+                <span class="term-category-badge cat-security"><i class="fa-solid fa-shield-halved"></i> সিকিউরিটি</span>
+              </div>
+              <div class="term-name-en">Chain of Custody (Audit Trail)</div>
+              <div class="term-name-bn">ডিজিটাল হেফাজত শৃঙ্খল ও অডিট লগ</div>
+            </div>
+          </div>
+          <p class="term-definition">
+            মার্চেন্টের হাত থেকে কাস্টমারের দরজা পর্যন্ত প্রতি মুহূর্তে পার্সেল ও নগদ টাকা শারীরিকভাবে কার জিম্মায় আছে তার অবিচ্ছিন্ন ও অপরিবর্তনযোগ্য ডিজিটাল প্রমাণমালা।
+          </p>
+          <div class="term-role-box border-security">
+            <strong>রাজ কুরিয়ারে ভূমিকা:</strong> মার্চেন্ট ➔ পিকআপ রাইডার ➔ সিলেট হাব ➔ লাইন-হল ট্রাক ➔ ঢাকা মিরপুর হাব ➔ ডেলিভারি রাইডার ➔ কাস্টমার। প্রতিটি ধাপে ডিজিটাল স্বাক্ষর বা স্ক্যান থাকায় কোনো পার্সেল ড্রপ হলে সাথে সাথে দায় চিহ্নিত হয়।
+          </div>
+          <div class="term-tags-row">
+            <span class="term-tag"><i class="fa-solid fa-fingerprint"></i> ডিজিটাল অডিট সাক্ষ্য</span>
+            <span class="term-tag"><i class="fa-solid fa-clock-rotate-left"></i> অপরিবর্তনীয় টাইমস্ট্যাম্প</span>
+            <span class="term-tag"><i class="fa-solid fa-shield-check"></i> জিরো লস্ট পার্সেল</span>
+          </div>
+        </article>
+
+        <!-- Empty Results State -->
+        <div id="terms-no-results" class="terms-no-results">
+          <i class="fa-solid fa-magnifying-glass terms-no-results-icon"></i>
+          <div class="terms-no-results-title">কোনো টার্ম খুঁজে পাওয়া যায়নি</div>
+          <p class="terms-no-results-desc">আপনার সার্চের সাথে মেলে এমন কোনো টেকনিক্যাল পরিভাষা পাওয়া যায়নি। বানান চেক করুন অথবা ফিল্টার রিসেট করুন।</p>
+          <button type="button" id="terms-reset-btn" class="terms-reset-btn">
+            <i class="fa-solid fa-rotate-left"></i> ফিল্টার রিসেট করুন
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Architecture Commitment Banner -->
+      <div class="roles-summary-banner">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>আন্তর্জাতিক লজিস্টিকস স্ট্যান্ডার্ড ও ফুল-স্ট্যাক অটোমেশন: <strong>Dofva Automation</strong> · জিরো ক্যাশ লিকেজ ও ১০০% ডিজিটাল অডিট ট্রেইল</span>
+      </div>
+
+    </section>
+
+    <!-- Tab 4: Interactive Live System Simulator Panel -->
+    <section id="panel-simulator" class="presentation-panel" role="tabpanel">
+
+      <!-- Simulator Banner & Introduction -->
+      <div class="sim-banner-card">
+        <div class="sim-banner-header">
+          <div class="sim-badge-pill">
+            <i class="fa-solid fa-gamepad"></i> ইন্টারেক্টিভ লাইভ ডেমো
+          </div>
+          <div class="sim-badge-tech">
+            <i class="fa-solid fa-bolt"></i> রিয়েল-টাইম সিস্টেম সিমুলেশন (Full Lifecycle)
+          </div>
+        </div>
+        <h2 class="sim-banner-title">রাজ কুরিয়ার এন্ড-টু-এন্ড লাইভ অপারেশনাল সিমুলেটর</h2>
+        <p class="sim-banner-subtitle">
+          মার্চেন্টের পার্সেল বুকিং থেকে শুরু করে রাইডারের বারকোড লেজার স্ক্যান, সিলেট ➔ ঢাকা লাইন-হল হাইওয়ে চালান, কাস্টমার ওটিপি ডেলিভারি এবং মার্চেন্টের বিকাশ ওয়ালেটে তাৎক্ষণিক ক্যাশ ট্রান্সফার—সম্পূর্ণ লাইফসাইকেল সরাসরি টেস্ট করুন।
+        </p>
+      </div>
+
+      <!-- Simulator Master Control Bar -->
+      <div class="sim-control-bar">
+        <!-- Playback Controls -->
+        <div class="sim-playback-group">
+          <button type="button" id="sim-autoplay-btn" class="sim-ctrl-btn sim-btn-play" title="অটোমেটিক ডেমো প্লে করুন">
+            <i class="fa-solid fa-play"></i>
+            <span>অটো-প্লে ডেমো</span>
+          </button>
+          <button type="button" id="sim-prev-btn" class="sim-ctrl-btn" title="পূর্ববর্তী ধাপে যান">
+            <i class="fa-solid fa-chevron-left"></i>
+            <span>পূর্ববর্তী</span>
+          </button>
+          <div class="sim-step-indicator-pill">
+            ধাপ <span id="sim-step-num-text">১</span> / ৯
+          </div>
+          <button type="button" id="sim-next-btn" class="sim-ctrl-btn" title="পরবর্তী ধাপে যান">
+            <span>পরবর্তী</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <button type="button" id="sim-reset-btn" class="sim-ctrl-btn sim-btn-ghost" title="প্রথম ধাপে ফিরে যান">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>রিসেট</span>
+          </button>
+          <button type="button" id="sim-sound-btn" class="sim-ctrl-btn sim-btn-icon active" title="সাউন্ড ইফেক্ট অন/অফ">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+        </div>
+
+        <!-- View Mode Switcher -->
+        <div class="sim-view-mode-group">
+          <span class="sim-control-label"><i class="fa-solid fa-eye"></i> ভিউ মোড:</span>
+          <button type="button" class="sim-mode-btn active" data-mode="command">
+            <i class="fa-solid fa-table-cells-large"></i> ৪-ইন-১ কমান্ড সেন্টার
+          </button>
+          <button type="button" class="sim-mode-btn" data-mode="mobile">
+            <i class="fa-solid fa-mobile-screen"></i> মোবাইল অ্যাপ ভিউ
+          </button>
+          <button type="button" class="sim-mode-btn" data-mode="desktop">
+            <i class="fa-solid fa-display"></i> ডেস্কটপ পোর্টাল
+          </button>
+        </div>
+
+        <!-- Phone Device Frame Toggle -->
+        <div class="sim-device-toggle-group">
+          <span class="sim-control-label"><i class="fa-solid fa-mobile"></i> ফ্রেম:</span>
+          <button type="button" class="sim-device-btn active" data-device="iphone" title="iPhone 15 Pro (iOS Dynamic Island)">
+            <i class="fa-brands fa-apple"></i> iPhone 15 Pro
+          </button>
+          <button type="button" class="sim-device-btn" data-device="android" title="Android (Samsung/Pixel Punch Hole)">
+            <i class="fa-brands fa-android"></i> Android
+          </button>
+        </div>
+      </div>
+
+      <!-- 9-Step Milestone Timeline Bar -->
+      <nav class="sim-timeline-wrapper" aria-label="সিমুলেটর ৯টি ধাপ">
+        <div class="sim-timeline-track" id="sim-timeline-track">
+          <!-- Step 1 -->
+          <button type="button" class="sim-step-item active" data-step="1">
+            <span class="sim-step-badge">১</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-clipboard-check"></i></span>
+            <span class="sim-step-title">মার্চেন্ট বুকিং</span>
+          </button>
+          <!-- Step 2 -->
+          <button type="button" class="sim-step-item" data-step="2">
+            <span class="sim-step-badge">২</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-motorcycle"></i></span>
+            <span class="sim-step-title">পিকআপ স্ক্যান</span>
+          </button>
+          <!-- Step 3 -->
+          <button type="button" class="sim-step-item" data-step="3">
+            <span class="sim-step-badge">৩</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-warehouse"></i></span>
+            <span class="sim-step-title">হাব ইনবাউন্ড ও লেবেল</span>
+          </button>
+          <!-- Step 4 -->
+          <button type="button" class="sim-step-item" data-step="4">
+            <span class="sim-step-badge">৪</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-truck-moving"></i></span>
+            <span class="sim-step-title">লাইন-হল চালান</span>
+          </button>
+          <!-- Step 5 -->
+          <button type="button" class="sim-step-item" data-step="5">
+            <span class="sim-step-badge">৫</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-building"></i></span>
+            <span class="sim-step-title">ডেস্টিনেশন হাব</span>
+          </button>
+          <!-- Step 6 -->
+          <button type="button" class="sim-step-item" data-step="6">
+            <span class="sim-step-badge">৬</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-box-open"></i></span>
+            <span class="sim-step-title">লাস্ট-মাইল রান</span>
+          </button>
+          <!-- Step 7 -->
+          <button type="button" class="sim-step-item" data-step="7">
+            <span class="sim-step-badge">৭</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-shield-halved"></i></span>
+            <span class="sim-step-title">OTP ডেলিভারি ও COD</span>
+          </button>
+          <!-- Step 8 -->
+          <button type="button" class="sim-step-item" data-step="8">
+            <span class="sim-step-badge">৮</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-vault"></i></span>
+            <span class="sim-step-title">হাব ক্যাশ ক্লোজিং</span>
+          </button>
+          <!-- Step 9 -->
+          <button type="button" class="sim-step-item" data-step="9">
+            <span class="sim-step-badge">৯</span>
+            <span class="sim-step-icon"><i class="fa-solid fa-wallet"></i></span>
+            <span class="sim-step-title">বিকাশ ওয়ালেট পেমেন্ট</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Live Financial Ledger & Custody Status Bar -->
+      <div class="sim-ledger-bar">
+        <div class="sim-ledger-card">
+          <div class="sim-ledger-label"><i class="fa-solid fa-barcode"></i> পার্সেল ট্র্যাকিং আইডি</div>
+          <div class="sim-ledger-val highlight">RAJ-DH-89214</div>
+          <div class="sim-ledger-sub">সিলেট ➔ ঢাকা মিরপুর · ১.২ কেজি</div>
+        </div>
+
+        <div class="sim-ledger-card">
+          <div class="sim-ledger-label"><i class="fa-solid fa-user-shield"></i> বর্তমান কাস্টডি (দায়িত্ব)</div>
+          <div class="sim-ledger-val" id="sim-custody-val">মাহমুদ শপ (মার্চেন্ট)</div>
+          <div class="sim-ledger-sub" id="sim-custody-loc">জিন্দাবাজার, সিলেট</div>
+        </div>
+
+        <div class="sim-ledger-card">
+          <div class="sim-ledger-label"><i class="fa-solid fa-money-bill-wave"></i> ক্যাশ টাকা স্ট্যাটাস</div>
+          <div class="sim-ledger-val" id="sim-cash-status">আদায় হয়নি (৳০)</div>
+          <div class="sim-ledger-sub" id="sim-cash-note">কাস্টমার ডেলিভারির সময় দেবে</div>
+        </div>
+
+        <div class="sim-ledger-card">
+          <div class="sim-ledger-label"><i class="fa-solid fa-calculator"></i> মার্চেন্ট নিট পাওনা</div>
+          <div class="sim-ledger-val success" id="sim-merchant-payout">৳১,৮৮০ (প্রস্তুত)</div>
+          <div class="sim-ledger-sub">৳২,০০০ - ৳১০০ ফি - ৳২০ COD</div>
+        </div>
+
+        <div class="sim-ledger-card">
+          <div class="sim-ledger-label"><i class="fa-solid fa-signal"></i> প্রসেস স্ট্যাটাস</div>
+          <div class="sim-ledger-val" id="sim-process-status">
+            <span class="sim-status-chip pending">বুকিং সম্পন্ন</span>
+          </div>
+          <div class="sim-ledger-sub" id="sim-process-time">অটো-টাইমস্ট্যাম্প সক্রিয়</div>
+        </div>
+      </div>
+
+      <!-- Main Stage Container (Grid adjusts based on view mode) -->
+      <div class="sim-stage-container view-command" id="sim-stage-container">
+
+        <!-- Stage Component 1: Mobile Smartphone Mockup -->
+        <div class="sim-device-column" id="sim-col-mobile">
+          <div class="sim-col-header">
+            <span class="sim-col-title">
+              <i class="fa-solid fa-mobile-screen-button"></i> মোবাইল অ্যাপ স্ক্রিন
+            </span>
+            <span class="sim-col-badge" id="sim-mobile-role-badge">মার্চেন্ট অ্যাপ</span>
+          </div>
+
+          <!-- Smartphone Outer Frame (Default: iPhone) -->
+          <div class="phone-frame iphone-frame" id="sim-phone-frame">
+            <!-- Hardware Details -->
+            <div class="phone-island" id="sim-phone-island" title="Dynamic Island">
+              <span class="island-camera"></span>
+              <span class="island-sensor"></span>
+            </div>
+            <div class="phone-speaker"></div>
+
+            <!-- Phone Screen Inner -->
+            <div class="phone-screen" id="sim-phone-screen">
+              <!-- Top Status Bar -->
+              <div class="screen-status-bar">
+                <span class="status-time" id="sim-phone-clock">09:41</span>
+                <div class="status-notch-spacer"></div>
+                <div class="status-icons">
+                  <i class="fa-solid fa-signal"></i>
+                  <i class="fa-solid fa-wifi"></i>
+                  <span class="status-battery">98% <i class="fa-solid fa-battery-full"></i></span>
+                </div>
+              </div>
+
+              <!-- In-App Header -->
+              <div class="app-header" id="sim-app-header">
+                <div class="app-brand">
+                  <i class="fa-solid fa-bolt brand-ico"></i>
+                  <span class="app-title" id="sim-app-title">RAJ Merchant</span>
+                </div>
+                <div class="app-header-right">
+                  <span class="app-user-pill" id="sim-app-user">মাহমুদ ভাই</span>
+                  <i class="fa-solid fa-bell notification-bell"></i>
+                </div>
+              </div>
+
+              <!-- Dynamic App Body (injected by app.js based on step) -->
+              <div class="app-body" id="sim-app-body">
+                <!-- Content dynamically populated -->
+              </div>
+
+              <!-- Bottom App Bar / Navigation -->
+              <div class="app-bottom-bar" id="sim-app-nav">
+                <div class="app-nav-item active"><i class="fa-solid fa-house"></i><span>হোম</span></div>
+                <div class="app-nav-item"><i class="fa-solid fa-box"></i><span>পার্সেল</span></div>
+                <div class="app-nav-item"><i class="fa-solid fa-wallet"></i><span>ওয়ালেট</span></div>
+                <div class="app-nav-item"><i class="fa-solid fa-user"></i><span>প্রোফাইল</span></div>
+              </div>
+
+              <!-- Phone Home Indicator Bar -->
+              <div class="phone-home-indicator"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage Component 2: Desktop Web Portal Window -->
+        <div class="sim-desktop-column" id="sim-col-desktop">
+          <div class="sim-col-header">
+            <span class="sim-col-title">
+              <i class="fa-solid fa-laptop-code"></i> ডেস্কটপ ওয়েব পোর্টাল
+            </span>
+            <span class="sim-col-badge desktop-badge" id="sim-desktop-role-badge">হাব ও সেন্ট্রাল ড্যাশবোর্ড</span>
+          </div>
+
+          <!-- Browser Window Frame -->
+          <div class="browser-window-frame">
+            <!-- Browser Header Bar -->
+            <div class="browser-header">
+              <div class="browser-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="browser-url-bar">
+                <i class="fa-solid fa-lock url-secure-icon"></i>
+                <span class="url-text" id="sim-browser-url">https://hub.rajcourier.com/inbound/barcode-scan</span>
+                <i class="fa-solid fa-rotate-right url-reload-icon"></i>
+              </div>
+              <div class="browser-actions">
+                <span class="browser-live-badge"><span class="pulse-dot"></span> LIVE</span>
+              </div>
+            </div>
+
+            <!-- Browser Window Screen Body -->
+            <div class="browser-body" id="sim-browser-body">
+              <!-- Content dynamically populated by app.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage Component 3: Public Live Customer Tracking & Micro-Services -->
+        <div class="sim-tracking-column" id="sim-col-tracking">
+          <div class="sim-col-header">
+            <span class="sim-col-title">
+              <i class="fa-solid fa-earth-americas"></i> পাবলিক ট্র্যাকিং ও এসএমএস ভিউ
+            </span>
+            <span class="sim-col-badge tracking-badge">কাস্টমার ভিউ (ওয়েব)</span>
+          </div>
+
+          <!-- Mobile Optimized Web Tracking Card -->
+          <div class="tracking-device-card">
+            <!-- Simulated SMS Notification Box -->
+            <div class="sim-sms-bubble" id="sim-sms-bubble">
+              <div class="sms-header">
+                <i class="fa-solid fa-comment-sms"></i>
+                <span>SMS Alert · RAJ-COURIER</span>
+                <span class="sms-time">এখনই</span>
+              </div>
+              <p class="sms-text" id="sim-sms-text">
+                আপনার পার্সেল RAJ-DH-89214 বুকিং করা হয়েছে। রাইডার পিকআপের পর লাইভ আপডেট দেখতে পারবেন।
+              </p>
+            </div>
+
+            <!-- Customer Live Web Tracking View -->
+            <div class="customer-track-portal">
+              <div class="track-portal-header">
+                <div class="track-brand">
+                  <i class="fa-solid fa-bolt"></i> RAJ Courier Live Track
+                </div>
+                <div class="track-code">RAJ-DH-89214</div>
+              </div>
+
+              <!-- Animated Status Journey Tracker -->
+              <div class="track-progress-box">
+                <div class="track-progress-fill" id="sim-track-progress-fill" style="width: 15%;"></div>
+              </div>
+              <div class="track-status-header">
+                <span class="track-current-title" id="sim-track-step-title">বুকিং সম্পন্ন</span>
+                <span class="track-eta" id="sim-track-eta">সম্ভাব্য ডেলিভারি: আগামীকাল</span>
+              </div>
+
+              <!-- Live Steps History -->
+              <div class="track-history-list" id="sim-track-history-list">
+                <!-- Dynamic milestones listed here -->
+              </div>
+
+              <!-- Live Driver Call Card (visible on step 6-7) -->
+              <div class="track-rider-card" id="sim-track-rider-card" style="display: none;">
+                <div class="rider-avatar"><i class="fa-solid fa-motorcycle"></i></div>
+                <div class="rider-info">
+                  <div class="rider-name">রহিম মিয়া (মিরপুর রাইডার)</div>
+                  <div class="rider-sub">ডেলিভারি নিয়ে আপনার ঠিকানায় আসছেন</div>
+                </div>
+                <button type="button" class="rider-call-btn" id="sim-cust-call-btn">
+                  <i class="fa-solid fa-phone"></i> কল দিন
+                </button>
+              </div>
+
+              <!-- Customer OTP Showcase Card -->
+              <div class="track-otp-card" id="sim-track-otp-card">
+                <div class="otp-card-header">
+                  <i class="fa-solid fa-key"></i> গোপন ডেলিভারি OTP কোড
+                </div>
+                <div class="otp-digits-box">
+                  <span class="otp-box" id="sim-otp-d1">৭</span>
+                  <span class="otp-box" id="sim-otp-d2">৪</span>
+                  <span class="otp-box" id="sim-otp-d3">২</span>
+                  <span class="otp-box" id="sim-otp-d4">৯</span>
+                </div>
+                <p class="otp-instruction">পার্সেল হাতে পেয়ে রাইডারকে এই কোডটি বলুন। কোড না দিলে ডেলিভারি সফল হবে না।</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Thermal Label Print Preview Modal -->
+      <div id="sim-thermal-modal" class="sim-modal-overlay">
+        <div class="sim-thermal-dialog">
+          <div class="thermal-dialog-header">
+            <span><i class="fa-solid fa-print"></i> ৪x৬ ইঞ্চি থার্মাল বারকোড স্টিকার প্রিভিউ</span>
+            <button type="button" id="sim-close-thermal-btn" class="thermal-close-btn">&times;</button>
+          </div>
+          <div class="thermal-label-paper">
+            <!-- Thermal Label Content -->
+            <div class="thermal-row-brand">
+              <span class="t-brand">RAJ COURIER</span>
+              <span class="t-routing">DHK-MIR</span>
+            </div>
+            <div class="thermal-barcode-box">
+              <div class="t-barcode-lines">||| | |||| || ||| |||| || | || |||| | |||</div>
+              <div class="t-barcode-num">RAJ-DH-89214</div>
+            </div>
+            <div class="thermal-grid">
+              <div class="t-col">
+                <span class="t-label">মার্চেন্ট (প্রেরক):</span>
+                <strong class="t-val">মাহমুদ ফ্যাশন শপ</strong>
+                <span class="t-sub">জিন্দাবাজার, সিলেট · 01712-XXXXXX</span>
+              </div>
+              <div class="t-col">
+                <span class="t-label">গ্রাহক (প্রাপক):</span>
+                <strong class="t-val">তানভীর আহমেদ</strong>
+                <span class="t-sub">রোড ৪, ব্লক সি, মিরপুর ১০, ঢাকা · 01711-XXXXXX</span>
+              </div>
+            </div>
+            <div class="thermal-cod-box">
+              <div class="t-cod-amount">COD: BDT ৳২,০০০</div>
+              <div class="t-weight">ওজন: ১.২ কেজি (বুটিক শাড়ি ও পাঞ্জাবি)</div>
+            </div>
+            <div class="thermal-footer">
+              <span>হাব কোড: SYL-01 ➔ DHK-04</span>
+              <span>তারিখ: ১৯ অক্টোবর ২০২৬</span>
+            </div>
+          </div>
+          <div class="thermal-dialog-actions">
+            <button type="button" class="sim-btn sim-btn-primary" id="sim-print-confirm-btn">
+              <i class="fa-solid fa-check"></i> প্রিন্ট সম্পন্ন ও লেবেল সংযুক্ত
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Commitment Banner -->
+      <div class="roles-summary-banner">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>রিয়েল-টাইম আর্কিটেকচার: <strong>PostgreSQL + Fastify + Redis BullMQ + React/React Native</strong> · সম্পূর্ণ সিস্টেম <strong>Dofva Automation</strong> কর্তৃক প্রস্তুতকৃত।</span>
       </div>
 
     </section>
@@ -280,4 +1551,5 @@
   <!-- Interactive JavaScript Logic -->
   <script src="app.js"></script>
 </body>
+
 </html>
