@@ -46,11 +46,8 @@ const simSteps1to5 = [
       </div>
 
       <div class="m-card">
-        <div style="font-size:12px; font-weight:800; color:var(--brand-primary); margin-bottom:6px;">
-          <i class="fa-solid fa-tags"></i> বারকোড স্টিকার পলিসি নির্বাচন
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">
-          আপনার কাছে থার্মাল প্রিন্টার না থাকলে হাবে পার্সেল যাওয়ার পর বিনামূল্যে স্টিকার লাগিয়ে দেওয়া হবে।
+        <div style="font-size:12px; font-weight:800; color:var(--brand-primary); margin-bottom:8px;">
+          <i class="fa-solid fa-tags"></i> বারকোড স্টিকার পলিসি
         </div>
         
         <div class="sim-label-selector">
@@ -58,8 +55,8 @@ const simSteps1to5 = [
             <div class="sim-radio-left">
               <input type="radio" name="sim-label-mode-m" value="branch" checked>
               <div class="sim-radio-text">
-                <strong>🏢 হাব/ব্রাঞ্চে স্টিকার লাগানো হবে</strong>
-                <span>ফ্রি সার্ভিস (৮০% মার্চেন্ট এটি ব্যবহার করেন)</span>
+                <strong>🏢 হাব/ব্রাঞ্চ প্রিন্ট</strong>
+                <span>ফ্রি সার্ভিস</span>
               </div>
             </div>
             <span class="badge-chip success">জনপ্রিয়</span>
@@ -69,8 +66,8 @@ const simSteps1to5 = [
             <div class="sim-radio-left">
               <input type="radio" name="sim-label-mode-m" value="merchant">
               <div class="sim-radio-text">
-                <strong>🖨️ মার্চেন্ট নিজে প্রিন্ট করবেন</strong>
-                <span>৪x৬ থার্মাল লেবেল সরাসরি শপ থেকে প্রিন্ট</span>
+                <strong>🖨️ শপ প্রিন্ট</strong>
+                <span>৪x৬ থার্মাল লেবেল</span>
               </div>
             </div>
           </label>
@@ -92,18 +89,9 @@ const simSteps1to5 = [
         </div>
       </div>
 
-      <div class="m-card" style="border:1.5px dashed var(--brand-primary); background:rgba(37,99,235,0.03);">
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-          <i class="fa-solid fa-bell fa-bounce" style="color:var(--brand-primary);"></i>
-          <strong style="font-size:12px; color:var(--brand-primary);">নতুন পিকআপ রিকোয়েস্ট আসছে...</strong>
-        </div>
-        <div style="font-size:11px; line-height:1.5; color:var(--text-main);">
-          মার্চেন্ট মাহমুদ ভাই পিকআপ কল করলে এই স্ক্রিনে ইনস্ট্যান্ট নোটিফিকেশন ও ম্যাপ রুট প্রদর্শিত হবে।
-        </div>
-      </div>
-
-      <div style="text-align:center; padding:15px; color:var(--text-muted); font-size:11px;">
-        <i class="fa-solid fa-hourglass-half fa-spin"></i> মার্চেন্ট কনফার্মেশনের অপেক্ষায়...
+      <div class="m-card" style="text-align:center; padding:20px 14px; border:1.5px dashed var(--border-color);">
+        <i class="fa-solid fa-hourglass-half fa-spin" style="font-size:22px; color:var(--brand-primary); margin-bottom:8px;"></i>
+        <div style="font-size:12px; font-weight:700;">পিকআপ কলের অপেক্ষায়...</div>
       </div>
     `,
 
@@ -177,16 +165,6 @@ const simSteps1to5 = [
             <span class="m-val">সকাল ১০:১৫ AM</span>
           </div>
         </div>
-      </div>
-
-      <div class="m-card" style="background:rgba(5,150,105,0.04); border-color:var(--brand-success);">
-        <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:var(--brand-success); font-weight:700;">
-          <i class="fa-solid fa-shield-halved"></i> ডিজিটাল হেফাজত নিশ্চিত (Chain of Custody)
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-top:5px; line-height:1.4;">
-          রাইডার করিম তার ফোনে বারকোড স্ক্যান সম্পন্ন করেছেন। পার্সেলটির আইনি দায়িত্ব এখন রাজ কুরিয়ারের।
-        </div>
-      </div>
     `,
 
     // ২. রাইডার অ্যাপ স্ক্রিন
@@ -301,17 +279,6 @@ const simSteps1to5 = [
           <span class="m-label">স্টিকার স্ট্যাটাস:</span>
           <span class="m-val" style="color:var(--brand-primary); font-weight:800;">🖨️ ৪x৬ থার্মাল লেবেল প্রস্তুত</span>
         </div>
-      </div>
-
-      <div class="m-card" style="border:1px dashed var(--brand-accent); background:rgba(245,158,11,0.04);">
-        <div style="font-size:12px; font-weight:700; color:var(--brand-accent); margin-bottom:4px;">
-          <i class="fa-solid fa-print"></i> ব্রাঞ্চ লেবেলিং পলিসি কার্যকর
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
-          যেহেতু বুকিংয়ের সময় আপনি "ব্রাঞ্চে প্রিন্ট" নির্বাচন করেছিলেন, তাই হাব অপারেটর হাই-স্পিড থার্মাল প্রিন্টারে বারকোড স্টিকার প্রিন্ট করে পার্সেলে পেস্ট করছেন।
-        </div>
-      </div>
-
       <button id="m-action-btn-3" class="m-btn m-btn-warning">
         <i class="fa-solid fa-eye"></i> ৪x৬ থার্মাল স্টিকার প্রিভিউ দেখুন
       </button>
@@ -326,12 +293,6 @@ const simSteps1to5 = [
           <div><strong>মোট সংগৃহীত পার্সেল:</strong> ১২টি</div>
           <div><strong>সিলেট হাবে জমা:</strong> ১২টি (১০০% হ্যান্ডওভার সফল)</div>
           <div><strong>গ্রহণকারী হাব অফিসার:</strong> শাকিল হোসেন</div>
-        </div>
-      </div>
-
-      <div class="m-card" style="background:var(--bg-card-subtle);">
-        <div style="font-size:11px; color:var(--text-muted);">
-          <i class="fa-solid fa-clock"></i> পরবর্তী শিফট: দুপুর ২:৩০ (বিকেলের পিকআপ ও ড্রপ-অফ)
         </div>
       </div>
     `,
@@ -411,15 +372,6 @@ const simSteps1to5 = [
           <span class="m-val highlight">BAG-SYL-DH-084</span>
         </div>
       </div>
-
-      <div class="m-card" style="background:rgba(2,132,199,0.04); border-color:#0284c7;">
-        <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#0284c7; font-weight:700;">
-          <i class="fa-solid fa-location-crosshairs fa-spin"></i> লাইভ জিপিএস রুট ট্র্যাকিং
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-top:6px; line-height:1.5;">
-          কাভার্ড ভ্যানটি বর্তমানে ভৈরব মেঘনা ব্রিজ অতিক্রম করছে। রাত ০৩:১৫ মিনিটে ঢাকা সেন্ট্রাল সর্টিং হাবে পৌঁছাবে।
-        </div>
-      </div>
     `,
 
     // ২. রাইডার অ্যাপ স্ক্রিন
@@ -428,18 +380,6 @@ const simSteps1to5 = [
         <span class="m-badge primary"><i class="fa-solid fa-moon"></i> নাইট স্ট্যান্ডবাই মোড</span>
         <div style="margin-top:6px; font-size:12px; line-height:1.5;">
           <strong>রহিম মিয়া (মিরপুর জোন রাইডার)</strong>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">
-            আন্তঃজেলা ট্রাক সিলেট থেকে ঢাকার পথে রয়েছে। তেজগাঁও সেন্ট্রাল সর্টিং শেষ হলে পার্সেলটি কাল সকালে আপনার রানশিটে আসবে।
-          </div>
-        </div>
-      </div>
-
-      <div class="m-card" style="background:var(--bg-card-subtle);">
-        <div style="font-size:12px; font-weight:700; margin-bottom:4px;">
-          <i class="fa-solid fa-calendar-day"></i> আগামীকালের সম্ভাব্য মিরপুর ডেলিভারি
-        </div>
-        <div style="font-size:11px; color:var(--text-muted);">
-          প্রত্যাশিত পার্সেল সংখ্যা: ১৮টি (সিলেট, চট্টগ্রাম ও খুলনা ইনবাউন্ড)
         </div>
       </div>
     `,
@@ -513,15 +453,6 @@ const simSteps1to5 = [
         <div class="m-field-group">
           <span class="m-label">রানশিট নং:</span>
           <span class="m-val highlight">#MIR-RUN-104</span>
-        </div>
-      </div>
-
-      <div class="m-card" style="background:rgba(37,99,235,0.04); border-color:var(--brand-primary);">
-        <div style="font-size:12px; font-weight:700; color:var(--brand-primary); margin-bottom:4px;">
-          <i class="fa-solid fa-bell"></i> কাস্টমার এসএমএস নোটিফিকেশন প্রেরিত
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
-          ক্রেতা তানভীর আহমেদকে রাইডারের ফোন নম্বর ও ৪ ডিজিটের গোপন ওটিপি এসএমএস পাঠানো হয়েছে।
         </div>
       </div>
     `,

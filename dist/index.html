@@ -521,29 +521,13 @@
     <!-- Tab 4: Interactive Live System Simulator Panel -->
     <section id="panel-simulator" class="presentation-panel" role="tabpanel">
 
-      <!-- Simulator Banner & Introduction -->
-      <div class="sim-banner-card">
-        <div class="sim-banner-header">
-          <div class="sim-badge-pill">
-            <i class="fa-solid fa-gamepad"></i> ইন্টারেক্টিভ লাইভ ডেমো
-          </div>
-          <div class="sim-badge-tech">
-            <i class="fa-solid fa-bolt"></i> রিয়েল-টাইম সিস্টেম সিমুলেশন (Full Lifecycle)
-          </div>
-        </div>
-        <h2 class="sim-banner-title">রাজ কুরিয়ার এন্ড-টু-এন্ড লাইভ অপারেশনাল সিমুলেটর</h2>
-        <p class="sim-banner-subtitle">
-          মার্চেন্টের পার্সেল বুকিং থেকে শুরু করে রাইডারের বারকোড লেজার স্ক্যান, সিলেট ➔ ঢাকা লাইন-হল হাইওয়ে চালান, কাস্টমার ওটিপি ডেলিভারি এবং মার্চেন্টের বিকাশ ওয়ালেটে তাৎক্ষণিক ক্যাশ ট্রান্সফার—সম্পূর্ণ লাইফসাইকেল সরাসরি টেস্ট করুন।
-        </p>
-      </div>
-
       <!-- Simulator Master Control Bar -->
       <div class="sim-control-bar">
         <!-- Playback Controls -->
         <div class="sim-playback-group">
           <button type="button" id="sim-autoplay-btn" class="sim-ctrl-btn sim-btn-play" title="অটোমেটিক ডেমো প্লে করুন">
             <i class="fa-solid fa-play"></i>
-            <span>অটো-প্লে ডেমো</span>
+            <span>অটো-প্লে</span>
           </button>
           <button type="button" id="sim-prev-btn" class="sim-ctrl-btn" title="পূর্ববর্তী ধাপে যান">
             <i class="fa-solid fa-chevron-left"></i>
@@ -567,31 +551,31 @@
 
         <!-- View Mode Switcher -->
         <div class="sim-view-mode-group">
-          <span class="sim-control-label"><i class="fa-solid fa-eye"></i> ভিউ মোড:</span>
-          <button type="button" class="sim-mode-btn active" data-mode="command" title="মার্চেন্ট ফোন + রাইডার ফোন + ডেস্কটপ + ট্র্যাকিং সব একসাথে">
-            <i class="fa-solid fa-table-cells-large"></i> ৪টি আলাদা স্ক্রিন (অল-ইন-ওয়ান)
+          <span class="sim-control-label"><i class="fa-solid fa-eye"></i> ভিউ:</span>
+          <button type="button" class="sim-mode-btn active" data-mode="command" title="৪টি স্ক্রিন একসাথে">
+            <i class="fa-solid fa-table-cells-large"></i> ৪ স্ক্রিন
           </button>
-          <button type="button" class="sim-mode-btn" data-mode="mobile" title="উভয় মোবাইল অ্যাপ পাশাপাশি দেখুন">
-            <i class="fa-solid fa-mobile-screen"></i> ডুয়েল মোবাইল (মার্চেন্ট + রাইডার)
+          <button type="button" class="sim-mode-btn" data-mode="mobile" title="মার্চেন্ট ও রাইডার অ্যাপ">
+            <i class="fa-solid fa-mobile-screen"></i> ডুয়েল মোবাইল
           </button>
-          <button type="button" class="sim-mode-btn" data-mode="merchant-full" title="মার্চেন্ট অ্যাপের পূর্ণাঙ্গ ফিচার ও ইন্টারঅ্যাক্টিভ স্ক্রিনসমূহ">
-            <i class="fa-solid fa-shop"></i> 🏪 মার্চেন্ট ফুল অ্যাপ
+          <button type="button" class="sim-mode-btn" data-mode="merchant-full" title="মার্চেন্ট অ্যাপ">
+            <i class="fa-solid fa-shop"></i> মার্চেন্ট অ্যাপ
           </button>
-          <button type="button" class="sim-mode-btn" data-mode="rider-full" title="ডেলিভারি ম্যান / রাইডার অ্যাপের পূর্ণাঙ্গ ফিচার ও ইন্টারঅ্যাক্টিভ স্ক্রিনসমূহ">
-            <i class="fa-solid fa-motorcycle"></i> 🛵 ডেলিভারি ফুল অ্যাপ
+          <button type="button" class="sim-mode-btn" data-mode="rider-full" title="রাইডার অ্যাপ">
+            <i class="fa-solid fa-motorcycle"></i> রাইডার অ্যাপ
           </button>
-          <button type="button" class="sim-mode-btn" data-mode="branch-full" title="ব্রাঞ্চ ও হাবের পূর্ণাঙ্গ অপারেশনাল ওয়েব পোর্টাল">
-            <i class="fa-solid fa-building-user"></i> 🏢 ব্রাঞ্চ ওয়েব পোর্টাল
+          <button type="button" class="sim-mode-btn" data-mode="branch-full" title="ব্রাঞ্চ ওয়েব পোর্টাল">
+            <i class="fa-solid fa-building-user"></i> ব্রাঞ্চ পোর্টাল
           </button>
         </div>
 
         <!-- Phone Device Frame Toggle -->
         <div class="sim-device-toggle-group">
           <span class="sim-control-label"><i class="fa-solid fa-mobile"></i> ফ্রেম:</span>
-          <button type="button" class="sim-device-btn active" data-device="iphone" title="iPhone 15 Pro (iOS Dynamic Island)">
-            <i class="fa-brands fa-apple"></i> iPhone 15 Pro
+          <button type="button" class="sim-device-btn active" data-device="iphone" title="iPhone 15 Pro">
+            <i class="fa-brands fa-apple"></i> iPhone
           </button>
-          <button type="button" class="sim-device-btn" data-device="android" title="Android (Samsung/Pixel Punch Hole)">
+          <button type="button" class="sim-device-btn" data-device="android" title="Android">
             <i class="fa-brands fa-android"></i> Android
           </button>
         </div>
@@ -698,12 +682,6 @@
       <!-- Thermal Label Print Preview Modal -->
       <!-- Simulator Thermal Modal Mount (Injected dynamically from js/simulator-stage.js) -->
       <div id="sim-modal-mount"></div>
-      <!-- Commitment Banner -->
-      <div class="roles-summary-banner">
-        <i class="fa-solid fa-circle-check"></i>
-        <span>রিয়েল-টাইম আর্কিটেকচার: <strong>PostgreSQL + Fastify + Redis BullMQ + React/React Native</strong> · সম্পূর্ণ সিস্টেম <strong>Dofva Automation</strong> কর্তৃক প্রস্তুতকৃত।</span>
-      </div>
-
     </section>
 
     <!-- Presentation Footer: Agency / Tech Branding -->

@@ -47,16 +47,6 @@ const simSteps6to9 = [
           <span class="m-label">রাইডার অবস্থান:</span>
           <span class="m-val">গ্রাহকের দরজায় উপস্থিত</span>
         </div>
-      </div>
-
-      <div class="m-card" style="background:rgba(245,158,11,0.04); border-color:var(--brand-accent);">
-        <div style="font-size:12px; font-weight:700; color:var(--brand-accent); margin-bottom:4px;">
-          <i class="fa-solid fa-shield-keyhole"></i> সিকিউর ওটিপি ভেরিফিকেশন সক্রিয়
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
-          গ্রাহকের মোবাইলে পাঠানো গোপন ওটিপি রাইডার অ্যাপে ইনপুট দিয়ে যাচাই ছাড়া পার্সেল হস্তান্তর করা সম্ভব নয়।
-        </div>
-      </div>
     `,
 
     // ২. রাইডার অ্যাপ স্ক্রিন
@@ -169,16 +159,6 @@ const simSteps6to9 = [
             <span class="m-val">সকাল ১১:৪২ AM</span>
           </div>
         </div>
-      </div>
-
-      <div class="m-card" style="background:rgba(5,150,105,0.04); border-color:var(--brand-success);">
-        <div style="font-size:12px; font-weight:700; color:var(--brand-success); margin-bottom:4px;">
-          <i class="fa-solid fa-wallet"></i> আপনার প্রাপ্য টাকা: ৳১,৮৯০
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
-          রাইডার মিরপুর হাবে ক্যাশ জমা দিলে সাথে সাথে আপনার বিকাশ অ্যাকাউন্টে অটোমেটিক পেমেন্ট পৌঁছে যাবে।
-        </div>
-      </div>
     `,
 
     // ২. রাইডার অ্যাপ স্ক্রিন
@@ -201,9 +181,6 @@ const simSteps6to9 = [
         <div class="m-field-group">
           <span class="m-label">রাইডারের বর্তমান ক্যাশ দায়:</span>
           <span class="m-val" style="color:var(--brand-danger);">৳২,০০০ (হাতে সংরক্ষিত)</span>
-        </div>
-        <div style="margin-top:6px; font-size:11px; color:var(--text-muted);">
-          <i class="fa-solid fa-triangle-exclamation" style="color:var(--brand-accent);"></i> এই ক্যাশ টাকা মিরপুর হাবে ক্যাশিয়ারকে জমা না দেওয়া পর্যন্ত রাইডারের অ্যাকাউন্টে দায় হিসেবে থাকবে।
         </div>
       </div>
 
@@ -288,16 +265,6 @@ const simSteps6to9 = [
           <span class="m-label">জমাকৃত ক্যাশ:</span>
           <span class="m-val highlight" style="color:var(--brand-accent);">৳২,০০০ (১০০% রিকনসাইল্ড)</span>
         </div>
-      </div>
-
-      <div class="m-card" style="border:1px dashed var(--brand-success); background:rgba(5,150,105,0.04);">
-        <div style="font-size:12px; font-weight:700; color:var(--brand-success); margin-bottom:4px;">
-          <i class="fa-solid fa-bolt"></i> অটোমেটিক পেমেন্ট রিলিজ হচ্ছে...
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
-          হেড অফিস ফিন্যান্স গেটওয়ে থেকে মাহমুদ ফ্যাশনের বিকাশ মার্চেন্ট অ্যাকাউন্টে ৳১,৮৯০ সরাসরি ট্রান্সফার হচ্ছে।
-        </div>
-      </div>
     `,
 
     // ২. রাইডার অ্যাপ স্ক্রিন
@@ -316,9 +283,6 @@ const simSteps6to9 = [
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span style="font-size:12px; font-weight:700; color:var(--brand-success);">রাইডার বর্তমান ব্যালেন্স:</span>
           <span style="font-size:14px; font-weight:800; color:var(--brand-success);">৳০ (ক্লিয়ার)</span>
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">
-          ✅ আপনার কোনো ক্যাশ দেনা নেই। আজকের শিফটের আর্থিক দায়িত্ব সফলভাবে ক্লোজ হয়েছে।
         </div>
       </div>
 
@@ -439,16 +403,6 @@ const simSteps6to9 = [
           <div><strong>ডেলিভারি কমিশন অর্জিত:</strong> <strong style="color:var(--brand-success);">+৳৫৪০</strong></div>
           <div><strong>কাস্টমার রেটিং:</strong> ৫.০ ⭐⭐⭐⭐⭐</div>
         </div>
-      </div>
-
-      <div class="m-card" style="background:rgba(5,150,105,0.04); border-color:var(--brand-success);">
-        <div style="font-size:12px; font-weight:700; color:var(--brand-success); margin-bottom:4px;">
-          <i class="fa-solid fa-circle-check"></i> সম্পূর্ণ লাইফসাইকেল সম্পন্ন
-        </div>
-        <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
-          পার্সেল হ্যান্ডওভার, কাস্টমার ওটিপি ও হাব ক্যাশ ক্লোজিং নির্ভুলভাবে সমাপ্ত হয়েছে।
-        </div>
-      </div>
     `,
 
     // ৩. ডেস্কটপ ব্রাউজার স্ক্রিন
