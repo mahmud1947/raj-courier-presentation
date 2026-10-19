@@ -1,0 +1,635 @@
+/* =========================================================
+   6. SIMULATOR PORTAL: DESKTOP BROWSER, TRACKING & MODAL
+   ========================================================= */
+
+/* =========================================================
+   Desktop Web Browser Window Mockup
+   ========================================================= */
+
+.browser-window-frame {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  min-height: 720px;
+}
+
+.browser-header {
+  background: var(--bg-card-subtle);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.browser-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.browser-url-bar {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 5px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.url-secure-icon {
+  color: var(--brand-success);
+  font-size: 11px;
+}
+
+.url-text {
+  flex: 1;
+  font-family: monospace;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.url-reload-icon {
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.browser-live-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand-success);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-success);
+  display: inline-block;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.browser-body {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-main);
+}
+
+/* Desktop Portal Inner Components */
+.d-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.d-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.d-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.d-stat-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.d-stat-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.d-stat-num {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand-primary);
+  margin-top: 4px;
+}
+
+.d-table-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+}
+
+.d-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.d-table th {
+  background: var(--bg-card-subtle);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.d-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.d-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================================================
+   Stage Column 3: Customer Live Web Tracking & SMS Alert
+   ========================================================= */
+
+.tracking-device-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sim-sms-bubble {
+  background: #1e293b;
+  color: #f8fafc;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--brand-accent);
+}
+
+.sms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.sms-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+.customer-track-portal {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.track-portal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.track-brand {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.track-code {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--bg-card-subtle);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+}
+
+.track-progress-box {
+  height: 8px;
+  background: var(--bg-card-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.track-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #10b981);
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+.track-status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.track-current-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+.track-eta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.track-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.t-history-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.t-history-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-color);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.t-history-item.done .t-history-dot {
+  background: var(--brand-success);
+}
+
+.t-history-item.current .t-history-dot {
+  background: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.t-history-text {
+  flex: 1;
+}
+
+.t-history-title {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.t-history-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Rider Card on Customer Screen */
+.track-rider-card {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rider-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.rider-info {
+  flex: 1;
+}
+
+.rider-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.rider-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.rider-call-btn {
+  background: var(--brand-success);
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Customer Secret OTP Showcase */
+.track-otp-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.03) 100%);
+  border: 1px dashed var(--brand-accent);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  text-align: center;
+}
+
+.otp-card-header {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brand-accent);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.otp-digits-box {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.otp-box {
+  width: 32px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--brand-accent);
+  color: var(--brand-accent);
+  font-size: 18px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.otp-instruction {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* =========================================================
+   Thermal Barcode Sticker Print Modal
+   ========================================================= */
+
+.sim-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.sim-modal-overlay.active {
+  display: flex;
+}
+
+.sim-thermal-dialog {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  max-width: 440px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.thermal-dialog-header {
+  background: var(--bg-card-subtle);
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.thermal-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.thermal-label-paper {
+  background: #ffffff;
+  color: #000000;
+  margin: 18px;
+  border: 2px dashed #000000;
+  padding: 16px;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.thermal-row-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.t-brand {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.t-routing {
+  font-size: 20px;
+  font-weight: 900;
+  background: #000000;
+  color: #ffffff;
+  padding: 2px 8px;
+}
+
+.thermal-barcode-box {
+  text-align: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 10px;
+}
+
+.t-barcode-lines {
+  font-family: monospace;
+  font-size: 24px;
+  letter-spacing: 4px;
+  font-weight: 900;
+}
+
+.t-barcode-num {
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.thermal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.t-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #4b5563;
+  display: block;
+}
+
+.t-val {
+  font-size: 13px;
+  color: #000000;
+  display: block;
+}
+
+.t-sub {
+  font-size: 11px;
+  color: #374151;
+  display: block;
+}
+
+.thermal-cod-box {
+  background: #f3f4f6;
+  border: 1px solid #000000;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.t-cod-amount {
+  font-size: 16px;
+  font-weight: 900;
+  color: #000000;
+}
+
+.t-weight {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.thermal-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #6b7280;
+  border-top: 1px solid #000000;
+  padding-top: 6px;
+}
+
+.thermal-dialog-actions {
+  padding: 12px 18px 16px;
+  background: var(--bg-card-subtle);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .sim-stage-container.view-command {
+    grid-template-columns: 340px 1fr;
+  }
+  .sim-stage-container.view-command #sim-col-tracking {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 860px) {
+  .sim-stage-container.view-command {
+    grid-template-columns: 1fr;
+  }
+  .sim-stage-container.view-command #sim-col-tracking {
+    grid-column: span 1;
+  }
+  .phone-frame {
+    height: 640px;
+  }
+}
+
+

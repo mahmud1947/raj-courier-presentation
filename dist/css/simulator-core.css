@@ -1,0 +1,561 @@
+/* =========================================================
+   4. SIMULATOR CORE: CONTROLS, TIMELINE, LEDGER & STAGE
+   ========================================================= */
+
+/* =========================================================
+   Interactive Live System Simulator Styling
+   ========================================================= */
+
+.sim-banner-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.sim-banner-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb 0%, #7c3aed 50%, #059669 100%);
+}
+
+.sim-banner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sim-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--brand-primary-light);
+  color: var(--brand-primary);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+}
+
+.sim-badge-tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--brand-success-light);
+  color: var(--brand-success);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.sim-banner-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.sim-banner-subtitle {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* --- Master Control Bar --- */
+.sim-control-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sim-playback-group,
+.sim-view-mode-group,
+.sim-device-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sim-control-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-right: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sim-ctrl-btn {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.sim-ctrl-btn:hover {
+  background: var(--border-color);
+  transform: translateY(-1px);
+}
+
+.sim-btn-play {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  box-shadow: var(--shadow-active);
+}
+
+.sim-btn-play:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+}
+
+.sim-btn-play.playing {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+}
+
+.sim-btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-muted);
+}
+
+.sim-btn-ghost:hover {
+  background: var(--bg-card-subtle);
+  color: var(--text-main);
+}
+
+.sim-btn-icon {
+  padding: 8px 12px;
+  color: var(--brand-primary);
+}
+
+.sim-step-indicator-pill {
+  background: var(--bg-card-highlight);
+  border: 1px solid var(--border-color);
+  color: var(--brand-primary);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+}
+
+.sim-mode-btn,
+.sim-device-btn {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.sim-mode-btn:hover,
+.sim-device-btn:hover {
+  color: var(--text-main);
+  border-color: var(--brand-primary);
+}
+
+.sim-mode-btn.active,
+.sim-device-btn.active {
+  background: var(--brand-primary);
+  color: #ffffff;
+  border-color: var(--brand-primary);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* --- Timeline Navigation Bar --- */
+.sim-timeline-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.sim-timeline-track {
+  display: flex;
+  gap: 8px;
+  min-width: 900px;
+}
+
+.sim-step-item {
+  flex: 1;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  font-family: inherit;
+}
+
+.sim-step-item:hover {
+  background: var(--bg-card-highlight);
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+
+.sim-step-badge {
+  font-size: 11px;
+  font-weight: 800;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--border-color);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sim-step-icon {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 2px 0;
+}
+
+.sim-step-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.sim-step-item.active {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.04) 100%);
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.sim-step-item.active .sim-step-badge {
+  background: var(--brand-primary);
+  color: #ffffff;
+}
+
+.sim-step-item.active .sim-step-icon {
+  color: var(--brand-primary);
+}
+
+.sim-step-item.completed .sim-step-badge {
+  background: var(--brand-success);
+  color: #ffffff;
+}
+
+.sim-step-item.completed .sim-step-icon {
+  color: var(--brand-success);
+}
+
+/* --- Live Financial Ledger & Custody Status Bar --- */
+.sim-ledger-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.sim-ledger-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sim-ledger-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sim-ledger-val {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.sim-ledger-val.highlight {
+  color: var(--brand-primary);
+}
+
+.sim-ledger-val.success {
+  color: var(--brand-success);
+}
+
+.sim-ledger-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sim-status-chip {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sim-status-chip.pending {
+  background: var(--brand-accent-light);
+  color: var(--brand-accent);
+}
+
+.sim-status-chip.transit {
+  background: var(--brand-purple-light);
+  color: var(--brand-purple);
+}
+
+.sim-status-chip.delivered {
+  background: var(--brand-success-light);
+  color: var(--brand-success);
+}
+
+/* --- Main Stage Layouts --- */
+.sim-stage-container {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+/* 4-in-1 Command Center View: 3 columns (Mobile, Desktop Web, Tracking) */
+.sim-stage-container.view-command {
+  grid-template-columns: 360px 1.4fr 340px;
+  align-items: start;
+}
+
+/* Dual Mobile View (Merchant Phone + Rider Phone Side-by-Side) */
+.sim-stage-container.view-mobile {
+  grid-template-columns: 1fr 340px;
+  align-items: start;
+}
+
+.sim-stage-container.view-mobile #sim-col-mobile {
+  max-width: 100%;
+}
+
+.sim-stage-container.view-mobile .sim-dual-phones-container {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 20px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.sim-stage-container.view-mobile .sim-phone-wrapper {
+  display: block !important;
+  width: 325px !important;
+  min-width: 320px !important;
+  max-width: 335px !important;
+  flex-shrink: 0 !important;
+}
+
+.sim-stage-container.view-mobile #sim-col-desktop {
+  display: none !important;
+}
+
+.sim-stage-container.view-mobile #sim-col-tracking {
+  display: block !important;
+}
+
+/* App Switcher Tabs & Dual Phone Components */
+.sim-dual-phones-container {
+  position: relative;
+  width: 100%;
+}
+
+.sim-phone-wrapper {
+  display: none;
+}
+
+.sim-phone-wrapper.active {
+  display: block;
+  animation: phoneFadeIn 0.25s ease;
+}
+
+@keyframes phoneFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sim-app-toggle-tabs {
+  display: flex;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 4px;
+}
+
+.sim-app-tab-btn {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all var(--transition-fast);
+}
+
+.sim-app-tab-btn:hover {
+  color: var(--text-main);
+}
+
+.sim-app-tab-btn.active {
+  background: var(--brand-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+}
+
+.sim-app-tab-btn[data-app="rider"].active {
+  background: var(--brand-success);
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.35);
+}
+
+.phone-dedicated-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.merchant-badge {
+  background: var(--brand-primary-light);
+  color: var(--brand-primary);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.rider-badge {
+  background: var(--brand-success-light);
+  color: var(--brand-success);
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.app-header.merchant-theme .brand-ico {
+  color: #2563eb;
+}
+
+.app-header.rider-theme .brand-ico.rider-ico {
+  color: var(--brand-success);
+}
+
+.rider-pill {
+  background: var(--brand-success-light);
+  color: var(--brand-success);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+.phone-frame.rider-frame {
+  box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.25), 0 0 0 2px #065f46;
+}
+
+/* Desktop Focus Mode */
+.sim-stage-container.view-desktop {
+  grid-template-columns: 1fr;
+}
+
+.sim-stage-container.view-desktop #sim-col-mobile,
+.sim-stage-container.view-desktop #sim-col-tracking {
+  display: none;
+}
+
+.sim-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.sim-col-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim-col-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--brand-purple-light);
+  color: var(--brand-purple);
+}
+
+.sim-col-badge.desktop-badge {
+  background: var(--brand-primary-light);
+  color: var(--brand-primary);
+}
+
+.sim-col-badge.tracking-badge {
+  background: var(--brand-success-light);
+  color: var(--brand-success);
+}
+

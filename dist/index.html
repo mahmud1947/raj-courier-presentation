@@ -15,7 +15,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Presentation Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Modular Stylesheets (Zero build, high-performance parallel load) -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/models.css">
+  <link rel="stylesheet" href="css/dictionary.css">
+  <link rel="stylesheet" href="css/simulator-core.css">
+  <link rel="stylesheet" href="css/simulator-mobile.css">
+  <link rel="stylesheet" href="css/simulator-portal.css">
 </head>
 
 <body>
@@ -1617,6 +1623,12 @@
   </main>
 
   <!-- Interactive JavaScript Logic -->
+  <!-- Modular Application Scripts (Zero build, clear separation of concerns) -->
+  <script src="js/models-data.js"></script>
+  <script src="js/simulator-steps-1-5.js"></script>
+  <script src="js/simulator-steps-6-9.js"></script>
+  <script src="js/simulator-data.js"></script>
+  <script src="js/simulator.js"></script>
   <script src="app.js"></script>
 </body>
 
