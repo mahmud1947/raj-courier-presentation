@@ -367,50 +367,82 @@
 /* --- Main Stage Layouts --- */
 .sim-stage-container {
   display: grid;
-  gap: 24px;
-  margin-bottom: 30px;
-}
-
-/* 4-in-1 Command Center View: 3 columns (Mobile, Desktop Web, Tracking) */
-.sim-stage-container.view-command {
-  grid-template-columns: 360px 1.4fr 340px;
-  align-items: start;
-}
-
-/* Dual Mobile View (Merchant Phone + Rider Phone Side-by-Side) */
-.sim-stage-container.view-mobile {
-  grid-template-columns: 1fr 340px;
-  align-items: start;
-}
-
-.sim-stage-container.view-mobile #sim-col-mobile {
-  max-width: 100%;
-}
-
-.sim-stage-container.view-mobile .sim-dual-phones-container {
-  display: flex !important;
-  flex-direction: row !important;
   gap: 20px;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  margin-bottom: 30px;
+  align-items: start;
+}
+
+/* 1. All-in-One Command Center: 4 Dedicated Screens (Merchant Phone, Rider Phone, Desktop Web, Tracking) */
+.sim-stage-container.view-command {
+  grid-template-columns: 325px 325px minmax(360px, 1.2fr) 310px;
   overflow-x: auto;
   padding-bottom: 12px;
 }
 
-.sim-stage-container.view-mobile .sim-phone-wrapper {
+.sim-stage-container.view-command .sim-col-merchant,
+.sim-stage-container.view-command .sim-col-rider,
+.sim-stage-container.view-command .sim-desktop-column,
+.sim-stage-container.view-command .sim-tracking-column {
   display: block !important;
-  width: 325px !important;
-  min-width: 320px !important;
-  max-width: 335px !important;
-  flex-shrink: 0 !important;
 }
 
+/* 2. Dual Mobile Apps View (Merchant + Rider Side-by-Side) */
+.sim-stage-container.view-dual-mobile,
+.sim-stage-container.view-mobile {
+  grid-template-columns: 340px 340px 320px;
+  justify-content: center;
+}
+
+.sim-stage-container.view-dual-mobile .sim-col-merchant,
+.sim-stage-container.view-dual-mobile .sim-col-rider,
+.sim-stage-container.view-dual-mobile .sim-tracking-column,
+.sim-stage-container.view-mobile .sim-col-merchant,
+.sim-stage-container.view-mobile .sim-col-rider,
+.sim-stage-container.view-mobile .sim-tracking-column {
+  display: block !important;
+}
+
+.sim-stage-container.view-dual-mobile #sim-col-desktop,
 .sim-stage-container.view-mobile #sim-col-desktop {
   display: none !important;
 }
 
-.sim-stage-container.view-mobile #sim-col-tracking {
+/* 3. Merchant Full App Focus Mode */
+.sim-stage-container.view-merchant-full {
+  grid-template-columns: 380px 1fr;
+  justify-content: center;
+}
+
+.sim-stage-container.view-merchant-full .sim-col-merchant {
   display: block !important;
+}
+
+.sim-stage-container.view-merchant-full .sim-tracking-column {
+  display: block !important;
+}
+
+.sim-stage-container.view-merchant-full .sim-col-rider,
+.sim-stage-container.view-merchant-full #sim-col-desktop {
+  display: none !important;
+}
+
+/* 4. Rider Full App Focus Mode */
+.sim-stage-container.view-rider-full {
+  grid-template-columns: 380px 1fr;
+  justify-content: center;
+}
+
+.sim-stage-container.view-rider-full .sim-col-rider {
+  display: block !important;
+}
+
+.sim-stage-container.view-rider-full .sim-tracking-column {
+  display: block !important;
+}
+
+.sim-stage-container.view-rider-full .sim-col-merchant,
+.sim-stage-container.view-rider-full #sim-col-desktop {
+  display: none !important;
 }
 
 /* App Switcher Tabs & Dual Phone Components */
@@ -513,14 +545,19 @@
   box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.25), 0 0 0 2px #065f46;
 }
 
-/* Desktop Focus Mode */
+/* 5. Desktop Focus Mode */
 .sim-stage-container.view-desktop {
   grid-template-columns: 1fr;
 }
 
-.sim-stage-container.view-desktop #sim-col-mobile,
-.sim-stage-container.view-desktop #sim-col-tracking {
-  display: none;
+.sim-stage-container.view-desktop .sim-col-merchant,
+.sim-stage-container.view-desktop .sim-col-rider,
+.sim-stage-container.view-desktop .sim-tracking-column {
+  display: none !important;
+}
+
+.sim-stage-container.view-desktop #sim-col-desktop {
+  display: block !important;
 }
 
 .sim-col-header {

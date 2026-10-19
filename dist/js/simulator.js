@@ -119,43 +119,68 @@ const simThermalModal = document.getElementById('sim-thermal-modal');
 const simCloseThermalBtn = document.getElementById('sim-close-thermal-btn');
 const simPrintConfirmBtn = document.getElementById('sim-print-confirm-btn');
 
-// ডুয়েল অ্যাপ সুইচিং লজিক
-let simActiveMobileApp = 'merchant'; // 'merchant' | 'rider'
-let userManuallySelectedApp = false;
+// আলাদা আলাদা ফুল অ্যাপস স্টেট ও ইন-অ্যাপ ট্যাব কন্ট্রোলার
+let simMerchantCurrentTab = 'home'; // 'home' | 'parcels' | 'wallet' | 'profile'
+let simRiderCurrentTab = 'tasks';   // 'tasks' | 'scanner' | 'runsheet' | 'vault'
 
-function switchMobileApp(appType, isUserManual = false) {
-  simActiveMobileApp = appType;
-  if (isUserManual) userManuallySelectedApp = true;
+function switchMerchantAppTab(tabKey) {
+  simMerchantCurrentTab = tabKey;
+  const navBtns = document.querySelectorAll('#sim-merchant-bottom-nav .app-nav-item');
+  navBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mTab === tabKey);
+  });
 
-  const btnMerchant = document.getElementById('sim-btn-tab-merchant');
-  const btnRider = document.getElementById('sim-btn-tab-rider');
-  const wrapperMerchant = document.getElementById('sim-phone-wrapper-merchant');
-  const wrapperRider = document.getElementById('sim-phone-wrapper-rider');
+  const appBody = document.getElementById('sim-app-body-merchant');
+  if (!appBody) return;
 
-  if (btnMerchant) btnMerchant.classList.toggle('active', appType === 'merchant');
-  if (btnRider) btnRider.classList.toggle('active', appType === 'rider');
-
-  // ৪-ইন-১ কমান্ড সেন্টারে শুধু সক্রিয় ফোন দেখানো হয়
-  // ডুয়েল মোবাইল ভিউতে CSS দিয়ে উভয় ফোন পাশাপাশি দেখানো হয়
-  if (simViewMode !== 'mobile') {
-    if (wrapperMerchant) wrapperMerchant.classList.toggle('active', appType === 'merchant');
-    if (wrapperRider) wrapperRider.classList.toggle('active', appType === 'rider');
+  if (tabKey === 'home') {
+    const data = simStepsData[simCurrentStep - 1];
+    if (data) {
+      appBody.innerHTML = data.merchantHtml;
+      bindSimulatorScreenActions(simCurrentStep);
+    }
+  } else if (typeof merchantFullAppScreens !== 'undefined' && merchantFullAppScreens[tabKey]) {
+    appBody.innerHTML = merchantFullAppScreens[tabKey]();
   }
 }
 
-// অ্যাপ সুইচিং ট্যাব বাটন ক্লিক
-const btnTabMerchant = document.getElementById('sim-btn-tab-merchant');
-const btnTabRider = document.getElementById('sim-btn-tab-rider');
-if (btnTabMerchant) {
-  btnTabMerchant.addEventListener('click', () => {
-    switchMobileApp('merchant', true);
-    playSimSound('click');
+function switchRiderAppTab(tabKey) {
+  simRiderCurrentTab = tabKey;
+  const navBtns = document.querySelectorAll('#sim-rider-bottom-nav .app-nav-item');
+  navBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.rTab === tabKey);
   });
+
+  const appBody = document.getElementById('sim-app-body-rider');
+  if (!appBody) return;
+
+  if (tabKey === 'tasks') {
+    const data = simStepsData[simCurrentStep - 1];
+    if (data) {
+      appBody.innerHTML = data.riderHtml;
+      bindSimulatorScreenActions(simCurrentStep);
+    }
+  } else if (typeof riderFullAppScreens !== 'undefined' && riderFullAppScreens[tabKey]) {
+    appBody.innerHTML = riderFullAppScreens[tabKey]();
+  }
 }
-if (btnTabRider) {
-  btnTabRider.addEventListener('click', () => {
-    switchMobileApp('rider', true);
-    playSimSound('click');
+
+// ইন-অ্যাপ বটম বার ইভেন্ট ইনিশিয়ালাইজেশন
+function initInAppNavigation() {
+  const merchantTabs = document.querySelectorAll('#sim-merchant-bottom-nav .app-nav-item');
+  merchantTabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      playSimSound('click');
+      switchMerchantAppTab(btn.dataset.mTab);
+    });
+  });
+
+  const riderTabs = document.querySelectorAll('#sim-rider-bottom-nav .app-nav-item');
+  riderTabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      playSimSound('click');
+      switchRiderAppTab(btn.dataset.rTab);
+    });
   });
 }
 
@@ -230,19 +255,24 @@ function renderSimulatorStep(stepNum, shouldPlaySound = true) {
     processStatus.innerHTML = `<span class="sim-status-chip ${data.statusChip.class}">${data.statusChip.text}</span>`;
   }
 
-  // ৪. ডুয়েল মোবাইল স্ক্রিন আপডেট (মার্চেন্ট ও রাইডার উভয়ের স্ক্রিন আপডেট)
+  // ৪. আলাদা আলাদা মার্চেন্ট ও রাইডার স্ক্রিন আপডেট
   const simAppBodyMerchant = document.getElementById('sim-app-body-merchant');
   const simAppBodyRider = document.getElementById('sim-app-body-rider');
   const simRiderNameTag = document.getElementById('sim-rider-name-tag');
 
+  // ধাপ পরিবর্তনের সাথে সাথে উভয় ফোনেই স্টেপ ভিউ (হোম / টাস্ক) সক্রিয় করুন
+  simMerchantCurrentTab = 'home';
+  simRiderCurrentTab = 'tasks';
+
+  const mTabs = document.querySelectorAll('#sim-merchant-bottom-nav .app-nav-item');
+  mTabs.forEach(btn => btn.classList.toggle('active', btn.dataset.mTab === 'home'));
+
+  const rTabs = document.querySelectorAll('#sim-rider-bottom-nav .app-nav-item');
+  rTabs.forEach(btn => btn.classList.toggle('active', btn.dataset.rTab === 'tasks'));
+
   if (simAppBodyMerchant) simAppBodyMerchant.innerHTML = data.merchantHtml;
   if (simAppBodyRider) simAppBodyRider.innerHTML = data.riderHtml;
   if (simRiderNameTag && data.riderName) simRiderNameTag.textContent = data.riderName;
-
-  // যদি ব্যবহারকারী নিজে ট্যাপ করে না থাকেন, তবে সংশ্লিষ্ট ধাপের প্রধান অ্যাপে অটো সুইচ করুন
-  if (!userManuallySelectedApp && data.primaryApp) {
-    switchMobileApp(data.primaryApp, false);
-  }
 
   // ৫. ডেস্কটপ ব্রাউজার স্ক্রিন আপডেট
   const simBrowserUrl = document.getElementById('sim-browser-url');
@@ -501,7 +531,7 @@ simTimelineItems.forEach((item) => {
   });
 });
 
-// ভিউ মোড সুইচিং (কমান্ড সেন্টার / ডুয়েল মোবাইল / ডেস্কটপ)
+// ভিউ মোড সুইচিং (কমান্ড সেন্টার / ডুয়েল মোবাইল / মার্চেন্ট ফুল / রাইডার ফুল / ডেস্কটপ)
 simModeButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
     const mode = btn.dataset.mode;
@@ -514,11 +544,16 @@ simModeButtons.forEach((btn) => {
     simViewMode = mode;
     playSimSound('click');
 
-    // মোড পরিবর্তনের পর ফোনের দৃশ্যমানতা আপডেট
-    if (mode === 'mobile') {
+    if (mode === 'command') {
+      showSimToast('🎛️ ৪টি আলাদা স্ক্রিন ভিউ: মার্চেন্ট ফোন + রাইডার ফোন + ডেস্কটপ + কাস্টমার ট্র্যাকিং!', 'fa-table-columns');
+    } else if (mode === 'mobile') {
       showSimToast('📱 ডুয়েল মোবাইল ভিউ: মার্চেন্ট ও রাইডার অ্যাপ পাশাপাশি প্রদর্শিত!', 'fa-mobile-screen');
-    } else {
-      switchMobileApp(simActiveMobileApp, false);
+    } else if (mode === 'merchant-full') {
+      showSimToast('🏪 মার্চেন্ট ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (পার্সেল, ওয়ালেট, প্রোফাইল) এক্সপ্লোর করুন।', 'fa-shop');
+    } else if (mode === 'rider-full') {
+      showSimToast('🛵 রাইডার ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (স্ক্যানার, রানশিট, ভল্ট) এক্সপ্লোর করুন।', 'fa-motorcycle');
+    } else if (mode === 'desktop') {
+      showSimToast('💻 ডেস্কটপ পোর্টাল ভিউ সক্রিয়!', 'fa-desktop');
     }
   });
 });
@@ -553,6 +588,9 @@ simDeviceButtons.forEach((btn) => {
     );
   });
 });
+
+// ইন-অ্যাপ বটম বার ইভেন্ট ইনিশিয়ালাইজেশন
+initInAppNavigation();
 
 // ইনিশিয়াল সিমুলেটর রেন্ডারিং
 renderSimulatorStep(1, false);

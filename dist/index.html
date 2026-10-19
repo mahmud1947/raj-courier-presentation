@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="css/simulator-core.css">
   <link rel="stylesheet" href="css/simulator-mobile.css">
   <link rel="stylesheet" href="css/simulator-portal.css">
+  <link rel="stylesheet" href="css/simulator-apps-full.css">
 </head>
 
 <body>
@@ -563,13 +564,19 @@
         <!-- View Mode Switcher -->
         <div class="sim-view-mode-group">
           <span class="sim-control-label"><i class="fa-solid fa-eye"></i> ভিউ মোড:</span>
-          <button type="button" class="sim-mode-btn active" data-mode="command">
-            <i class="fa-solid fa-table-cells-large"></i> ৪-ইন-১ কমান্ড সেন্টার
+          <button type="button" class="sim-mode-btn active" data-mode="command" title="মার্চেন্ট ফোন + রাইডার ফোন + ডেস্কটপ + ট্র্যাকিং সব একসাথে">
+            <i class="fa-solid fa-table-cells-large"></i> ৪টি আলাদা স্ক্রিন (অল-ইন-ওয়ান)
           </button>
-          <button type="button" class="sim-mode-btn" data-mode="mobile">
-            <i class="fa-solid fa-mobile-screen"></i> ডুয়েল মোবাইল অ্যাপস (মার্চেন্ট + রাইডার)
+          <button type="button" class="sim-mode-btn" data-mode="mobile" title="উভয় মোবাইল অ্যাপ পাশাপাশি দেখুন">
+            <i class="fa-solid fa-mobile-screen"></i> ডুয়েল মোবাইল (মার্চেন্ট + রাইডার)
           </button>
-          <button type="button" class="sim-mode-btn" data-mode="desktop">
+          <button type="button" class="sim-mode-btn" data-mode="merchant-full" title="মার্চেন্ট অ্যাপের পূর্ণাঙ্গ ফিচার ও ইন্টারঅ্যাক্টিভ স্ক্রিনসমূহ">
+            <i class="fa-solid fa-shop"></i> 🏪 মার্চেন্ট ফুল অ্যাপ
+          </button>
+          <button type="button" class="sim-mode-btn" data-mode="rider-full" title="ডেলিভারি ম্যান / রাইডার অ্যাপের পূর্ণাঙ্গ ফিচার ও ইন্টারঅ্যাক্টিভ স্ক্রিনসমূহ">
+            <i class="fa-solid fa-motorcycle"></i> 🛵 ডেলিভারি ফুল অ্যাপ
+          </button>
+          <button type="button" class="sim-mode-btn" data-mode="desktop" title="হাব ও হেড অফিস ড্যাশবোর্ড">
             <i class="fa-solid fa-display"></i> ডেস্কটপ পোর্টাল
           </button>
         </div>
@@ -717,17 +724,12 @@
   <!-- Interactive JavaScript Logic -->
   <!-- Modular Application Scripts (Zero build, clear separation of concerns) -->
   <script src="js/models-data.js"></script>
-  <script src="js/simulator-steps-1-5.js"></script>
-  <script src="js/simulator-steps-6-9.js"></script>
-  <script src="js/simulator-data.js"></script>
-  <script src="js/simulator.js"></script>
-  <!-- Modular Application Scripts (Zero build, clear separation of concerns) -->
-  <script src="js/models-data.js"></script>
   <script src="js/dictionary-cards.js"></script>
   <script src="js/simulator-stage.js"></script>
   <script src="js/simulator-steps-1-5.js"></script>
   <script src="js/simulator-steps-6-9.js"></script>
   <script src="js/simulator-data.js"></script>
+  <script src="js/simulator-apps-full.js"></script>
   <script src="js/simulator.js"></script>
   <script src="app.js"></script>
 </body>
