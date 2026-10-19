@@ -135,10 +135,15 @@ function switchMerchantAppTab(tabKey) {
   if (!appBody) return;
 
   if (tabKey === 'home') {
-    const data = simStepsData[simCurrentStep - 1];
-    if (data) {
-      appBody.innerHTML = data.merchantHtml;
+    if (typeof merchantFullAppScreens !== 'undefined' && merchantFullAppScreens.home) {
+      appBody.innerHTML = merchantFullAppScreens.home(simCurrentStep);
       bindSimulatorScreenActions(simCurrentStep);
+    } else {
+      const data = simStepsData[simCurrentStep - 1];
+      if (data) {
+        appBody.innerHTML = data.merchantHtml;
+        bindSimulatorScreenActions(simCurrentStep);
+      }
     }
   } else if (typeof merchantFullAppScreens !== 'undefined' && merchantFullAppScreens[tabKey]) {
     appBody.innerHTML = merchantFullAppScreens[tabKey]();
@@ -323,7 +328,13 @@ function renderSimulatorStep(stepNum, shouldPlaySound = true) {
   const rTabs = document.querySelectorAll('#sim-rider-bottom-nav .app-nav-item');
   rTabs.forEach(btn => btn.classList.toggle('active', btn.dataset.rTab === 'tasks'));
 
-  if (simAppBodyMerchant) simAppBodyMerchant.innerHTML = data.merchantHtml;
+  if (simAppBodyMerchant) {
+    if (typeof merchantFullAppScreens !== 'undefined' && merchantFullAppScreens.home) {
+      simAppBodyMerchant.innerHTML = merchantFullAppScreens.home(stepNum);
+    } else {
+      simAppBodyMerchant.innerHTML = data.merchantHtml;
+    }
+  }
   if (simAppBodyRider) simAppBodyRider.innerHTML = data.riderHtml;
   if (simRiderNameTag && data.riderName) simRiderNameTag.textContent = data.riderName;
 

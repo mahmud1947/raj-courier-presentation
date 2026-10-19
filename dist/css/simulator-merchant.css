@@ -1,0 +1,834 @@
+/* =========================================================
+   RAJ COURIER - MERCHANT APP STYLES (Street Fast Modern UI)
+   Exact UX layout matching screenshots: Home, Overview, Wallet, Profile
+   ========================================================= */
+
+/* --- 1. Street Fast Header & Balance Pill --- */
+.app-header.merchant-theme.m-sf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #0f172a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 8px;
+}
+
+.m-sf-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.m-sf-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.m-sf-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.m-sf-bell-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+  border: 1.5px solid #0f172a;
+}
+
+/* Balance Pill Badge */
+.m-sf-balance-pill {
+  flex: 1;
+  max-width: 175px;
+  height: 32px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.m-sf-balance-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.m-b-taka-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.m-b-amount-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+/* --- 2. Home Dashboard Hero Slider (pic_05.jpeg) --- */
+.m-sf-hero-slider {
+  position: relative;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #022c22 100%);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 14px 14px 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(6, 78, 59, 0.25);
+}
+
+.m-sf-hero-slider::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -30px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.m-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.m-hero-text {
+  flex: 1;
+}
+
+.m-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.m-hero-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+
+.m-hero-desc {
+  font-size: 10px;
+  color: #a7f3d0;
+  line-height: 1.3;
+}
+
+.m-hero-truck-art {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #34d399;
+  flex-shrink: 0;
+}
+
+.m-hero-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.m-h-dot {
+  width: 6px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  transition: all 0.2s;
+}
+
+.m-h-dot.active {
+  width: 14px;
+  background: #34d399;
+}
+
+/* --- 3. Live Simulation Step Action Container --- */
+.m-sf-sim-live-box {
+  background: #111827;
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.m-sim-live-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.m-sim-live-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #60a5fa;
+}
+
+.m-live-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3b82f6;
+  box-shadow: 0 0 8px #3b82f6;
+  animation: pulseSim 1.5s infinite;
+}
+
+@keyframes pulseSim {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* --- 4. 4 Quick Actions (pic_05.jpeg) --- */
+.m-sf-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.m-sf-quick-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.m-sf-quick-card:hover {
+  background: #1a2234;
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.m-q-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.m-q-icon-box.green { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.m-q-icon-box.amber { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.m-q-icon-box.purple { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+.m-q-icon-box.sky { background: rgba(14, 165, 233, 0.15); color: #38bdf8; }
+
+.m-q-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.25;
+}
+
+.m-q-sub {
+  font-size: 9px;
+  color: #94a3b8;
+  margin-top: 1px;
+}
+
+/* --- 5. 8 Management Services Grid (pic_05.jpeg) --- */
+.m-sf-sec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.m-sf-sec-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.m-sf-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px 6px;
+  margin-bottom: 14px;
+}
+
+.m-grid-btn {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 9px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  width: 100%;
+}
+
+.m-grid-btn:hover {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.m-grid-btn-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #cbd5e1;
+  margin-bottom: 5px;
+  transition: all 0.2s;
+}
+
+.m-grid-btn:hover .m-grid-btn-icon {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.m-grid-btn-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.2;
+}
+
+/* --- 6. 4 Utility Cards & Partner Banner (pic_05.jpeg) --- */
+.m-sf-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.m-util-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 9px;
+  padding: 8px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.m-util-card:hover {
+  background: #1e293b;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.m-util-card i {
+  font-size: 13px;
+  color: #38bdf8;
+}
+
+.m-util-card span {
+  font-size: 9px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.m-sf-partner-card {
+  background: linear-gradient(135deg, #1e1b4b 0%, #172554 100%);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.m-p-badge {
+  font-size: 8.5px;
+  font-weight: 800;
+  background: #4f46e5;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+.m-p-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.m-p-sub {
+  font-size: 9px;
+  color: #c7d2fe;
+}
+
+.m-p-btn {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 9.5px;
+  font-weight: 700;
+  border: none;
+  white-space: nowrap;
+}
+
+/* --- 7. Parcel Summary / Overview (pic_06.jpeg) --- */
+.m-overview-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.m-kpi-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 11px;
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.m-kpi-card:hover {
+  background: #1a2234;
+  transform: translateY(-1px);
+}
+
+.m-kpi-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.m-kpi-label {
+  font-size: 9.5px;
+  color: #94a3b8;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.m-kpi-val {
+  font-size: 17px;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.m-kpi-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.m-kpi-card.green .m-kpi-icon { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.m-kpi-card.amber .m-kpi-icon { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.m-kpi-card.blue .m-kpi-icon { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+.m-kpi-card.teal .m-kpi-icon { background: rgba(20, 184, 166, 0.15); color: #14b8a6; }
+.m-kpi-card.purple .m-kpi-icon { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+.m-kpi-card.rose .m-kpi-icon { background: rgba(244, 63, 94, 0.15); color: #f43f5e; }
+.m-kpi-card.indigo .m-kpi-icon { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+.m-kpi-card.cyan .m-kpi-icon { background: rgba(6, 182, 212, 0.15); color: #06b6d4; }
+
+/* --- 8. Payment Methods (pic_10.jpeg) --- */
+.m-otp-notice-box {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.m-otp-notice-box i {
+  color: #10b981;
+  font-size: 13px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.m-otp-notice-text {
+  font-size: 10px;
+  color: #cbd5e1;
+  line-height: 1.35;
+}
+
+.m-method-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.m-method-card:hover {
+  background: #1a2234;
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.m-method-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.m-method-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.m-method-icon-box.cash { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+.m-method-icon-box.bank { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+.m-method-icon-box.bkash { background: #e2136e; color: #ffffff; font-size: 11px; }
+.m-method-icon-box.rocket { background: #8c3494; color: #ffffff; }
+.m-method-icon-box.nagad { background: #f7941d; color: #ffffff; }
+
+.m-method-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.m-method-sub {
+  font-size: 9.5px;
+  color: #94a3b8;
+}
+
+.m-method-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  white-space: nowrap;
+}
+
+.m-add-method-btn {
+  font-size: 10px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: transparent;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.m-add-method-btn:hover {
+  background: rgba(56, 189, 248, 0.1);
+}
+
+/* --- 9. Profile & Business Info (pic_08.jpeg & pic_09.jpeg) --- */
+.m-sf-user-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.m-sf-avatar-wrap {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.m-sf-avatar-edit-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3b82f6;
+  border: 2px solid #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #ffffff;
+}
+
+.m-sf-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.m-sf-user-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.m-sf-user-id-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.m-sf-user-id-text {
+  font-size: 10px;
+  color: #94a3b8;
+  font-family: monospace;
+}
+
+.m-sf-copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 4px;
+  color: #38bdf8;
+  font-size: 9.5px;
+  padding: 1px 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.m-sf-copy-btn:hover {
+  background: rgba(56, 189, 248, 0.2);
+}
+
+/* Profile Segmented Switcher */
+.m-sf-seg-tabs {
+  display: flex;
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 3px;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.m-seg-tab-btn {
+  flex: 1;
+  padding: 6px 4px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.m-seg-tab-btn.active {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Info List Items */
+.m-info-list {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+
+.m-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 11px;
+}
+
+.m-info-row:last-child {
+  border-bottom: none;
+}
+
+.m-info-label {
+  color: #94a3b8;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.m-info-val {
+  color: #f1f5f9;
+  font-weight: 700;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.m-login-badge {
+  font-size: 8.5px;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* Pickup Mode Radio Selector (pic_09.jpeg) */
+.m-pickup-mode-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.m-mode-radio-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.m-mode-radio-card.active {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+}
+
+.m-mode-radio-card input {
+  accent-color: #10b981;
+  cursor: pointer;
+}
+
+.m-mode-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.m-mode-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.m-mode-desc {
+  font-size: 9px;
+  color: #94a3b8;
+}
