@@ -1,61 +1,65 @@
 /**
  * রাজ কুরিয়ার সিমুলেটর - ডেলিভারি ম্যান / রাইডার অ্যাপ মডিউল (Full Rider Pro App)
- * স্ক্যানার, রানশিট, ক্যাশ ভল্ট ও ফিল্ড অপারেশন
+ * রানশিট, ট্রিপ হিস্ট্রি, ক্যাশ ভল্ট ও ফিল্ড অপারেশন (নো-স্ক্যান পলিসি: স্ক্যানিং কেবল ব্রাঞ্চ হাবে হবে)
  */
 
 const riderFullAppScreens = {
-  // ১. লেজার ক্যামেরা বারকোড স্ক্যানার
-  scanner: function() {
+  // ১. ডেলিভারি হিস্ট্রি ও সম্পন্ন ট্রিপ লগ
+  history: function() {
     return `
-      <div class="r-full-app-page r-scanner-page">
+      <div class="r-full-app-page r-history-page">
         <div class="r-page-header">
-          <div class="r-page-title"><i class="fa-solid fa-barcode"></i> লাইভ বারকোড স্ক্যানার</div>
-          <span class="r-count-badge">AI Laser 60fps</span>
+          <div>
+            <div class="r-page-title"><i class="fa-solid fa-clock-rotate-left"></i> ট্রিপ হিস্ট্রি</div>
+            <div class="r-sub-text">আজকের সফল ডেলিভারি ও রুট লগ</div>
+          </div>
+          <span class="r-count-badge green-badge">১৪টি সম্পন্ন</span>
         </div>
 
-        <!-- ক্যামেরা ভিউফাইন্ডার সিমুলেশন -->
-        <div class="r-camera-viewfinder" id="r-camera-box">
-          <div class="laser-beam-line"></div>
-          <div class="viewfinder-corner top-left"></div>
-          <div class="viewfinder-corner top-right"></div>
-          <div class="viewfinder-corner bottom-left"></div>
-          <div class="viewfinder-corner bottom-right"></div>
-
-          <div class="viewfinder-center-target">
-            <i class="fa-solid fa-expand"></i>
-            <span>বারকোড/QR কোড ফ্রেমের মধ্যে রাখুন</span>
+        <div class="r-history-stats-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+          <div style="background:#f1f5f9; padding:10px; border-radius:10px; border:1px solid #e2e8f0; text-align:center;">
+            <div style="font-size:11px; color:#64748b; font-weight:600;">সফল ডেলিভারি রেট</div>
+            <div style="font-size:18px; font-weight:800; color:#059669; margin-top:2px;">৯৬.৫%</div>
           </div>
-
-          <div class="scanner-detect-banner" id="r-scan-detect-banner">
-            <i class="fa-solid fa-circle-check"></i> টার্গেট পার্সেল: RAJ-DH-89214
+          <div style="background:#f1f5f9; padding:10px; border-radius:10px; border:1px solid #e2e8f0; text-align:center;">
+            <div style="font-size:11px; color:#64748b; font-weight:600;">অন-টাইম রেটিং</div>
+            <div style="font-size:18px; font-weight:800; color:#0284c7; margin-top:2px;">৪.৯ ⭐ (৫৮)</div>
           </div>
         </div>
 
-        <!-- কন্ট্রোল বাটনসমূহ -->
-        <div class="r-scanner-actions">
-          <button type="button" class="r-scan-trigger-btn" id="r-trigger-scan-btn" onclick="triggerRiderBarcodeScanSound()">
-            <i class="fa-solid fa-barcode"></i> স্ক্যান বিপ টেস্ট করুন
-          </button>
-          
-          <div class="r-scan-options-row">
-            <button type="button" class="r-sub-action-btn" onclick="toggleRiderFlashlight(this)">
-              <i class="fa-solid fa-bolt"></i> ফ্ল্যাশলাইট অন
-            </button>
-            <button type="button" class="r-sub-action-btn" onclick="showSimToast('ক্যামেরা রেজোলিউশন: HD 1080p অটো-ফোকাস', 'fa-camera')">
-              <i class="fa-solid fa-camera-rotate"></i> ক্যামেরা ফ্লিপ
-            </button>
+        <!-- ট্রিপ লগ তালিকা -->
+        <div class="r-stops-list">
+          <div class="r-stop-item done">
+            <div class="r-stop-num"><i class="fa-solid fa-check"></i></div>
+            <div class="r-stop-info">
+              <div class="r-stop-cust">কবির হোসেন · ৳১,৫০০ (নগদ আদায়)</div>
+              <div class="r-stop-addr"><i class="fa-solid fa-location-dot"></i> পশ্চিম কাজীপাড়া, মিরপুর · ১০:১৫ AM</div>
+              <div class="r-stop-status status-done">সফল ডেলিভারি (OTP ভেরিফাইড)</div>
+            </div>
+          </div>
+
+          <div class="r-stop-item done">
+            <div class="r-stop-num"><i class="fa-solid fa-check"></i></div>
+            <div class="r-stop-info">
+              <div class="r-stop-cust">ফারহানা হক · ৳১,২০০ (বিকাশ পেইড)</div>
+              <div class="r-stop-addr"><i class="fa-solid fa-location-dot"></i> ব্লক ডি, মিরপুর ১২ · ০৯:৪৫ AM</div>
+              <div class="r-stop-status status-done">সফল ডেলিভারি (প্রিপেইড)</div>
+            </div>
+          </div>
+
+          <div class="r-stop-item done">
+            <div class="r-stop-num"><i class="fa-solid fa-check"></i></div>
+            <div class="r-stop-info">
+              <div class="r-stop-cust">সুমন খান · ৳৮৫০ (নগদ আদায়)</div>
+              <div class="r-stop-addr"><i class="fa-solid fa-location-dot"></i> দক্ষিণ মনিপুর, মিরপুর · ০৯:২০ AM</div>
+              <div class="r-stop-status status-done">সফল ডেলিভারি (OTP ভেরিফাইড)</div>
+            </div>
           </div>
         </div>
 
-        <!-- ম্যানুয়াল বারকোড এন্ট্রি -->
-        <div class="r-manual-box">
-          <div class="m-box-label">অথবা বারকোড নম্বর লিখুন:</div>
-          <div class="m-input-row">
-            <input type="text" class="m-barcode-input" id="r-manual-code-input" value="RAJ-DH-89214" placeholder="RAJ-DH-XXXXX" />
-            <button type="button" class="m-submit-code-btn" onclick="triggerRiderBarcodeScanSound()">
-              <i class="fa-solid fa-check"></i>
-            </button>
-          </div>
+        <div style="margin-top:12px; padding:10px; border-radius:8px; background:#eff6ff; border:1px dashed #93c5fd; font-size:11px; color:#1e40af; line-height:1.5;">
+          <i class="fa-solid fa-shield-halved" style="margin-right:4px; color:#2563eb;"></i>
+          <strong>নো-স্ক্যান পলিসি:</strong> মার্চেন্ট বা রাইডারের কোনো বারকোড স্ক্যান করতে হয় না। ব্রাঞ্চ হাবে অপারেটর সেন্ট্রাল বারকোড স্ক্যানার গান দিয়ে ইনবাউন্ড ও প্রসেস করেন।
         </div>
       </div>
     `;
@@ -186,33 +190,10 @@ const riderFullAppScreens = {
   }
 };
 // গ্লোবাল রাইডার ইন্টারঅ্যাকশন হেল্পার্স
-function triggerRiderBarcodeScanSound() {
-  playSimSound('beep');
-  const banner = document.getElementById('r-scan-detect-banner');
-  if (banner) {
-    banner.style.background = '#059669';
-    banner.innerHTML = '<i class="fa-solid fa-circle-check"></i> ✅ বারকোড RAJ-DH-89214 সফলভাবে স্ক্যান হয়েছে!';
-    setTimeout(() => {
-      banner.style.background = 'rgba(0,0,0,0.7)';
-      banner.innerHTML = '<i class="fa-solid fa-circle-check"></i> টার্গেট পার্সেল: RAJ-DH-89214';
-    }, 2000);
-  }
-  showSimToast('লেজার স্ক্যান সফল: RAJ-DH-89214', 'fa-barcode');
-}
-
-function toggleRiderFlashlight(btn) {
-  playSimSound('click');
-  const box = document.getElementById('r-camera-box');
-  if (box) {
-    const isOn = box.classList.toggle('flashlight-on');
-    if (btn) btn.innerHTML = isOn ? '<i class="fa-solid fa-bolt-slash"></i> ফ্ল্যাশলাইট অফ' : '<i class="fa-solid fa-bolt"></i> ফ্ল্যাশলাইট অন';
-    showSimToast(isOn ? '💡 ফ্ল্যাশলাইট চালু হয়েছে' : 'ফ্ল্যাশলাইট বন্ধ করা হয়েছে', 'fa-bolt');
-  }
-}
-
 function executeRiderVaultHandover() {
   playSimSound('chime');
   const cashEl = document.getElementById('r-vault-cash-amt');
   if (cashEl) cashEl.textContent = '৳০.০০ (ক্লিয়ার্ড)';
   showSimToast('✅ হাব ক্যাশিয়ার ৳২,০০০ ক্যাশ গ্রহণ করেছেন ও ডিজিটাল রিসিট প্রদান করেছেন!', 'fa-receipt', 3500);
 }
+

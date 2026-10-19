@@ -423,12 +423,12 @@ function bindSimulatorScreenActions(stepNum) {
     });
   }
 
-  // ধাপ ২: রাইডার লেজার স্ক্যান
+  // ধাপ ২: রাইডার পার্সেল সংগ্রহ ও ব্যাগে লোড (নো-স্ক্যান পলিসি)
   const btnStep2 = document.getElementById('m-action-btn-2');
   if (btnStep2) {
     btnStep2.addEventListener('click', () => {
-      playSimSound('beep');
-      showSimToast('বারকোড লেজার স্ক্যান সফল! পার্সেল ব্যাগে লোড হয়েছে।', 'fa-barcode');
+      playSimSound('chime');
+      showSimToast('📦 পার্সেল সংগ্রহ ও ব্যাগে লোড সম্পন্ন! কোনো স্ক্যান প্রয়োজন নেই, পার্সেলটি ব্রাঞ্চ হাবে নিয়ে যাওয়া হচ্ছে।', 'fa-box-archive');
       setTimeout(() => renderSimulatorStep(3), 800);
     });
   }
@@ -623,7 +623,7 @@ simModeButtons.forEach((btn) => {
     } else if (mode === 'merchant-full') {
       showSimToast('🏪 মার্চেন্ট ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (পার্সেল, ওয়ালেট, প্রোফাইল) এক্সপ্লোর করুন।', 'fa-shop');
     } else if (mode === 'rider-full') {
-      showSimToast('🛵 রাইডার ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (স্ক্যানার, রানশিট, ভল্ট) এক্সপ্লোর করুন।', 'fa-motorcycle');
+      showSimToast('🛵 রাইডার ফুল অ্যাপ ফোকাস মোড সক্রিয়! নিচের ট্যাবগুলো (টাস্ক, রানশিট, হিস্ট্রি, ভল্ট) এক্সপ্লোর করুন।', 'fa-motorcycle');
     } else if (mode === 'branch-full' || mode === 'desktop') {
       showSimToast('🏢 ব্রাঞ্চ ওয়েব পোর্টাল ফোকাস মোড সক্রিয়! ইনবাউন্ড স্ক্যান, রানশিট ডিসপ্যাচ ও ক্যাশ ভল্ট এক্সপ্লোর করুন।', 'fa-building-user');
       if (simBranchCurrentTab === 'step') {

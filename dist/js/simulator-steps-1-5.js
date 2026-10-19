@@ -123,11 +123,11 @@ const simSteps1to5 = [
   },
 
   // ==========================================
-  // ধাপ ২: রাইডার পিকআপ ও লেজার স্ক্যান (রাইডার অ্যাপ)
+  // ধাপ ২: রাইডার পার্সেল সংগ্রহ ও ব্যাগিং (রাইডার অ্যাপ)
   // ==========================================
   {
     step: 2,
-    title: 'রাইডার পিকআপ ও লেজার স্ক্যান',
+    title: 'রাইডার পার্সেল সংগ্রহ ও ব্যাগিং',
     primaryApp: 'rider',
     riderName: 'করিম (পিকআপ রাইডার)',
     browserUrl: 'https://hub.rajcourier.com/sylhet/rider-monitor',
@@ -139,12 +139,12 @@ const simSteps1to5 = [
     statusChip: { text: 'পিকআপ সম্পন্ন', class: 'in-transit' },
     statusTime: '১৯ অক্টো ২০২৬ · ১০:১৫ AM',
     smsText: 'রাজ কুরিয়ার রাইডার আপনার পার্সেল শপ থেকে সংগ্রহ করেছেন (ID: RAJ-DH-89214)।',
-    trackStatus: 'রাইডার পিকআপ করেছেন',
+    trackStatus: 'রাইডার পার্সেল সংগ্রহ করেছেন',
     trackEta: 'আগামীকাল দুপুর ০১:০০',
     trackProgress: 24,
     historyDone: [
       '১৯ অক্টো ০৯:৪১ AM · অর্ডার বুকিং সম্পন্ন (সিলেট শপ)',
-      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল পিকআপ সম্পন্ন'
+      '১৯ অক্টো ১০:১৫ AM · রাইডার করিম কর্তৃক পার্সেল সংগ্রহ ও ব্যাগে লোড'
     ],
 
     // ১. মার্চেন্ট অ্যাপ স্ক্রিন
@@ -165,40 +165,44 @@ const simSteps1to5 = [
             <span class="m-val">সকাল ১০:১৫ AM</span>
           </div>
         </div>
+      </div>
     `,
 
     // ২. রাইডার অ্যাপ স্ক্রিন
     riderHtml: `
-      <div class="m-card" style="padding:8px 12px; margin-bottom:8px;">
-        <span class="m-badge warning"><i class="fa-solid fa-camera"></i> লাইভ বারকোড ক্যামেরা স্ক্যানার</span>
+      <div class="m-card" style="padding:10px 12px; margin-bottom:8px;">
+        <span class="m-badge info" style="font-size:11px; padding:4px 8px;"><i class="fa-solid fa-handshake"></i> মার্চেন্ট শপ পার্সেল হ্যান্ডওভার</span>
       </div>
 
-      <!-- Animated Camera Scanner Viewfinder -->
-      <div class="m-scanner-viewport">
-        <div class="scanner-crosshair">
-          <div class="scanner-laser"></div>
-          <i class="fa-solid fa-barcode" style="font-size:42px; opacity:0.6;"></i>
-          <div class="scanner-barcode-dummy">RAJ-DH-89214</div>
-        </div>
-      </div>
-
-      <div class="m-card" style="margin-top:8px;">
+      <div class="m-card" style="margin-bottom:8px;">
         <div class="m-field-group">
-          <span class="m-label">মার্চেন্ট:</span>
+          <span class="m-label">মার্চেন্ট শপ:</span>
           <span class="m-val">মাহমুদ ফ্যাশন, জিন্দাবাজার</span>
         </div>
         <div class="m-field-group">
           <span class="m-label">সংগৃহীত পার্সেল:</span>
-          <span class="m-val highlight">RAJ-DH-89214 (১টি)</span>
+          <span class="m-val highlight">RAJ-DH-89214 (১টি প্যাকেট)</span>
         </div>
         <div class="m-field-group">
           <span class="m-label">সিওডি ট্যাগ:</span>
           <span class="m-val" style="color:var(--brand-accent); font-weight:800;">৳২,০০০</span>
         </div>
+        <div class="m-field-group">
+          <span class="m-label">গন্তব্য:</span>
+          <span class="m-val">মিরপুর ১০, ঢাকা</span>
+        </div>
       </div>
 
-      <button id="m-action-btn-2" class="m-btn m-btn-success">
-        <i class="fa-solid fa-barcode"></i> স্ক্যান কনফার্ম ও ব্যাগে লোড করুন
+      <!-- নো স্ক্যান পলিসি কার্ড -->
+      <div style="padding:10px; border-radius:10px; background:linear-gradient(135deg, #f0fdf4, #ecfdf5); border:1px solid #a7f3d0; margin-bottom:10px; font-size:11px; color:#065f46; line-height:1.5;">
+        <div style="font-weight:700; margin-bottom:3px; display:flex; align-items:center; gap:5px;">
+          <i class="fa-solid fa-shield-halved" style="color:#059669;"></i> নো-স্ক্যান পিকআপ পলিসি:
+        </div>
+        মার্চেন্ট বা রাইডার কোনো বারকোড স্ক্যান করবেন না। পার্সেলটি ব্যাগে ভরে সরাসরি সিলেট সেন্ট্রাল ব্রাঞ্চ হাবে নিয়ে যাওয়া হবে। ব্রাঞ্চ হাবে অপারেটর বারকোড গান দিয়ে ইনবাউন্ড স্ক্যান ও ডিজিটাল ওজন রেকর্ড করবেন।
+      </div>
+
+      <button id="m-action-btn-2" class="m-btn m-btn-success" style="background:var(--brand-success); width:100%; padding:12px; font-weight:700;">
+        <i class="fa-solid fa-bag-shopping"></i> পার্সেল সংগ্রহ ও ব্যাগে লোড সম্পন্ন (হাবে যাত্রা)
       </button>
     `,
 
@@ -216,7 +220,7 @@ const simSteps1to5 = [
                 <td>করিম আহমেদ</td>
                 <td>মাহমুদ ফ্যাশন</td>
                 <td><strong style="color:var(--brand-primary);">RAJ-DH-89214</strong></td>
-                <td><span class="status-badge success">✅ স্ক্যান সম্পন্ন (ইন-ব্যাগ)</span></td>
+                <td><span class="status-badge info">🚚 পিকআপ সম্পন্ন (হাবে নিয়ে যাওয়া হচ্ছে)</span></td>
               </tr>
             </tbody>
           </table>
@@ -229,7 +233,7 @@ const simSteps1to5 = [
             <div><strong>বর্তমান দায়িত্ব:</strong> করিম আহমেদ (রাইডার ID #RD-09)</div>
             <div><strong>টাইমস্ট্যাম্প:</strong> ১৯ অক্টো ২০২৬ · ১০:১৫:২২ AM</div>
             <div style="margin-top:8px; color:var(--brand-success); font-weight:700;">
-              <i class="fa-solid fa-check-double"></i> কোনো তথ্য ম্যানুয়ালি টাইপ করার সুযোগ নেই। ১০০% বারকোড নির্ভর।
+              <i class="fa-solid fa-circle-check"></i> পার্সেলটি সংগৃহীত হয়ে হাবে ইনবাউন্ড হওয়ার পথে। হাবে পৌঁছালে সেন্ট্রাল বারকোড স্ক্যানার দিয়ে স্ক্যান ও ওজন রেকর্ড হবে।
             </div>
           </div>
         </div>

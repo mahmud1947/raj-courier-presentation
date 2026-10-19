@@ -422,7 +422,7 @@ const simSteps6to9 = [
           <div class="d-panel-title"><i class="fa-solid fa-circle-check"></i> পার্সেল লাইফসাইকেল অডিট সামারি</div>
           <div style="font-size:12px; line-height:1.6; color:var(--text-main);">
             <div>✅ <strong>বুকিং থেকে পেআউট:</strong> পূর্ণ ডিজিটাল চেইন অফ কাস্টডি সম্পন্ন</div>
-            <div>✅ <strong>শূন্য ম্যানুয়াল এন্ট্রি:</strong> প্রতি ধাপে ক্যামেরা ও লেজার বারকোড স্ক্যান</div>
+            <div>✅ <strong>সেন্ট্রলাইজড ব্রাঞ্চ স্ক্যানিং:</strong> ব্রাঞ্চ হাবে হাই-স্পিড লেজার বারকোড গান ও ডিজিটাল স্কেল</div>
             <div>✅ <strong>শূন্য ক্যাশ গরমিল:</strong> ওটিপি ও হাব ভল্ট ক্লোজিং রিকনসাইল্ড</div>
             <div>✅ <strong>মার্চেন্ট সন্তুষ্টি:</strong> ২৪ ঘন্টার মধ্যে দ্রুততম অটোমেটিক বিকাশ পেআউট</div>
           </div>
